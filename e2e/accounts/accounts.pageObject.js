@@ -1,4 +1,13 @@
 var DashboardAccounts = function() {
+  this.name;
+  this.charge;
+  this.invoiceRadio;
+  this.subscriptionRadio;
+  this.contractNumber;
+  this.startDate;
+  this.endDate;
+  this.brands;
+
   this.url = 'https://dashboard-dev.parkopoly.fr/#/accounts';
   this.searchBar = element(by.model('$select.search'));
   this.searchBarDropdown = this.searchBar.$('[ng-show="$select.open"]');
@@ -15,10 +24,13 @@ var DashboardAccounts = function() {
   this.createAccountDialogContractEndDateDatepicker = this.createAccountDialog.element(by.model('caCtrl.account.endDate'));
   this.createAccountDialogBrands = this.createAccountDialog.element(by.model('caCtrl.account.shortBrandDtoSet'));
   this.createAccountDialogBrandsInput = this.createAccountDialogBrands.element(by.model('$select.search'));
+  this.createAccountDialogSubmitButton = this.createAccountDialog.$('[type="submit"]');
 
   this.get = function() {
     browser.get(this.url);
   };
+
+  this.setRandom
 };
 
 module.exports = new DashboardAccounts();
