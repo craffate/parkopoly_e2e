@@ -5,12 +5,12 @@ describe('Parkopoly dashboard accounts page', function() {
   debugger;
   ts = Date.now();
 
-  beforeAll(function () {
+  beforeAll(function() {
     DashboardAccounts.get();
   });
 
   describe('Create account', function() {
-    describe('When landing on the page, checks for required elements', function() {
+    describe('When landing on the page, check for required elements', function() {
       it('should have a search bar', function() {
         expect(DashboardAccounts.searchBar.isDisplayed()).toBe(true);
       });

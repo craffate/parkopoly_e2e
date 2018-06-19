@@ -29,8 +29,6 @@ var DashboardAccounts = function() {
   this.get = function() {
     browser.get(this.url);
   };
-
-  this.setRandom
 };
 
 module.exports = new DashboardAccounts();
