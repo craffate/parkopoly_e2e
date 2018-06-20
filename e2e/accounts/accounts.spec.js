@@ -151,25 +151,24 @@ describe('Parkopoly dashboard accounts page', function() {
     });
   
     describe('When the account creation dialog form is valid, submit it', function() {
-      it('should click the submit button and wait for the form to be sent', async function() {
-        await DashboardAccounts.createAccountDialogSubmitButton.click()
+      it('should click the submit button and wait for the form to be sent', function() {
+        DashboardAccounts.createAccountDialogSubmitButton.click().then(function() {
+          expect(DashboardAccounts.toast.isDisplayed()).toBe(true);
+        });
       });
     });
 
     describe('When the account has been created, search for it', function() {
-      it('should refresh the page', async function() {
-        await browser.refresh();
+      it('should refresh the page', function() {
+        browser.refresh();
       });
 
       it('should search for the account', async function() {
-        await DashboardAccounts.searchBar.click();
         await DashboardAccounts.searchBar.sendKeys(DashboardAccounts.name);
       });
 
       it('should click the first result', function() {
-        DashboardAccounts.searchBarDropdownAll.then(function(arr) {
-          arr[0].click();
-        });
+        DashboardAccounts.searchBarDropdownAll.click();
       });
 
       it('should display the result in the table', function() {
