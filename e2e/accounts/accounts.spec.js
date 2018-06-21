@@ -151,9 +151,9 @@ describe('Parkopoly dashboard accounts page', function() {
     });
   
     describe('When the account creation dialog form is valid, submit it', function() {
-      it('should click the submit button and wait for the form to be sent', function() {
+      it('should click the submit button and expect the account creation dialog to be closed', function() {
         DashboardAccounts.createAccountDialogSubmitButton.click().then(function() {
-          expect(DashboardAccounts.toast.isDisplayed()).toBe(true);
+          expect(DashboardAccounts.createAccountDialog.isPresent()).toBe(false);
         });
       });
     });
