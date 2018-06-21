@@ -87,13 +87,9 @@ describe('Parkopoly dashboard ingredients page', function() {
           it('should select a booking code', function() {
             DashboardIngredients.badgeBookingcodes.click();
             DashboardIngredients.badgeBookingcodesDropdownAll.then(function(arr) {
-              DashboardIngredients.bookingcode = arr[helpers.getRandomInt(arr.length)];
-              DashboardIngredients.bookingcode.getLocation().then(function(loc) {
-                browser.executeScript('window.scrollTo(' + loc.x + ', ' + loc.y + ');').then(function() {
-                  DashboardIngredients.bookingcode.click();
-                  DashboardIngredients.badgeBookingcodesDropdown.sendKeys(protractor.Key.ESCAPE);
-                });
-              });
+              DashboardIngredients.bookingcode = arr[helpers.getRandomInt(5)];
+              DashboardIngredients.bookingcode.click();
+              DashboardIngredients.badgeBookingcodesDropdown.sendKeys(protractor.Key.ESCAPE);
             });
           });
         });
@@ -122,7 +118,14 @@ describe('Parkopoly dashboard ingredients page', function() {
 
         describe('When the form is valid, submit it', function() {
           it('should click the submit button', function() {
-            DashboardIngredients.submitButton.click();
+            DashboardIngredients.submitButton.click().then(function() {
+              expect(DashboardIngredients.toast.isDisplayed()).toBe(true);
+            });
+          });
+        });
+        describe('When the badge has been created, search for it', function() {
+          it('should refresh the page', function() {
+            browser.refresh();
           });
         });
       });
