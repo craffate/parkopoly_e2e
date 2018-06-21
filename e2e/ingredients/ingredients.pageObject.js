@@ -61,7 +61,7 @@ var DashboardIngredients = function() {
   this.brandLogoSearchbarDropdown = this.brandSearchbar.element(by.repeater('object in brandFormCtrl.all.logos'));
   this.brandMissiontypeDropdown = element(by.model('brandFormCtrl.newObject.missionTypeEnumSet'));
   this.brandMissiontypeDropdownTypes = element(by.repeater('type in brandFormCtrl.all.types'));
-  this.brandMissiontypeDropdownAll = element.all(by.repeater('type in brandFormCtrl.all.types'));
+  this.brandMissiontypeDropdownTypesAll = element.all(by.repeater('type in brandFormCtrl.all.types'));
   this.brandAccountDropdown = element(by.model('brandFormCtrl.newObject.shortAccountDto'));
   this.brandAccountDropdownInput = element(by.model('brandFormCtrl.searchAccount'));
   this.brandAccountDropdownAccounts = element(by.repeater('account in brandFormCtrl.all.accounts'));
@@ -70,10 +70,44 @@ var DashboardIngredients = function() {
   this.brandPenaltySearchbarInput = this.brandPenaltySearchbar.element(by.model('$select.search'));
   this.brandPenaltySearchbarDropdown = this.brandPenaltySearchbar.element(by.repeater('object in brandFormCtrl.all.penalties'));
   this.brandAliasInput = element(by.model('brandFormCtrl.newObject.brandNameForEmailSMS'));
-  this.brandSmsonbookingCheckbox = element(by.model('brandFormCtrl.newObject.notificationOptionDto.sendSmsMissionBooking'));
-  this.brandMailonbookingCheckbox = element(by.model('brandFormCtrl.newObject.notificationOptionDto.sendEmailAtCommand'));
-  this.brandMailreminderCheckbox = element(by.model('brandFormCtrl.newObject.notificationOptionDto.sendEmailReminder'));
-  this.brandSmsreminderCheckbox = element(by.model('brandFormCtrl.newObject.notificationOptionDto.sendSmsReminder'));
+  this.brandSMSOnBookingCheckbox = element(by.model('brandFormCtrl.newObject.notificationOptionDto.sendSmsMissionBooking'));
+  this.brandMailOnBookingCheckbox = element(by.model('brandFormCtrl.newObject.notificationOptionDto.sendEmailAtCommand'));
+  this.brandMailReminderCheckbox = element(by.model('brandFormCtrl.newObject.notificationOptionDto.sendEmailReminder'));
+  this.brandSMSReminderCheckbox = element(by.model('brandFormCtrl.newObject.notificationOptionDto.sendSmsReminder'));
+  // Cost form
+  this.costSearchbar = element(by.model('costFormCtrl.selectedObject'));
+  this.costSearchbarInput = this.costSearchbar.element(by.model('$select.search'));
+  this.costSearchbarDropdown = this.costSearchbar.element(by.repeater('repeat="object in costFormCtrl.all.costs'));
+  this.costNameInput = element(by.model('costFormCtrl.newObject.name'));
+  this.costAccountDropdown = element(by.model('costFormCtrl.newObject.accountDtoSet'));
+  this.costAccountDropdownAccounts = element(by.repeater('a in costFormCtrl.all.accounts'));
+  this.costAccountDropdownAccountsAll = element.all(by.repeater('a in costFormCtrl.all.accounts'));
+  this.costAddzoneButton = $('[ng-click="costFormCtrl.addZonedCostType()"]');
+  this.costZone = element(by.repeater('costType in costFormCtrl.newObject.zonedCostTypeDtoSet'));
+  this.costZoneAll = element.all(by.repeater('costType in costFormCtrl.newObject.zonedCostTypeDtoSet'));
+  this.costZoneTitle = $('[ng-click="toggleCollapsibleItem()"]');
+  this.costZoneNameInput = element(by.model('costType.name'));
+  this.costZoneDropdown = element(by.model('costType.zoneCustomerDtoSet'));
+  this.costZoneDropdownInput = element(by.model('costType.search'));
+  this.costZoneDropdownAccounts = element(by.repeater('z in costFormCtrl.all.customerZones'));
+  this.costZoneDropdownAccountsAll = element.all(by.repeater('z in costFormCtrl.all.customerZones'));
+  this.costZoneConcessionPriceInput = element(by.model('costType.costTypeDtoSet[0].priceByMinutes'));
+  this.costZoneConcessionMinInput = element(by.model('costType.costTypeDtoSet[0].minPrice'));
+  this.costZoneConcessionRoundInput = element(by.model('costType.costTypeDtoSet[0].round'));
+  this.costZoneConcessionEffectInput = element(by.model('costType.costTypeDtoSet[0].commercialEffect'));
+  this.costZoneConcessionMaxInput = element(by.model('costType.costTypeDtoSet[0].maxPrice'));
+  this.costZoneConcessionPriceTypeSwitch = element(by.model('costType.costTypeDtoSet[0].ht'));
+  this.costZoneConcessionMeMInput = element(by.model('costType.costTypeDtoSet[0].carExplanation'));
+  this.costZoneConcessionPUDInput = element(by.model('costType.costTypeDtoSet[0].pickupAndDelivery'));
+  this.costZoneClientPriceInput = element(by.model('costType.costTypeDtoSet[1].priceByMinutes'));
+  this.costZoneClientMinInput = element(by.model('costType.costTypeDtoSet[1].minPrice'));
+  this.costZoneClientRoundInput = element(by.model('costType.costTypeDtoSet[1].round'));
+  this.costZoneClientEffectInput = element(by.model('costType.costTypeDtoSet[1].commercialEffect'));
+  this.costZoneClientMaxInput = element(by.model('costType.costTypeDtoSet[1].maxPrice'));
+  this.costZoneClientPriceTypeSwitch = element(by.model('costType.costTypeDtoSet[1].ht'));
+  this.costZoneClientVRInput = element(by.model('costType.costTypeDtoSet[1].replacementCar'));
+  this.costZoneClientMeMInput = element(by.model('costType.costTypeDtoSet[1].carExplanation'));
+  this.costZoneClientPUDInput = element(by.model('costType.costTypeDtoSet[1].pickupAndDelivery'));
 
   this.get = function() {
     browser.get(this.url);
