@@ -20,7 +20,7 @@ var DashboardIngredients = function() {
   // Badge form
   this.badgeSearchbar = element(by.model('badgeFormCtrl.selectedObject'));
   this.badgeSearchbarInput = this.badgeSearchbar.element(by.model('$select.search'));
-  this.badgeSearchbarDropdown = element(by.repeater('object in badgeFormCtrl.all.badges'));
+  this.badgeSearchbarDropdown = element(by.repeater('object in $select.items'));
   this.badgeNameInput = element(by.model('badgeFormCtrl.newObject.name'));
   this.badgeModel = element(by.model('sm.model'));
   this.badgeModelDropdown = element(by.repeater('item in $select.items'));
@@ -43,7 +43,7 @@ var DashboardIngredients = function() {
   // Booking codes form
   this.bcSearchbar = element(by.model('bookingCodeFormCtrl.selectedObject'));
   this.bcSearchbarInput = this.bcSearchbar.element(by.model('$select.search'));
-  this.bcSearchbarDropdown = this.bcSearchbar.element(by.repeater('object in bookingCodeFormCtrl.all.bookingCodes'));
+  this.bcSearchbarDropdown = this.bcSearchbar.element(by.repeater('object in $select.items'));
   this.bcNameInput = element(by.model('bookingCodeFormCtrl.newObject.name'));
   this.bcExpirationDatepicker = element(by.model('bookingCodeFormCtrl.newObject.expirationDate'));
   this.bcDriverSalaryFactorInput = element(by.model('bookingCodeFormCtrl.newObject.driverSalaryFactor'));
@@ -51,14 +51,14 @@ var DashboardIngredients = function() {
   // Brand form
   this.brandSearchbar = element(by.model('brandFormCtrl.selectedObject'));
   this.brandSearchbarInput = this.brandSearchbar.element(by.model('$select.search'));
-  this.brandSearchbarDropdown = this.brandSearchbar.element(by.repeater('object in brandFormCtrl.all.brands'));
+  this.brandSearchbarDropdown = this.brandSearchbar.element(by.repeater('object in $select.items'));
   this.brandNameInput = element(by.model('brandFormCtrl.newObject.name'));
   this.brandColorpicker = element(by.model('brandFormCtrl.newObject.color'));
   this.brandColorpickerInput = this.brandColorpicker.element(by.model('value'));
   this.brandAnticipationInput = element(by.model('brandFormCtrl.newObject.miniAnticipation'));
   this.brandLogoSearchbar = element(by.model('brandFormCtrl.newObject.brandLogoDto'));
   this.brandLogoSearchbarInput = this.brandLogoSearchbar.element(by.model('$select.search'));
-  this.brandLogoSearchbarDropdown = this.brandSearchbar.element(by.repeater('object in brandFormCtrl.all.logos'));
+  this.brandLogoSearchbarDropdown = this.brandSearchbar.element(by.repeater('object in $select.items'));
   this.brandMissiontypeDropdown = element(by.model('brandFormCtrl.newObject.missionTypeEnumSet'));
   this.brandMissiontypeDropdownTypes = element(by.repeater('type in brandFormCtrl.all.types'));
   this.brandMissiontypeDropdownTypesAll = element.all(by.repeater('type in brandFormCtrl.all.types'));
@@ -68,7 +68,7 @@ var DashboardIngredients = function() {
   this.brandAccountDropdownAccountsAll = element.all(by.repeater('account in brandFormCtrl.all.accounts'));
   this.brandPenaltySearchbar = element(by.model('brandFormCtrl.newObject.penaltyDtoSet'));
   this.brandPenaltySearchbarInput = this.brandPenaltySearchbar.element(by.model('$select.search'));
-  this.brandPenaltySearchbarDropdown = this.brandPenaltySearchbar.element(by.repeater('object in brandFormCtrl.all.penalties'));
+  this.brandPenaltySearchbarDropdown = this.brandPenaltySearchbar.element(by.repeater('object in $select.items'));
   this.brandAliasInput = element(by.model('brandFormCtrl.newObject.brandNameForEmailSMS'));
   this.brandSMSOnBookingCheckbox = element(by.model('brandFormCtrl.newObject.notificationOptionDto.sendSmsMissionBooking'));
   this.brandMailOnBookingCheckbox = element(by.model('brandFormCtrl.newObject.notificationOptionDto.sendEmailAtCommand'));
@@ -77,7 +77,7 @@ var DashboardIngredients = function() {
   // Cost form
   this.costSearchbar = element(by.model('costFormCtrl.selectedObject'));
   this.costSearchbarInput = this.costSearchbar.element(by.model('$select.search'));
-  this.costSearchbarDropdown = this.costSearchbar.element(by.repeater('repeat="object in costFormCtrl.all.costs'));
+  this.costSearchbarDropdown = this.costSearchbar.element(by.repeater('object in $select.items'));
   this.costNameInput = element(by.model('costFormCtrl.newObject.name'));
   this.costAccountDropdown = element(by.model('costFormCtrl.newObject.accountDtoSet'));
   this.costAccountDropdownAccounts = element(by.repeater('a in costFormCtrl.all.accounts'));
@@ -108,6 +108,50 @@ var DashboardIngredients = function() {
   this.costZoneClientVRInput = element(by.model('costType.costTypeDtoSet[1].replacementCar'));
   this.costZoneClientMeMInput = element(by.model('costType.costTypeDtoSet[1].carExplanation'));
   this.costZoneClientPUDInput = element(by.model('costType.costTypeDtoSet[1].pickupAndDelivery'));
+  // Document form
+  this.docSearchbar = element(by.model('documentFormCtrl.selectedObject'));
+  this.docSearchbarInput = this.docSearchbar.element(by.model('$select.search'));
+  this.docSearchbarDropdown = this.docSearchbar.element(by.repeater('object in $select.items'));
+  this.docNameInput = element(by.model('documentFormCtrl.newObject.displayName'));
+  this.docUploadButton = element(by.id('docUploader'));
+  this.docAlertSwitch = element(by.model('documentFormCtrl.newObject.mandatory'));
+  this.docDisplayWebAppSwitch = element(by.model('documentFormCtrl.newObject.displayOnClientWebApp'));
+  this.docEncryptSwitch = element(by.model('documentFormCtrl.newObject.encryptionRequired'));
+  this.docQualitySwitch = element(by.model('documentFormCtrl.newObject.cleaningIsPossible'));
+  this.docDisplayWebAppAfterSwitch = element(by.model('documentFormCtrl.newObject.displayOnClientWebAppWhenFinished'));
+  this.docMissionType = element(by.model('documentFormCtrl.newObject.missionFilter.missionTypeEnumSet'));
+  this.docMissionTypeDropdown = element(by.repeater('type in documentFormCtrl.all.types'));
+  this.docMissionTypeDropdownAll = element.all(by.repeater('type in documentFormCtrl.all.types'));
+  this.docOptions = element(by.model('documentFormCtrl.newObject.missionFilter.optionLabelEnumSet'));
+  this.docOptionsDropdownPickup = element(by.repeater('opt in documentFormCtrl.all.optionLabels.PICKUP'));
+  this.docOptionsDropdownPickupAll = element.all(by.repeater('opt in documentFormCtrl.all.optionLabels.PICKUP'));
+  this.docOptionsDropdownVn = element(by.repeater('opt in documentFormCtrl.all.optionLabels.VN_DELIVERY'));
+  this.docOptionsDropdownVnAll = element.all(by.repeater('opt in documentFormCtrl.all.optionLabels.VN_DELIVERY'));
+  this.docOptionsDropdownExpress = element(by.repeater('opt in documentFormCtrl.all.optionLabels.EXPRESS'));
+  this.docOptionsDropdownExpressAll = element.all(by.repeater('opt in documentFormCtrl.all.optionLabels.EXPRESS'));
+  this.docOptionsDropdownIs = element(by.repeater('opt in documentFormCtrl.all.optionLabels.INTER_SITE'));
+  this.docOptionsDropdownIsAll = element.all(by.repeater('opt in documentFormCtrl.all.optionLabels.INTER_SITE'));
+  this.docBookincodes = element(by.model('ingredCtrl.newObject.missionFilter.bookingCodeSet'));
+  this.docBookincodesDropdown = element(by.repeater('code in documentFormCtrl.all.bookingCodes'));
+  this.docBookincodesDropdownAll = element.all(by.repeater('code in documentFormCtrl.all.bookingCodes'));
+  // Logo form
+  this.logoSearchbar = element(by.model('logoFormCtrl.selectedObject'));
+  this.logoSearchbarInput = this.logoSearchbar.element(by.model('$select.search'));
+  this.logoSearchbarDropdown = this.logoSearchbar.element(by.repeater('object in $select.items'));
+  this.logoNameInput = element(by.model('logoFormCtrl.newObject.name'));
+  this.logoUploadButton = element(by.id('logoUploader'));
+  // Penalty form
+  this.penaltySearchbar = element(by.model('penaltyFormCtrl.selectedObject'));
+  this.penaltySearchbarInput = this.penaltySearchbar.element(by.model('$select.search'));
+  this.penaltySearchbarDropdown = this.penaltySearchbar.element(by.repeater('object in $select.items'));
+  this.penaltyNameInput = element(by.model('penaltyFormCtrl.newObject.name'));
+  this.penaltyPriceFactorCheckbox = element(by.model('penaltyFormCtrl.newObject.totalMissionPrice'));
+  this.penaltyPriceFactorInput = element(by.model('penaltyFormCtrl.newObject.factor'));
+  this.penaltyPriceInput = element(by.model('penaltyFormCtrl.newObject.cost'));
+  this.penaltyDelayInput = element(by.model('penaltyFormCtrl.newObject.delay'));
+  this.penaltyType = element(by.model('penaltyFormCtrl.newObject.penaltyTypeEnum'));
+  this.penaltyTypeDropdown = element(by.repeater('type in penaltyFormCtrl.all.penaltyTypes'));
+  this.penaltyTypeDropdownAll = element.all(by.repeater('type in penaltyFormCtrl.all.penaltyTypes'));
 
   this.get = function() {
     browser.get(this.url);
