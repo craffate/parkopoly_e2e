@@ -1,8 +1,6 @@
 var DashboardIngredients = function() {
-  this.model;
-  this.mission;
-  this.option;
-  this.bookingcode;
+  this.badgeValues = {name: null, model: null, mission: null, option: null, bc: null};
+  this.bcValues = {name: null, expiry: null, salary: null, salaryAdd: null};
 
   this.url = 'https://dashboard-dev.parkopoly.fr/#/ingredients';
   this.toast = $('md-toast');
@@ -10,7 +8,7 @@ var DashboardIngredients = function() {
   this.searchbarInput = this.searchbar.element(by.model('$select.search'));
   this.searchbarDropdown = element(by.repeater('object in $select.items'));
   this.searchbarDropdownBadge = element(by.repeater('object in $select.items').row(0));
-  this.searchbarDropdownBookingCode = element(by.repeater('object in $select.items').row(1));
+  this.searchbarDropdownBookingcode = element(by.repeater('object in $select.items').row(1));
   this.searchbarDropdownBrand = element(by.repeater('object in $select.items').row(2));
   this.searchbarDropdownCost = element(by.repeater('object in $select.items').row(3));
   this.searchbarDropdownDocument = element(by.repeater('object in $select.items').row(4));
@@ -46,6 +44,7 @@ var DashboardIngredients = function() {
   this.bcSearchbarDropdown = this.bcSearchbar.element(by.repeater('object in $select.items'));
   this.bcNameInput = element(by.model('bookingCodeFormCtrl.newObject.name'));
   this.bcExpirationDatepicker = element(by.model('bookingCodeFormCtrl.newObject.expirationDate'));
+  this.bcExpirationDatepickerInput = element(by.model('bookingCodeFormCtrl.newObject.expirationDate')).$('input');
   this.bcDriverSalaryFactorInput = element(by.model('bookingCodeFormCtrl.newObject.driverSalaryFactor'));
   this.bcDriverSalaryAddonInput = element(by.model('bookingCodeFormCtrl.newObject.driverSalaryAddOn'));
   // Brand form
