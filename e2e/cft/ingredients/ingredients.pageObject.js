@@ -1,6 +1,7 @@
 var DashboardIngredients = function() {
   this.badgeValues = {name: null, model: null, mission: null, option: null, bc: null};
   this.bcValues = {name: null, expiry: null, salary: null, salaryAdd: null};
+  this.penaltyValues = {name: null, factor: null, price: null, delay: null, type: null};
 
   this.url = 'https://dashboard-dev.parkopoly.fr/#/ingredients';
   this.toast = $('md-toast');
@@ -145,6 +146,7 @@ var DashboardIngredients = function() {
   this.penaltySearchbar = element(by.model('penaltyFormCtrl.selectedObject'));
   this.penaltySearchbarInput = this.penaltySearchbar.element(by.model('$select.search'));
   this.penaltySearchbarDropdown = this.penaltySearchbar.element(by.repeater('object in $select.items'));
+  this.penaltySearchbarDropdownAll = this.penaltySearchbar.element.all(by.repeater('object in $select.items'));
   this.penaltyNameInput = element(by.model('penaltyFormCtrl.newObject.name'));
   this.penaltyPriceFactorCheckbox = element(by.model('penaltyFormCtrl.newObject.totalMissionPrice'));
   this.penaltyPriceFactorInput = element(by.model('penaltyFormCtrl.newObject.factor'));
