@@ -1,5 +1,5 @@
-var helpers = require('../helpers');
-var DashboardIngredients = require('./ingredients.pageObject');
+const helpers = require('../helpers');
+const DashboardIngredients = require('./ingredients.pageObject');
 
 describe('Parkopoly dashboard ingredients page', function() {
   ts = Date.now();
@@ -201,12 +201,12 @@ describe('Parkopoly dashboard ingredients page', function() {
           });
 
           it('should fill the driver salary input', function() {
-            DashboardIngredients.bcValues.salary = helpers.getRandomInt(10);
+            DashboardIngredients.bcValues.salary = helpers.getRandomInt(10).toString();
             DashboardIngredients.bcDriverSalaryFactorInput.sendKeys(DashboardIngredients.bcValues.salary);
           });
 
           it('should fill the driver salary addon input', function() {
-            DashboardIngredients.bcValues.salaryAdd = helpers.getRandomInt(50);
+            DashboardIngredients.bcValues.salaryAdd = helpers.getRandomInt(50).toString();
             DashboardIngredients.bcDriverSalaryAddonInput.sendKeys(DashboardIngredients.bcValues.salaryAdd);
           });
         });

@@ -1,5 +1,5 @@
-var helpers = require('../helpers');
-var DashboardAccounts = require('./accounts.pageObject');
+const helpers = require('../helpers');
+const DashboardAccounts = require('./accounts.pageObject');
 
 describe('Parkopoly dashboard accounts page', function() {
   debugger;
