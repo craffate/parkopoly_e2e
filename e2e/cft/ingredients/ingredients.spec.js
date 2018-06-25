@@ -1,4 +1,4 @@
-const helpers = require('../helpers');
+const helpers = require('../../helpers');
 const DashboardIngredients = require('./ingredients.pageObject');
 
 describe('Parkopoly dashboard ingredients page', function() {
