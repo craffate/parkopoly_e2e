@@ -1,12 +1,6 @@
-var DashboardAccounts = function() {
-  this.name;
-  this.charge;
-  this.invoiceRadio;
-  this.subscriptionRadio;
-  this.contractNumber;
-  this.startDate;
-  this.endDate;
-  this.brands;
+const DashboardAccounts = function() {
+  this.values = {name: null, charge: null, invoiceRadio: null, subscriptionRadio: null,
+    contractNumber: null, startDate: null, endDate: null, brands: null};
 
   this.url = 'https://dashboard-dev.parkopoly.fr/#/accounts';
   this.searchBar = element(by.model('$select.search'));

@@ -1,9 +1,9 @@
 const helpers = require('../../helpers');
-const DashboardIngredients = require('./ingredients.pageObject');
+const DashboardIngredients = require('../../page_objects/ingredients.pageObject');
+const DashboardIngredientsBadge = require('../../page_objects/ingredients.badge.pageObject');
+const DashboardIngredientsBc = require('../../page_objects/ingredients.bc.pageObject');
 
 describe('Parkopoly dashboard ingredients page', function() {
-  ts = Date.now();
-
   beforeAll(function() {
     DashboardIngredients.get();
   });
@@ -25,27 +25,27 @@ describe('Parkopoly dashboard ingredients page', function() {
 
         describe('When the badge form is dislayed, it should check for required elements', function() {
           it('should have a searchbar', function() {
-            expect(DashboardIngredients.badgeSearchbar.isDisplayed()).toBe(true);
+            expect(DashboardIngredientsBadge.searchbar.isDisplayed()).toBe(true);
           });
 
           it('should have a name input', function() {
-            expect(DashboardIngredients.badgeNameInput.isDisplayed()).toBe(true);
+            expect(DashboardIngredientsBadge.nameInput.isDisplayed()).toBe(true);
           });
 
           it('should have a model menu', function() {
-            expect(DashboardIngredients.badgeModel.isDisplayed()).toBe(true);
+            expect(DashboardIngredientsBadge.model.isDisplayed()).toBe(true);
           });
 
           it('should have a missions menu', function() {
-            expect(DashboardIngredients.badgeMissions.isDisplayed()).toBe(true);
+            expect(DashboardIngredientsBadge.missions.isDisplayed()).toBe(true);
           });
 
           it('should have an options menu', function() {
-            expect(DashboardIngredients.badgeOptions.isDisplayed()).toBe(true);
+            expect(DashboardIngredientsBadge.options.isDisplayed()).toBe(true);
           });
 
           it('should have a booking code menu', function() {
-            expect(DashboardIngredients.badgeBookingcodes.isDisplayed()).toBe(true);
+            expect(DashboardIngredientsBadge.bookingcodes.isDisplayed()).toBe(true);
           });
 
           it('should have a submit button', function() {
@@ -55,65 +55,65 @@ describe('Parkopoly dashboard ingredients page', function() {
 
         describe('When every elements are found, it should fill the badge form', function() {
           it('should fill the name input', function() {
-            DashboardIngredients.badgeValues.name = ('Parkopoly_E2E_Badge ' + ts);
-            DashboardIngredients.badgeNameInput.sendKeys(DashboardIngredients.badgeValues.name);
+            DashboardIngredientsBadge.values.name = ('Parkopoly_E2E_Badge ' + browser.params.ts);
+            DashboardIngredientsBadge.nameInput.sendKeys(DashboardIngredientsBadge.values.name);
           });
 
           it('should select a model', function() {
-            DashboardIngredients.badgeModel.click();
-            DashboardIngredients.badgeModelDropdownAll.then(function(arr) {
-              DashboardIngredients.badgeValues.model = arr[helpers.getRandomInt(arr.length)];
-              DashboardIngredients.badgeValues.model.click();
+            DashboardIngredientsBadge.model.click();
+            DashboardIngredientsBadge.modelDropdownAll.then(function(arr) {
+              DashboardIngredientsBadge.values.model = arr[helpers.getRandomInt(arr.length)];
+              DashboardIngredientsBadge.values.model.click();
             });
           });
 
           it('should select a mission', function() {
-            DashboardIngredients.badgeMissions.click();
-            DashboardIngredients.badgeMissionsDropdownAll.then(function(arr) {
-              DashboardIngredients.badgeValues.mission = arr[helpers.getRandomInt(arr.length)];
-              DashboardIngredients.badgeValues.mission.click();
-              DashboardIngredients.badgeMissionsDropdown.sendKeys(protractor.Key.ESCAPE);
+            DashboardIngredientsBadge.missions.click();
+            DashboardIngredientsBadge.missionsDropdownAll.then(function(arr) {
+              DashboardIngredientsBadge.values.mission = arr[helpers.getRandomInt(arr.length)];
+              DashboardIngredientsBadge.values.mission.click();
+              DashboardIngredientsBadge.missionsDropdown.sendKeys(protractor.Key.ESCAPE);
             });
           });
 
           it('should select an option', function() {
-            DashboardIngredients.badgeOptions.click();
-            DashboardIngredients.badgeOptionsDropdownPickupAll.then(function(arr) {
-              DashboardIngredients.badgeValues.option = arr[helpers.getRandomInt(arr.length)];
-              DashboardIngredients.badgeValues.option.click();
-              DashboardIngredients.badgeOptionsDropdownPickup.sendKeys(protractor.Key.ESCAPE);
+            DashboardIngredientsBadge.options.click();
+            DashboardIngredientsBadge.optionsDropdownPickupAll.then(function(arr) {
+              DashboardIngredientsBadge.values.option = arr[helpers.getRandomInt(arr.length)];
+              DashboardIngredientsBadge.values.option.click();
+              DashboardIngredientsBadge.optionsDropdownPickup.sendKeys(protractor.Key.ESCAPE);
             });
           });
 
           it('should select a booking code', function() {
-            DashboardIngredients.badgeBookingcodes.click();
-            DashboardIngredients.badgeBookingcodesDropdownAll.then(function(arr) {
-              DashboardIngredients.badgeValues.bookingcode = arr[helpers.getRandomInt(5)];
-              DashboardIngredients.badgeValues.bookingcode.click();
-              DashboardIngredients.badgeBookingcodesDropdown.sendKeys(protractor.Key.ESCAPE);
+            DashboardIngredientsBadge.bookingcodes.click();
+            DashboardIngredientsBadge.bookingcodesDropdownAll.then(function(arr) {
+              DashboardIngredientsBadge.values.bookingcode = arr[helpers.getRandomInt(5)];
+              DashboardIngredientsBadge.values.bookingcode.click();
+              DashboardIngredientsBadge.bookingcodesDropdown.sendKeys(protractor.Key.ESCAPE);
             });
           });
         });
 
         describe('When the badge creation form is filled, check if elements are valid', function() {
           it('should have a valid name input', function() {
-            expect(DashboardIngredients.badgeNameInput.getAttribute('aria-invalid')).toBe('false');
+            expect(DashboardIngredientsBadge.nameInput.getAttribute('aria-invalid')).toBe('false');
           });
 
           it('should have a valid model menu', function() {
-            expect(DashboardIngredients.badgeModel.getAttribute('aria-invalid')).toBe('false');
+            expect(DashboardIngredientsBadge.model.getAttribute('aria-invalid')).toBe('false');
           });
 
           it('should have a valid missions menu', function() {
-            expect(DashboardIngredients.badgeMissions.getAttribute('aria-invalid')).toBe('false');
+            expect(DashboardIngredientsBadge.missions.getAttribute('aria-invalid')).toBe('false');
           });
 
           it('should have a valid options menu', function() {
-            expect(DashboardIngredients.badgeOptions.getAttribute('aria-invalid')).toBe('false');
+            expect(DashboardIngredientsBadge.options.getAttribute('aria-invalid')).toBe('false');
           });
 
           it('should have a valid booking codes menu', function() {
-            expect(DashboardIngredients.badgeOptions.getAttribute('aria-invalid')).toBe('false');
+            expect(DashboardIngredientsBadge.options.getAttribute('aria-invalid')).toBe('false');
           });
         });
 
@@ -139,17 +139,17 @@ describe('Parkopoly dashboard ingredients page', function() {
           });
 
           it('should fill the searchbar', function() {
-            DashboardIngredients.badgeSearchbarInput.sendKeys(DashboardIngredients.badgeValues.name);
+            DashboardIngredientsBadge.searchbarInput.sendKeys(DashboardIngredientsBadge.values.name);
           });
 
           it('should click the first option', function() {
-            DashboardIngredients.badgeSearchbarDropdown.click();
+            DashboardIngredientsBadge.searchbarDropdown.click();
           });
         });
 
         describe('When the badge has been found, check values', function() {
           it('should check the name input', function() {
-            expect(DashboardIngredients.badgeNameInput.getAttribute('value')).toBe(DashboardIngredients.badgeValues.name);
+            expect(DashboardIngredientsBadge.nameInput.getAttribute('value')).toBe(DashboardIngredientsBadge.values.name);
           });
         });
       });
@@ -165,23 +165,23 @@ describe('Parkopoly dashboard ingredients page', function() {
 
         describe('When the badge form is dislayed, it should check for required elements', function() {
           it('should have a searchbar', function() {
-            expect(DashboardIngredients.bcSearchbar.isDisplayed()).toBe(true);
+            expect(DashboardIngredientsBc.searchbar.isDisplayed()).toBe(true);
           });
 
           it('should have a name input', function() {
-            expect(DashboardIngredients.bcNameInput.isDisplayed()).toBe(true);
+            expect(DashboardIngredientsBc.nameInput.isDisplayed()).toBe(true);
           });
 
           it('should have an expiration date datepicker', function() {
-            expect(DashboardIngredients.bcExpirationDatepicker.isDisplayed()).toBe(true);
+            expect(DashboardIngredientsBc.expirationDatepicker.isDisplayed()).toBe(true);
           });
 
           it('should have a driver salary input', function() {
-            expect(DashboardIngredients.bcDriverSalaryFactorInput.isDisplayed()).toBe(true);
+            expect(DashboardIngredientsBc.driverSalaryFactorInput.isDisplayed()).toBe(true);
           });
 
           it('should have a driver salary addon input', function() {
-            expect(DashboardIngredients.bcDriverSalaryAddonInput.isDisplayed()).toBe(true);
+            expect(DashboardIngredientsBc.driverSalaryAddonInput.isDisplayed()).toBe(true);
           });
 
           it('should have a submit button', function() {
@@ -191,41 +191,41 @@ describe('Parkopoly dashboard ingredients page', function() {
 
         describe('When every elements are found, it should fill the booking code form', function() {
           it('should fill the name input', function() {
-            DashboardIngredients.bcValues.name = ('Parkopoly_E2E_BookingCode ' + ts);
-            DashboardIngredients.bcNameInput.sendKeys(DashboardIngredients.bcValues.name);
+            DashboardIngredientsBc.values.name = ('Parkopoly_E2E_BookingCode ' + browser.params.ts);
+            DashboardIngredientsBc.nameInput.sendKeys(DashboardIngredientsBc.values.name);
           });
 
           it('should fill the expiration date input', function() {
-            DashboardIngredients.bcValues.expiry = '01/01/2020';
-            DashboardIngredients.bcExpirationDatepickerInput.sendKeys(DashboardIngredients.bcValues.expiry);
+            DashboardIngredientsBc.values.expiry = '01/01/2020';
+            DashboardIngredientsBc.expirationDatepickerInput.sendKeys(DashboardIngredientsBc.values.expiry);
           });
 
           it('should fill the driver salary input', function() {
-            DashboardIngredients.bcValues.salary = helpers.getRandomInt(10).toString();
-            DashboardIngredients.bcDriverSalaryFactorInput.sendKeys(DashboardIngredients.bcValues.salary);
+            DashboardIngredientsBc.values.salary = helpers.getRandomInt(10).toString();
+            DashboardIngredientsBc.driverSalaryFactorInput.sendKeys(DashboardIngredientsBc.values.salary);
           });
 
           it('should fill the driver salary addon input', function() {
-            DashboardIngredients.bcValues.salaryAdd = helpers.getRandomInt(50).toString();
-            DashboardIngredients.bcDriverSalaryAddonInput.sendKeys(DashboardIngredients.bcValues.salaryAdd);
+            DashboardIngredientsBc.values.salaryAdd = helpers.getRandomInt(50).toString();
+            DashboardIngredientsBc.driverSalaryAddonInput.sendKeys(DashboardIngredientsBc.values.salaryAdd);
           });
         });
 
         describe('When the booking code creation form is filled, check if elements are valid', function() {
           it('should have a valid name input', function() {
-            expect(DashboardIngredients.bcNameInput.getAttribute('aria-invalid')).toBe('false');
+            expect(DashboardIngredientsBc.nameInput.getAttribute('aria-invalid')).toBe('false');
           });
 
           it('should have a valid expiration datepicker', function() {
-            expect(DashboardIngredients.bcExpirationDatepicker.getAttribute('aria-invalid')).toBe('false');
+            expect(DashboardIngredientsBc.expirationDatepicker.getAttribute('aria-invalid')).toBe('false');
           });
 
           it('should have a valid driver salary input', function() {
-            expect(DashboardIngredients.bcDriverSalaryFactorInput.getAttribute('aria-invalid')).toBe('false');
+            expect(DashboardIngredientsBc.driverSalaryFactorInput.getAttribute('aria-invalid')).toBe('false');
           });
 
           it('should have a valid driver salary addon input', function() {
-            expect(DashboardIngredients.bcDriverSalaryAddonInput.getAttribute('aria-invalid')).toBe('false');
+            expect(DashboardIngredientsBc.driverSalaryAddonInput.getAttribute('aria-invalid')).toBe('false');
           });
         });
 
@@ -251,29 +251,29 @@ describe('Parkopoly dashboard ingredients page', function() {
           });
 
           it('should fill the searchbar', function() {
-            DashboardIngredients.bcSearchbarInput.sendKeys(DashboardIngredients.bcValues.name);
+            DashboardIngredientsBc.searchbarInput.sendKeys(DashboardIngredientsBc.values.name);
           });
 
           it('should click the first option', function() {
-            DashboardIngredients.bcSearchbarDropdown.click();
+            DashboardIngredientsBc.searchbarDropdown.click();
           });
         });
 
         describe('When the booking code has been found, check values', function() {
           it('should check the name input', function() {
-            expect(DashboardIngredients.bcNameInput.getAttribute('value')).toBe(DashboardIngredients.bcValues.name);
+            expect(DashboardIngredientsBc.nameInput.getAttribute('value')).toBe(DashboardIngredientsBc.values.name);
           });
 
           it('should check the expiry date input', function() {
-            expect(DashboardIngredients.bcExpirationDatepickerInput.getAttribute('value')).toBe(DashboardIngredients.bcValues.expiry);
+            expect(DashboardIngredientsBc.expirationDatepickerInput.getAttribute('value')).toBe(DashboardIngredientsBc.values.expiry);
           });
 
           it('should check the driver salary input', function() {
-            expect(DashboardIngredients.bcDriverSalaryFactorInput.getAttribute('value')).toBe(DashboardIngredients.bcValues.salary);
+            expect(DashboardIngredientsBc.driverSalaryFactorInput.getAttribute('value')).toBe(DashboardIngredientsBc.values.salary);
           });
 
           it('should check the driver salary addon input', function() {
-            expect(DashboardIngredients.bcDriverSalaryAddonInput.getAttribute('value')).toBe(DashboardIngredients.bcValues.salaryAdd);
+            expect(DashboardIngredientsBc.driverSalaryAddonInput.getAttribute('value')).toBe(DashboardIngredientsBc.values.salaryAdd);
           });
         });
       });
