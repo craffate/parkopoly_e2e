@@ -1,4 +1,4 @@
-const DashboardIngredientsBrand = function() {
+module.exports = function() {
   this.searchbar = element(by.model('brandFormCtrl.selectedObject'));
   this.searchbarInput = this.searchbar.element(by.model('$select.search'));
   this.searchbarDropdown = this.searchbar.element(by.repeater('object in $select.items'));
@@ -25,5 +25,3 @@ const DashboardIngredientsBrand = function() {
   this.mailReminderCheckbox = element(by.model('brandFormCtrl.newObject.notificationOptionDto.sendEmailReminder'));
   this.smsReminderCheckbox = element(by.model('brandFormCtrl.newObject.notificationOptionDto.sendSmsReminder'));
 };
-
-module.exports = new DashboardIngredientsBrand();

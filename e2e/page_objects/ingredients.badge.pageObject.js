@@ -1,4 +1,4 @@
-const DashboardIngredientsBadge = function() {
+module.exports = function() {
   this.values = {name: null, model: null, mission: null, option: null, bc: null};
 
   this.searchbar = element(by.model('badgeFormCtrl.selectedObject'));
@@ -24,5 +24,3 @@ const DashboardIngredientsBadge = function() {
   this.bookingcodesDropdown = element(by.repeater('code in badgeFormCtrl.all.bookingCodes'));
   this.bookingcodesDropdownAll = element.all(by.repeater('code in badgeFormCtrl.all.bookingCodes'));
 };
-
-module.exports = new DashboardIngredientsBadge();

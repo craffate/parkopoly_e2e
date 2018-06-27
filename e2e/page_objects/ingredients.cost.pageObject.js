@@ -1,4 +1,4 @@
-const DashboardIngredientsCost = function() {
+module.exports = function() {
   this.searchbar = element(by.model('costFormCtrl.selectedObject'));
   this.searchbarInput = this.searchbar.element(by.model('$select.search'));
   this.searchbarDropdown = this.searchbar.element(by.repeater('object in $select.items'));
@@ -34,5 +34,3 @@ const DashboardIngredientsCost = function() {
   this.zoneClientMeMInput = element(by.model('costType.costTypeDtoSet[1].carExplanation'));
   this.zoneClientPUDInput = element(by.model('costType.costTypeDtoSet[1].pickupAndDelivery'));
 };
-
-module.exports = new DashboardIngredientsCost();

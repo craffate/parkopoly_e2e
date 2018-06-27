@@ -1,4 +1,4 @@
-const DashboardIngredientsDocument = function() {
+module.exports = function() {
   this.searchbar = element(by.model('documentFormCtrl.selectedObject'));
   this.searchbarInput = this.searchbar.element(by.model('$select.search'));
   this.searchbarDropdown = this.searchbar.element(by.repeater('object in $select.items'));
@@ -25,5 +25,3 @@ const DashboardIngredientsDocument = function() {
   this.bookincodesDropdown = element(by.repeater('code in documentFormCtrl.all.bookingCodes'));
   this.bookincodesDropdownAll = element.all(by.repeater('code in documentFormCtrl.all.bookingCodes'));
 };
-
-module.exports = new DashboardIngredientsDocument();

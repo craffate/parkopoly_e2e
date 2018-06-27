@@ -1,4 +1,4 @@
-const DashboardIngredients = function() {
+module.exports = function() {
   this.url = 'https://dashboard-dev.parkopoly.fr/#/ingredients';
   this.toast = $('md-toast');
   this.searchbar = element(by.model('ingredCtrl.selected'));
@@ -18,5 +18,3 @@ const DashboardIngredients = function() {
     browser.get(this.url);
   };
 };
-
-module.exports = new DashboardIngredients();

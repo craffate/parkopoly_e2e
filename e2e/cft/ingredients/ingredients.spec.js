@@ -1,9 +1,12 @@
 const helpers = require('../../helpers');
-const DashboardIngredients = require('../../page_objects/ingredients.pageObject');
-const DashboardIngredientsBadge = require('../../page_objects/ingredients.badge.pageObject');
-const DashboardIngredientsBc = require('../../page_objects/ingredients.bc.pageObject');
+const IngredientsPageObject = require('../../page_objects/ingredients.pageObject');
+const BadgePageObject= require('../../page_objects/ingredients.badge.pageObject');
+const BcPageObject = require('../../page_objects/ingredients.bc.pageObject');
 
 describe('Parkopoly dashboard ingredients page', function() {
+  DashboardIngredients = new IngredientsPageObject();
+  DashboardIngredientsBadge = new BadgePageObject();
+  DashboardIngredientsBc = new BcPageObject();
   beforeAll(function() {
     DashboardIngredients.get();
   });

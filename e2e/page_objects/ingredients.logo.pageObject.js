@@ -1,4 +1,4 @@
-const DashboardIngredientsLogo = function() {
+module.exports = function() {
   this.values = {name: null};
 
   this.searchbar = element(by.model('logoFormCtrl.selectedObject'));
@@ -7,5 +7,3 @@ const DashboardIngredientsLogo = function() {
   this.nameInput = element(by.model('logoFormCtrl.newObject.name'));
   this.uploadButton = element(by.id('logoUploader'));
 };
-
-module.exports = new DashboardIngredientsLogo();

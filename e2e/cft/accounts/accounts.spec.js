@@ -1,9 +1,8 @@
 const helpers = require('../../helpers');
-const DashboardAccounts = require('../../page_objects/accounts.pageObject');
+const AccountsPageObject = require('../../page_objects/accounts.pageObject');
 
 describe('Parkopoly dashboard accounts page', function() {
-  debugger;
-  ts = Date.now();
+  DashboardAccounts = new AccountsPageObject();
 
   beforeAll(function() {
     DashboardAccounts.get();

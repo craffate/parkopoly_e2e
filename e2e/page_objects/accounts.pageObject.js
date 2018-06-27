@@ -1,4 +1,4 @@
-const DashboardAccounts = function() {
+module.exports = function() {
   this.values = {name: null, charge: null, invoiceRadio: null, subscriptionRadio: null,
     contractNumber: null, startDate: null, endDate: null, brands: null};
 
@@ -27,5 +27,3 @@ const DashboardAccounts = function() {
     browser.get(this.url);
   };
 };
-
-module.exports = new DashboardAccounts();

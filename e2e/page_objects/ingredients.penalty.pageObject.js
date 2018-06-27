@@ -1,4 +1,4 @@
-const DashboardIngredientsPenalty = function() {
+module.exports = function() {
   this.values = {name: null, factor: null, price: null, delay: null, type: null};
 
   this.searchbar = element(by.model('penaltyFormCtrl.selectedObject'));
@@ -14,5 +14,3 @@ const DashboardIngredientsPenalty = function() {
   this.typeDropdown = element(by.repeater('type in penaltyFormCtrl.all.penaltyTypes'));
   this.typeDropdownAll = element.all(by.repeater('type in penaltyFormCtrl.all.penaltyTypes'));
 };
-
-module.exports = new DashboardIngredientsPenalty();

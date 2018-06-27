@@ -1,4 +1,4 @@
-const DashboardIngredientsBc = function() {
+module.exports = function() {
   this.values = {name: null, expiry: null, salary: null, salaryAdd: null};
 
   this.searchbar = element(by.model('bookingCodeFormCtrl.selectedObject'));
@@ -10,5 +10,3 @@ const DashboardIngredientsBc = function() {
   this.driverSalaryFactorInput = element(by.model('bookingCodeFormCtrl.newObject.driverSalaryFactor'));
   this.driverSalaryAddonInput = element(by.model('bookingCodeFormCtrl.newObject.driverSalaryAddOn'));
 };
-
-module.exports = new DashboardIngredientsBc();

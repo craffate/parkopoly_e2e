@@ -1,4 +1,4 @@
-var DashboardLogin = function() {
+module.exports = function() {
   this.url = 'https://dashboard-dev.parkopoly.fr/#/login';
   this.userForm = element(by.name('userForm'));
   this.username = this.userForm.element(by.model('loginCtrl.credentials.username'));
@@ -13,5 +13,3 @@ var DashboardLogin = function() {
     this.password.sendKeys(pwd);
   };
 };
-
-module.exports = new DashboardLogin();
