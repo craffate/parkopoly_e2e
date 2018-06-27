@@ -76,7 +76,7 @@ describe('Parkopoly dashboard accounts page', function() {
 
     describe('When the account creation dialog is displayed, fill the form', function() {
       it('should fill the name input', function() {
-        DashboardAccounts.name = 'Parkopoly_E2E ' + ts;
+        DashboardAccounts.name = 'Parkopoly_E2E ' + browser.params.ts;
         DashboardAccounts.createAccountDialogNameInput.sendKeys(DashboardAccounts.name);
       });
 
