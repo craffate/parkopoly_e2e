@@ -5,6 +5,7 @@ const PenaltyPageObject = require('../page_objects/ingredients.penalty.pageObjec
 
 describe('Penalties', function() {
   DashboardIngredients = new IngredientsPageObject();
+
   cancel48hMissionPrice = new PenaltyPageObject();
   cancel48hMissionPrice.values.name = 'cancel48hMissionPrice ' + browser.params.ts;
   cancel48hMissionPrice.values.factor = '1';
@@ -45,7 +46,7 @@ describe('Penalties', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(protractor.ExpectedConditions.presenceOf($('md-toast'), 5000));
+      await browser.wait(EC.presenceOf($('md-toast'), 5000));
     });
   });
 
@@ -74,7 +75,7 @@ describe('Penalties', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(protractor.ExpectedConditions.presenceOf($('md-toast'), 5000));
+      await browser.wait(EC.presenceOf($('md-toast'), 5000));
     });
   });
 
@@ -103,7 +104,7 @@ describe('Penalties', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(protractor.ExpectedConditions.presenceOf($('md-toast'), 5000));
+      await browser.wait(EC.presenceOf($('md-toast'), 5000));
     });
   });
 });

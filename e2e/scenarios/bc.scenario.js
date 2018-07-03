@@ -1,4 +1,3 @@
-const helpers = require('../helpers');
 const EC = protractor.ExpectedConditions;
 const IngredientsPageObject = require('../page_objects/ingredients.pageObject');
 const BcPageObject = require('../page_objects/ingredients.bc.pageObject');
@@ -49,7 +48,7 @@ describe('Booking codes', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(protractor.ExpectedConditions.presenceOf($('md-toast'), 5000));
+      await browser.wait(EC.presenceOf($('md-toast'), 5000));
     });
   });
 
@@ -72,7 +71,7 @@ describe('Booking codes', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(protractor.ExpectedConditions.presenceOf($('md-toast'), 5000));
+      await browser.wait(EC.presenceOf($('md-toast'), 5000));
     });
   });
 
@@ -95,7 +94,7 @@ describe('Booking codes', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(protractor.ExpectedConditions.presenceOf($('md-toast'), 5000));
+      await browser.wait(EC.presenceOf($('md-toast'), 5000));
     });
   });
 
@@ -118,7 +117,7 @@ describe('Booking codes', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(protractor.ExpectedConditions.presenceOf($('md-toast'), 5000));
+      await browser.wait(EC.presenceOf($('md-toast'), 5000));
     });
   });
 })
