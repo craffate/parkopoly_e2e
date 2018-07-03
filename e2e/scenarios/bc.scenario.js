@@ -26,7 +26,7 @@ describe('Booking codes', function() {
 
   obsolete = new BcPageObject();
   obsolete.values.name = 'obsolete ' + browser.params.ts;
-  obsolete.values.expiry = '01/01/2020';
+  obsolete.values.expiry = '01/01/2017';
   obsolete.values.salary = '0';
   obsolete.values.salaryAdd = '1000';
 
