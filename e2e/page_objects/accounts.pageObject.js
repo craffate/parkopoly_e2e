@@ -23,7 +23,7 @@ module.exports = function() {
   this.createAccountDialogBrandsInput = this.createAccountDialogBrands.element(by.model('$select.search'));
   this.createAccountDialogSubmitButton = this.createAccountDialog.$('[type="submit"]');
 
-  this.get = function() {
-    browser.get(this.url);
+  this.get = async function() {
+    await browser.get(this.url);
   };
 };

@@ -14,7 +14,7 @@ module.exports = function() {
   this.searchbarDropdownPenalty = element(by.repeater('object in $select.items').row(6));
   this.submitButton = $('[type="submit"]');
 
-  this.get = function() {
-    browser.get(this.url);
+  this.get = async function() {
+    await browser.get(this.url);
   };
 };
