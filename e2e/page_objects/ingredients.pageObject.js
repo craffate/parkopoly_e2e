@@ -13,6 +13,7 @@ module.exports = function() {
   this.searchbarDropdownLogo = element(by.repeater('object in $select.items').row(5));
   this.searchbarDropdownPenalty = element(by.repeater('object in $select.items').row(6));
   this.submitButton = $('[type="submit"]');
+  this.editButton = $('#editButton');
 
   this.get = async function() {
     await browser.get(this.url);
