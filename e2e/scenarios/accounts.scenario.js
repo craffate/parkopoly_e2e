@@ -1,5 +1,4 @@
 const helpers = require('../helpers');
-const EC = protractor.ExpectedConditions;
 const AccountsPageObject = require('../page_objects/accounts.pageObject');
 
 describe('Accounts', function() {
