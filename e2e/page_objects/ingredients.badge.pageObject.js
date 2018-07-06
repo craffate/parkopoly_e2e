@@ -1,13 +1,15 @@
 module.exports = function() {
-  this.values = {name: null, model: null, mission: null, option: null, bc: null};
+  this.values = {name: null, model_filter: null, mission_filter: null, option: null, bc: null};
 
   this.searchbar = element(by.model('badgeFormCtrl.selectedObject'));
   this.searchbarInput = this.searchbar.element(by.model('$select.search'));
   this.searchbarDropdown = element(by.repeater('object in $select.items'));
   this.nameInput = element(by.model('badgeFormCtrl.newObject.name'));
   this.model = element(by.model('sm.model'));
+  this.modelInput = this.model.element(by.model('$select.search'));
   this.modelDropdown = element(by.repeater('item in $select.items'));
   this.modelDropdownAll = element.all(by.repeater('item in $select.items'));
+  this.modelSelectAllButton = $('[ng-click="sm.selectAll()"]');
   this.missions = element(by.model('badgeFormCtrl.newObject.missionFilter.missionTypeEnumSet'));
   this.missionsDropdown = element(by.repeater('type in badgeFormCtrl.all.types'));
   this.missionsDropdownAll = element.all(by.repeater('type in badgeFormCtrl.all.types'));
