@@ -1,5 +1,5 @@
 module.exports = function() {
-  this.url = 'https://dashboard-dev.parkopoly.fr/#/login';
+  this.url = 'https://dashboard-test.parkopoly.fr/#/login';
   this.userForm = element(by.name('userForm'));
   this.username = this.userForm.element(by.model('loginCtrl.credentials.username'));
   this.password = this.userForm.element(by.model('loginCtrl.credentials.password'));
