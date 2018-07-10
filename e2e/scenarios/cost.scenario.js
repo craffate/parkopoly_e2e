@@ -34,10 +34,11 @@ describe('Costs', function() {
   cost_paris_customerPays.makeCostZone('IdF ' + browser.params.ts, dict)
     .then(function(arr) {cost_paris_customerPays.values.costZones['IdF'] = arr;});
 
+  beforeAll(async function() {
+    await DashboardIngredients.get();
+  });
+
   describe('Create cost_paris_customerFree cost', function() {
-    it('should get to the ingredients page', async function() {
-      await DashboardIngredients.get();
-    });
 
     it('should select the booking codes option from the searchbar', async function() {
       await DashboardIngredients.searchbar.click();

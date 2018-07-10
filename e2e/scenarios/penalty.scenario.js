@@ -21,11 +21,10 @@ describe('Penalties', function() {
   waiting20m5e.values.price = '5';
   waiting20m5e.values.delay = '0.33';
 
+  beforeAll(async function() {
+    await DashboardIngredients.get();
+  });
   describe('Create cancel48hMissionPrice penalty', function() {
-    it('should get to the ingredients page', async function() {
-      await DashboardIngredients.get();
-    });
-
     it('should select the penalty option from the searchbar', async function() {
       await DashboardIngredients.searchbar.click();
       await DashboardIngredients.searchbarDropdownPenalty.click();
@@ -51,10 +50,6 @@ describe('Penalties', function() {
   });
 
   describe('Create cancel1hMissionPrice penalty', function() {
-    it('should get to the account page', async function() {
-      await DashboardIngredients.get();
-    });
-
     it('should select the penalty option from the searchbar', async function() {
       await DashboardIngredients.searchbar.click();
       await DashboardIngredients.searchbarDropdownPenalty.click();
@@ -80,10 +75,6 @@ describe('Penalties', function() {
   });
 
   describe('Create waiting20m5e penalty', function() {
-    it('should get to the account page', async function() {
-      await DashboardIngredients.get();
-    });
-
     it('should select the penalty option from the searchbar', async function() {
       await DashboardIngredients.searchbar.click();
       await DashboardIngredients.searchbarDropdownPenalty.click();

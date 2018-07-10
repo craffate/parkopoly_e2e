@@ -29,11 +29,11 @@ describe('Booking codes', function() {
   obsolete.values.salary = '0';
   obsolete.values.salaryAdd = '1000';
 
-  describe('Create dfl booking code', function() {
-    it('should get to the ingredients page', async function() {
-      await DashboardIngredients.get();
-    });
+  beforeAll(async function() {
+    await DashboardIngredients.get();
+  });
 
+  describe('Create dfl booking code', function() {
     it('should select the booking codes option from the searchbar', async function() {
       await DashboardIngredients.searchbar.click();
       await DashboardIngredients.searchbarDropdownBookingcode.click();
@@ -53,10 +53,6 @@ describe('Booking codes', function() {
   });
 
   describe('Create f100 booking code', function() {
-    it('should get to the ingredients page', async function() {
-      await DashboardIngredients.get();
-    });
-
     it('should select the booking codes option from the searchbar', async function() {
       await DashboardIngredients.searchbar.click();
       await DashboardIngredients.searchbarDropdownBookingcode.click();
@@ -76,10 +72,6 @@ describe('Booking codes', function() {
   });
 
   describe('Create equal1000 booking code', function() {
-    it('should get to the ingredients page', async function() {
-      await DashboardIngredients.get();
-    });
-
     it('should select the booking codes option from the searchbar', async function() {
       await DashboardIngredients.searchbar.click();
       await DashboardIngredients.searchbarDropdownBookingcode.click();
@@ -99,10 +91,6 @@ describe('Booking codes', function() {
   });
 
   describe('Create obsolete booking code', function() {
-    it('should get to the ingredients page', async function() {
-      await DashboardIngredients.get();
-    });
-
     it('should select the booking codes option from the searchbar', async function() {
       await DashboardIngredients.searchbar.click();
       await DashboardIngredients.searchbarDropdownBookingcode.click();

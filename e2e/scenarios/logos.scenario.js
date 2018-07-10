@@ -14,11 +14,10 @@ describe('Logos', function() {
   ds.values.name = 'DS ' + browser.params.ts;
   ds.values.path = path.resolve(__dirname, '../../assets/ds.png');
 
+  beforeAll(async function() {
+    await DashboardIngredients.get();
+  });
   describe('Create Renault logo', function() {
-    it('should get to the ingredients page', async function() {
-      await DashboardIngredients.get();
-    });
-
     it('should select the logo option from the searchbar', async function() {
       await DashboardIngredients.searchbar.click();
       await DashboardIngredients.searchbarDropdownLogo.click();
@@ -39,10 +38,6 @@ describe('Logos', function() {
   });
 
   describe('Create DS logo', function() {
-    it('should get to the ingredients page', async function() {
-      await DashboardIngredients.get();
-    });
-
     it('should select the logo option from the searchbar', async function() {
       await DashboardIngredients.searchbar.click();
       await DashboardIngredients.searchbarDropdownLogo.click();
