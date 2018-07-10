@@ -18,11 +18,11 @@ describe('Badge', function() {
   ds.values.name = 'DS ' + browser.params.ts;
   ds.values.model_filter = 'DS';
 
-  describe('Create Paris badge', function() {
-    it('should get to the ingredients page', async function() {
+  beforeAll(async function() {
       await DashboardIngredients.get();
-    });
+  });
 
+  describe('Create Paris badge', function() {
     it('should select the badge option from the searchbar', async function() {
       await DashboardIngredients.searchbar.click();
       await DashboardIngredients.searchbarDropdownBadge.click();
@@ -42,10 +42,6 @@ describe('Badge', function() {
   });
 
   describe('Create Renault badge', function() {
-    it('should get to the ingredients page', async function() {
-      await DashboardIngredients.get();
-    });
-
     it('should select the badge option from the searchbar', async function() {
       await DashboardIngredients.searchbar.click();
       await DashboardIngredients.searchbarDropdownBadge.click();
@@ -65,10 +61,6 @@ describe('Badge', function() {
   });
 
   describe('Create DS badge', function() {
-    it('should get to the ingredients page', async function() {
-      await DashboardIngredients.get();
-    });
-
     it('should select the badge option from the searchbar', async function() {
       await DashboardIngredients.searchbar.click();
       await DashboardIngredients.searchbarDropdownBadge.click();
