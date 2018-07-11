@@ -1,5 +1,5 @@
 module.exports = function() {
-  this.url = 'https://dashboard-test.parkopoly.fr/#/ingredients';
+  this.url = 'https://dashboard-' + browser.params.env + '.parkopoly.fr/#/ingredients';
   this.toast = $('md-toast');
   this.searchbar = element(by.model('ingredCtrl.selected'));
   this.searchbarInput = this.searchbar.element(by.model('$select.search'));

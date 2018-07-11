@@ -1,5 +1,5 @@
 module.exports = function() {
-  this.values = {};
+  this.values = {name: null, color: null, min: null, logo: null, alias: null};
 
   this.searchbar = element(by.model('brandFormCtrl.selectedObject'));
   this.searchbarInput = this.searchbar.element(by.model('$select.search'));
