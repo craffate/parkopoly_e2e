@@ -10,7 +10,7 @@ module.exports = function() {
   this.anticipationInput = element(by.model('brandFormCtrl.newObject.miniAnticipation'));
   this.logoSearchbar = element(by.model('brandFormCtrl.newObject.brandLogoDto'));
   this.logoSearchbarInput = this.logoSearchbar.element(by.model('$select.search'));
-  this.logoSearchbarDropdown = this.searchbar.element(by.repeater('object in $select.items'));
+  this.logoSearchbarDropdown = this.logoSearchbar.element(by.repeater('object in $select.items'));
   this.missiontypeDropdown = element(by.model('brandFormCtrl.newObject.missionTypeEnumSet'));
   this.missiontypeDropdownTypes = element(by.repeater('type in brandFormCtrl.all.types'));
   this.missiontypeDropdownTypesAll = element.all(by.repeater('type in brandFormCtrl.all.types'));
@@ -26,4 +26,5 @@ module.exports = function() {
   this.mailOnBookingCheckbox = element(by.model('brandFormCtrl.newObject.notificationOptionDto.sendEmailAtCommand'));
   this.mailReminderCheckbox = element(by.model('brandFormCtrl.newObject.notificationOptionDto.sendEmailReminder'));
   this.smsReminderCheckbox = element(by.model('brandFormCtrl.newObject.notificationOptionDto.sendSmsReminder'));
+  this.smsRatingCheckbox = element(by.model('brandFormCtrl.newObject.ratingSMS'));
 };
