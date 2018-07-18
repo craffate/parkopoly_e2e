@@ -28,8 +28,8 @@ This package contains a bunch of different tests for [Parkopoly](http://www.park
 	```
 
 4. Set the required environment variables `$USR_E2E` and `$PWD_E2E` with the username and password you want to use respectively.
-	If you have no idea of how to do it, you can fall this [quick tutorial](https://gist.github.com/craffate/04838770a7fc3a271d3a355524e1315d).
-	If your don't know what shell you're currently using, you're probably using Bash.
+	If you have no idea of how to do it, you can follow this [quick tutorial](https://gist.github.com/craffate/04838770a7fc3a271d3a355524e1315d).
+	If you don't know what shell you're currently using, you're probably using Bash.
 
 ### Installing
 
