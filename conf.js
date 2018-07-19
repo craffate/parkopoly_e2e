@@ -45,13 +45,14 @@ exports.config = {
       takeScreenshots: true,
       consolidateAll: false
     }));
+    await browser.driver.manage().window().maximize();
     await browser.get('https://dashboard-' + browser.params.env + '.parkopoly.fr');
     await browser.driver.findElement(by.css('[type="email"]')).sendKeys(browser.params.login.usr);
     await browser.driver.findElement(by.css('[type="password"]')).sendKeys(browser.params.login.pwd);
     await browser.driver.findElement(by.css('[type="submit"]')).click();
     return await browser.driver.wait(function() {
       return browser.driver.getCurrentUrl().then(function(url) {
-        return /calendar_bo/.test(url);
+        return (/calendar_bo/).test(url);
       });
     }, 10000);
   }
