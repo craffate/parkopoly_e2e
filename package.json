@@ -4,6 +4,8 @@
   "description": "Parkopoly's test suites",
   "main": "conf.js",
   "scripts": {
+    "wd_start": "webdriver-manager start",
+    "wd_update": "webdriver-manager update",
     "pt_cft": "protractor conf.js --suite cft --params.login.usr=$USR_E2E, --params.login.pwd=$PWD_E2E",
     "pt_scenarios": "protractor conf.js --suite scenarios --params.login.usr=$USR_E2E --params.login.pwd=$PWD_E2E"
   },
