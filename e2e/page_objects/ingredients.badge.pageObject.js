@@ -1,5 +1,5 @@
 module.exports = function() {
-  this.values = {name: null, model_filter: null, mission_filter: null, option: null, bc: null};
+  this.values = {name: null, modelFilter: null, missionFilter: null, option: null, bc: null};
 
   this.searchbar = element(by.model('badgeFormCtrl.selectedObject'));
   this.searchbarInput = this.searchbar.element(by.model('$select.search'));
