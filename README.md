@@ -55,5 +55,6 @@ This package contains a bunch of different tests for [Parkopoly](http://www.park
 
 	| Command              	| What it does                              	|
 	|----------------------	|-------------------------------------------	|
+	| npm run pt_start     	| Runs everything							 	|
 	| npm run pt_cft       	| Runs all the complete feature tests (CFT) 	|
 	| npm run pt_scenarios 	| Runs all the scenarios                    	|
