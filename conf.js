@@ -49,7 +49,7 @@ exports.config = {
     }));
     await browser.driver.manage().window().maximize();
     await browser.get('https://dashboard-' + browser.params.env + '.parkopoly.fr');
-    await browser.wait(EC.visibilityOf(loginForm), 5000, 'Couldn\'t find  the login form');
+    await browser.wait(EC.visibilityOf(loginForm), 5000, 'Couldn\'t find the login form');
     await browser.driver.findElement(by.css('[type="email"]')).sendKeys(browser.params.login.usr);
     await browser.driver.findElement(by.css('[type="password"]')).sendKeys(browser.params.login.pwd);
     await browser.driver.findElement(by.css('[type="submit"]')).click();
