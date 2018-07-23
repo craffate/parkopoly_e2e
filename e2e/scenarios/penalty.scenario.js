@@ -24,6 +24,7 @@ describe('Penalties', function() {
   beforeAll(async function() {
     await DashboardIngredients.get();
   });
+
   describe('Create cancel48hMissionPrice penalty', function() {
     it('should select the penalty option from the searchbar', async function() {
       await DashboardIngredients.searchbar.click();
