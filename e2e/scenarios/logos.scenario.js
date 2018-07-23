@@ -17,6 +17,7 @@ describe('Logos', function() {
   beforeAll(async function() {
     await DashboardIngredients.get();
   });
+
   describe('Create Renault logo', function() {
     it('should select the logo option from the searchbar', async function() {
       await DashboardIngredients.searchbar.click();
