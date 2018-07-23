@@ -18,6 +18,11 @@ describe('Badge', function() {
   ds.values.name = 'DS ' + browser.params.ts;
   ds.values.modelFilter = 'DS';
 
+  memDS = new BadgePageObject();
+  memDS.values.name = 'MeM DS ' + browser.params.ts;
+  memDS.values.modelFilter = 'ds world_paris_vn';
+  memDS.values.bc = ['DS World_ Mem'];
+
   beforeAll(async function() {
       await DashboardIngredients.get();
       await DashboardIngredients.searchbar.click();
@@ -58,6 +63,23 @@ describe('Badge', function() {
       await ds.model.click();
       await ds.modelInput.sendKeys(ds.values.modelFilter);
       await ds.modelSelectAllButton.click();
+    });
+
+    it('should submit the form', async function() {
+      await DashboardIngredients.submitButton.click();
+      await browser.wait(EC.presenceOf($('md-toast')), 5000, 'Timed out waiting for confirmation message');
+    });
+  });
+
+  describe('Create DS MeM badge', function() {
+    it('should fill the form', async function() {
+      await memDS.nameInput.sendKeys(memDS.values.name);
+      await memDS.model.click();
+      await memDS.modelInput.sendKeys(memDS.values.modelFilter);
+      await memDS.modelSelectAllButton.click();
+      memDS.values.bc[0] = await helpers.getFromDropdown(memDS.values.bc[0], memDS.values.bookingcodesDropdownAll);
+      await helpers.scrollIntoView(memDS.values.bc[0]);
+      await memDS.values.bc[0].click();
     });
 
     it('should submit the form', async function() {
