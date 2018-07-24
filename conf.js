@@ -22,7 +22,7 @@ exports.config = {
   capabilities: {
     browserName: 'chrome',
     chromeOptions: {
-      args: ['--disable-extensions', '--show-fps-counter=true', '--disable-infobars', '--incognito', '--disable-gpu', '--headless']
+      args: ['--disable-extensions', '--show-fps-counter=true', '--disable-infobars', '--incognito', '--disable-gpu', '--headless', 'start-maximized']
     }
   },
   params: {
@@ -34,6 +34,15 @@ exports.config = {
     }
   },
   onPrepare: async function() {
+    /* Synchronization causes problem when using browser.get()
+     * with AngularJS apps. It took me hours to figure that out.
+     * It never ever occured to me that a GOOGLE PRODUCT
+     * made specifically for testing GOOGLE PRODUCTS
+     * which states precisely on its homepage
+     * that it's made for testing ANGULARJS APPLICATIONS
+     * could fail miserably when doing so.
+     */
+    browser.ignoreSynchronization = true;
     const EC = await protractor.ExpectedConditions;
     await jasmine.getEnv().addReporter(new reporters.TerminalReporter({
       verbosity: 3,
@@ -50,7 +59,6 @@ exports.config = {
       takeScreenshots: true,
       consolidateAll: false
     }));
-    await browser.driver.manage().window().maximize();
     await browser.get('https://dashboard-' + browser.params.env + '.parkopoly.fr');
     await browser.driver.findElement(by.css('[type="email"]')).sendKeys(browser.params.login.usr);
     await browser.driver.findElement(by.css('[type="password"]')).sendKeys(browser.params.login.pwd);
