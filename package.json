@@ -4,11 +4,12 @@
   "description": "Parkopoly's test suites",
   "main": "conf.js",
   "scripts": {
+    "reports_clear": "rm -f ./reports/xml/*.xml && rm -f ./reports/html/*.html && rm -f ./reports/html/screenshots/*.png",
     "wd_start": "webdriver-manager start",
     "wd_update": "webdriver-manager update",
-    "pt_start": "protractor conf.js --params.login.usr=$USR_E2E --params.login.pwd=$PWD_E2E",
-    "pt_cft": "protractor conf.js --suite cft --params.login.usr=$USR_E2E --params.login.pwd=$PWD_E2E",
-    "pt_scenarios": "protractor conf.js --suite scenarios --params.login.usr=$USR_E2E --params.login.pwd=$PWD_E2E"
+    "pt_start": "protractor conf.js",
+    "pt_cft": "protractor conf.js --suite cft",
+    "pt_scenarios": "protractor conf.js --suite scenarios"
   },
   "repository": {
     "type": "git",
