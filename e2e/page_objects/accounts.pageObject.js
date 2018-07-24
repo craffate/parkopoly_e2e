@@ -8,6 +8,7 @@ module.exports = function() {
   this.searchBarDropdownAll = element.all(by.repeater('item in $select.items'));
   this.selectAllButton = $('[ng-click="sm.selectAll()"]');
   this.toast = $('md-toast');
+  this.spinner = $('spinner');
   this.table = element(by.repeater('account in accountsCtrl.accountsToShow track by $index'));
   this.createAccountButton = $('[ng-click="accountsCtrl.createAccount()"]');
   this.createAccountDialog = $('[aria-describedby="dialogContent_create-account"]');
@@ -24,6 +25,9 @@ module.exports = function() {
   this.createAccountDialogSubmitButton = this.createAccountDialog.$('[type="submit"]');
 
   this.get = async function() {
+    const EC = await protractorExpectedConditions;
     await browser.get(this.url);
+    return browser.wait(EC.not(EC.presenceOf(this.spinner)), 15000,
+    'Timed out while waiting for the page to load');
   };
 };
