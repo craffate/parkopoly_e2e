@@ -22,7 +22,9 @@ exports.config = {
   capabilities: {
     browserName: 'chrome',
     chromeOptions: {
-      args: ['--disable-extensions', '--show-fps-counter=true', '--disable-infobars', '--incognito', '--disable-gpu', '--headless', 'start-maximized']
+      args: ['--disable-extensions', '--show-fps-counter=true',
+      '--disable-infobars', '--incognito', '--disable-gpu',
+      '--headless', '--start-maximized']
     }
   },
   params: {
