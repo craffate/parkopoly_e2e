@@ -27,11 +27,14 @@ exports.config = {
   },
   params: {
     ts: Date.now(),
-    env: 'test'
+    env: 'test',
+    login: {
+      usr: process.env.USR_E2E,
+      pwd: process.env.PWD_E2E
+    }
   },
   onPrepare: async function() {
     const EC = await protractor.ExpectedConditions;
-    const loginForm = await element(by.name('loginForm'));
     await jasmine.getEnv().addReporter(new reporters.TerminalReporter({
       verbosity: 3,
       color: true,
@@ -49,7 +52,6 @@ exports.config = {
     }));
     await browser.driver.manage().window().maximize();
     await browser.get('https://dashboard-' + browser.params.env + '.parkopoly.fr');
-    await browser.wait(EC.visibilityOf(loginForm), 5000, 'Couldn\'t find the login form');
     await browser.driver.findElement(by.css('[type="email"]')).sendKeys(browser.params.login.usr);
     await browser.driver.findElement(by.css('[type="password"]')).sendKeys(browser.params.login.pwd);
     await browser.driver.findElement(by.css('[type="submit"]')).click();
