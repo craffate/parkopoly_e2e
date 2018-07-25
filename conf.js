@@ -1,5 +1,6 @@
 const reporters = require('jasmine-reporters');
 const htmlReporter = require('protractor-jasmine2-html-reporter');
+const helpers = require('./e2e/helpers');
 
 exports.config = {
   SELENIUM_PROMISE_MANAGER: false,
@@ -16,7 +17,7 @@ exports.config = {
   },
   jasmineNodeOpts: {
     isVerbose: true,
-    defaultTimeoutInterval: 15000,
+    defaultTimeoutInterval: 30000,
     print: function() {}
   },
   capabilities: {
@@ -35,6 +36,7 @@ exports.config = {
       pwd: process.env.PWD_E2E
     }
   },
+  baseUrl: 'https://dashboard-test.parkopoly.fr',
   onPrepare: async function() {
     /* Synchronization causes problem when using browser.get()
      * with AngularJS apps. It took me hours to figure that out.
@@ -44,8 +46,8 @@ exports.config = {
      * that it's made for testing ANGULARJS APPLICATIONS
      * could fail miserably when doing so.
      */
-    browser.ignoreSynchronization = true;
-    const EC = await protractor.ExpectedConditions;
+    const EC = protractor.ExpectedConditions;
+    browser.waitForAngularEnabled(false);
     await jasmine.getEnv().addReporter(new reporters.TerminalReporter({
       verbosity: 3,
       color: true,
@@ -61,14 +63,14 @@ exports.config = {
       takeScreenshots: true,
       consolidateAll: false
     }));
-    await browser.get('https://dashboard-' + browser.params.env + '.parkopoly.fr');
+    await browser.driver.manage().deleteAllCookies(); 
+    await browser.get('/#/login');
+    await browser.executeScript('window.localStorage.clear();');
+    await browser.executeScript('window.sessionStorage.clear();');
+    await browser.wait(EC.presenceOf($('[name="userForm"]')), 5000, 'Login form not found');
     await browser.driver.findElement(by.css('[type="email"]')).sendKeys(browser.params.login.usr);
     await browser.driver.findElement(by.css('[type="password"]')).sendKeys(browser.params.login.pwd);
     await browser.driver.findElement(by.css('[type="submit"]')).click();
-    return await browser.driver.wait(function() {
-      return browser.driver.getCurrentUrl().then(function(url) {
-        return (/calendar_bo/).test(url);
-      });
-    }, 10000);
+    return helpers.testUrl(browser.baseUrl + '/#/calendar_bo', 10000);
   }
 };
