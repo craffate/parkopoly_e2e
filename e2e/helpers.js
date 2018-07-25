@@ -1,6 +1,13 @@
 const path = require('path');
 
 module.exports = {
+  testUrl: async function(url, t) {
+    return browser.driver.wait(async function() {
+      const currUrl = await browser.driver.getCurrentUrl();
+      const regex = new RegExp(url, 'i');
+      return regex.test(currUrl);
+    }, t, 'Couldn\'t reach ' + url + ' in less than ' + t + 'ms');
+  },
   getRandomInt: function(max) {
     return Math.floor(Math.random() * Math.floor(max));
   },
@@ -37,5 +44,15 @@ module.exports = {
   scrollIntoView: async function(el) {
     const loc = await el.getLocation();
     return browser.executeScript('window.scrollTo(' + loc.x + ', ' + loc.y + ');');
+  },
+  waitForSpinner: async function() {
+    let EC = protractor.ExpectedConditions;
+    await browser.wait(EC.not(EC.visibilityOf($('spinner'))), 15000,
+    'Page couldn\'t load in time');
+  },
+  waitForToast: async function() {
+    let EC = protractor.ExpectedConditions;
+    await browser.wait(EC.not(EC.visibilityOf($('md-toast'))), 15000,
+    'Page couldn\'t load in time');
   }
 };

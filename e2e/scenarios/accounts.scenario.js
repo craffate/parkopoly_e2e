@@ -23,6 +23,7 @@ describe('Accounts', function() {
   describe('Create Renault account', function() {
     it('should get to the accounts page', async function() {
       await Renault.get();
+      await helpers.waitForSpinner();
     });
 
     it('should fill the account form', async function() {
@@ -38,12 +39,14 @@ describe('Accounts', function() {
 
     it('should submit the form', async function() {
       await Renault.createAccountDialogSubmitButton.click();
+      await helpers.waitForToast();
     });
   });
 
   describe('Create DS account', function() {
     it('should get to the accounts page', async function() {
       await DS.get();
+      await helpers.waitForSpinner();
     });
 
     it('should fill the account form', async function() {
@@ -59,6 +62,7 @@ describe('Accounts', function() {
 
     it('should submit the form', async function() {
       await DS.createAccountDialogSubmitButton.click();
+      await helpers.waitForToast();
     });
   });
 });
