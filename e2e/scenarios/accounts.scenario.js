@@ -20,12 +20,12 @@ describe('Accounts', function() {
   DS.values.startDate = '01/01/2018';
   DS.values.endDate = '01/01/2020';
 
-  describe('Create Renault account', function() {
-    it('should get to the accounts page', async function() {
-      await Renault.get();
-      await helpers.waitForSpinner();
-    });
+  beforeAll(async function() {
+    await DS.get();
+    await helpers.waitForSpinner();
+  });
 
+  describe('Create Renault account', function() {
     it('should fill the account form', async function() {
       await Renault.createAccountButton.click();
       await Renault.createAccountDialogNameInput.sendKeys(Renault.values.name);
@@ -44,11 +44,6 @@ describe('Accounts', function() {
   });
 
   describe('Create DS account', function() {
-    it('should get to the accounts page', async function() {
-      await DS.get();
-      await helpers.waitForSpinner();
-    });
-
     it('should fill the account form', async function() {
       await DS.createAccountButton.click();
       await DS.createAccountDialogNameInput.sendKeys(DS.values.name);
