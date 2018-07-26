@@ -1,5 +1,4 @@
 const helpers = require('../helpers');
-const EC = protractor.ExpectedConditions;
 const IngredientsPageObject = require('../page_objects/ingredients.pageObject');
 const BadgePageObject = require('../page_objects/ingredients.badge.pageObject');
 
@@ -24,9 +23,10 @@ describe('Badge', function() {
   memDS.values.bc = ['DS World_ Mem'];
 
   beforeAll(async function() {
-      await DashboardIngredients.get();
-      await DashboardIngredients.searchbar.click();
-      await DashboardIngredients.searchbarDropdownBadge.click();
+    await DashboardIngredients.get();
+    await helpers.waitForSpinner();
+    await DashboardIngredients.searchbar.click();
+    await DashboardIngredients.searchbarDropdownBadge.click();
   });
 
   describe('Create Paris badge', function() {
@@ -39,7 +39,7 @@ describe('Badge', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast')), 5000, 'Timed out waiting for confirmation message');
+      await helpers.waitForToast();
     });
   });
 
@@ -53,7 +53,7 @@ describe('Badge', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast')), 5000, 'Timed out waiting for confirmation message');
+      await helpers.waitForToast();
     });
   });
 
@@ -67,7 +67,7 @@ describe('Badge', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast')), 5000, 'Timed out waiting for confirmation message');
+      await helpers.waitForToast();
     });
   });
 
@@ -84,7 +84,7 @@ describe('Badge', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast')), 5000, 'Timed out waiting for confirmation message');
+      await helpers.waitForToast();
     });
   });
 });

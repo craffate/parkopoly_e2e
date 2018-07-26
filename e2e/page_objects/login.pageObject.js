@@ -1,15 +1,15 @@
+const helpers = require('../helpers');
+
 module.exports = function() {
-  this.url = 'https://dashboard-' + browser.params.env + '.parkopoly.fr/#/login';
-  this.spinner = $('spinner');
+  this.url = '/#/login';
   this.userForm = element(by.name('userForm'));
   this.username = this.userForm.element(by.model('loginCtrl.credentials.username'));
   this.password = this.userForm.element(by.model('loginCtrl.credentials.password'));
 
   this.get = async function() {
-    const EC = await protractor.ExpectedConditions;
     await browser.get(this.url);
-    return browser.wait(EC.not(EC.presenceOf(this.spinner)), 15000,
-    'Timed out while waiting for the page to load');
+    return helpers.waitFor($('spinner'), 15000,
+    'Couldn\'t reach ' + this.url + ' in time');
   };
 
   this.fillForm = function(usr, pwd) {

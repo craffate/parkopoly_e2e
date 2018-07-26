@@ -46,13 +46,17 @@ module.exports = {
     return browser.executeScript('window.scrollTo(' + loc.x + ', ' + loc.y + ');');
   },
   waitForSpinner: async function() {
-    let EC = protractor.ExpectedConditions;
-    await browser.wait(EC.not(EC.visibilityOf($('spinner'))), 15000,
+    const EC = protractor.ExpectedConditions;
+    return browser.wait(EC.not(EC.visibilityOf($('spinner'))), 15000,
     'Page couldn\'t load in time');
   },
   waitForToast: async function() {
-    let EC = protractor.ExpectedConditions;
-    await browser.wait(EC.not(EC.visibilityOf($('md-toast'))), 15000,
+    const EC = protractor.ExpectedConditions;
+    return browser.wait(EC.not(EC.visibilityOf($('md-toast'))), 15000,
     'Page couldn\'t load in time');
+  },
+  waitFor: async function(el, t, msg) {
+    const EC = protractor.ExpectedConditions;
+    return browser.wait(EC.presenceOf(el), t, msg);
   }
 };

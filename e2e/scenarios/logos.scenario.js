@@ -1,5 +1,5 @@
-const EC = protractor.ExpectedConditions;
 const path = require('path');
+const helpers = require('../helpers');
 const IngredientsPageObject = require('../page_objects/ingredients.pageObject');
 const LogoPageObject = require('../page_objects/ingredients.logo.pageObject');
 
@@ -16,6 +16,7 @@ describe('Logos', function() {
 
   beforeAll(async function() {
     await DashboardIngredients.get();
+    await helpers.waitForSpinner();
   });
 
   describe('Create Renault logo', function() {
@@ -34,7 +35,7 @@ describe('Logos', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.editButton.click();
-      await browser.wait(EC.presenceOf($('md-toast'), 5000));
+      await helpers.waitForToast();
     });
   });
 
@@ -54,7 +55,7 @@ describe('Logos', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.editButton.click();
-      await browser.wait(EC.presenceOf($('md-toast'), 5000));
+      await helpers.waitForToast();
     });
   });
 });

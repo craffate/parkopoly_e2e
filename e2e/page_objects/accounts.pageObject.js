@@ -1,14 +1,14 @@
+const helpers = require('../helpers');
+
 module.exports = function() {
   this.values = {name: null, charge: null, invoiceRadio: null, subscriptionRadio: null,
     contractNumber: null, startDate: null, endDate: null, brands: null};
 
-  this.url = 'https://dashboard-' + browser.params.env + '.parkopoly.fr/#/accounts';
+  this.url = '/#/accounts';
   this.searchBar = element(by.model('$select.search'));
   this.searchBarDropdown = element(by.repeater('item in $select.items'));
   this.searchBarDropdownAll = element.all(by.repeater('item in $select.items'));
   this.selectAllButton = $('[ng-click="sm.selectAll()"]');
-  this.toast = $('md-toast');
-  this.spinner = $('spinner');
   this.table = element(by.repeater('account in accountsCtrl.accountsToShow track by $index'));
   this.createAccountButton = $('[ng-click="accountsCtrl.createAccount()"]');
   this.createAccountDialog = $('[aria-describedby="dialogContent_create-account"]');
@@ -25,9 +25,8 @@ module.exports = function() {
   this.createAccountDialogSubmitButton = this.createAccountDialog.$('[type="submit"]');
 
   this.get = async function() {
-    const EC = await protractorExpectedConditions;
     await browser.get(this.url);
-    return browser.wait(EC.not(EC.presenceOf(this.spinner)), 15000,
-    'Timed out while waiting for the page to load');
+    return helpers.waitFor($('spinner'), 15000,
+    'Couldn\'t reach ' + this.url + ' in time');
   };
 };

@@ -1,7 +1,7 @@
 module.exports = function() {
   this.values = {name: null};
 
-  this.url = 'https://dashboard-' + browser.params.env + '.parkopoly.fr/#/users';
+  this.url = '/#/users';
   this.searchbar = element(by.model('userListCtrl.search'));
   this.createUserButton = $('[ng-click="userListCtrl.createUser()"]');
   this.lnameInput = element(by.model('createUserCtrl.userModel.lastName'));

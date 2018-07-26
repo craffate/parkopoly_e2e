@@ -1,5 +1,4 @@
 const helpers = require('../helpers');
-const EC = protractor.ExpectedConditions;
 const IngredientsPageObject = require('../page_objects/ingredients.pageObject');
 const PenaltyPageObject = require('../page_objects/ingredients.penalty.pageObject');
 
@@ -23,6 +22,7 @@ describe('Penalties', function() {
 
   beforeAll(async function() {
     await DashboardIngredients.get();
+    await helpers.waitForSpinner();
   });
 
   describe('Create cancel48hMissionPrice penalty', function() {
@@ -46,7 +46,7 @@ describe('Penalties', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast'), 5000));
+      await helpers.waitForToast();
     });
   });
 
@@ -71,7 +71,7 @@ describe('Penalties', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast'), 5000));
+      await helpers.waitForToast();
     });
   });
 
@@ -96,7 +96,7 @@ describe('Penalties', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast'), 5000));
+      await helpers.waitForToast();
     });
   });
 });

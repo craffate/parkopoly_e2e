@@ -1,4 +1,3 @@
-const EC = protractor.ExpectedConditions;
 const path = require('path');
 const helpers = require('../helpers');
 const IngredientsPageObject = require('../page_objects/ingredients.pageObject');
@@ -111,6 +110,7 @@ describe('Documents', function() {
 
   beforeAll(async function() {
     await DashboardIngredients.get();
+    await helpers.waitForSpinner();
     await DashboardIngredients.searchbar.click();
     await DashboardIngredients.searchbarDropdownDocument.click();
   });
@@ -140,7 +140,7 @@ describe('Documents', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast')), 5000, 'Timed out waiting for confirmation message');
+      await helpers.waitForToast();
     });
   });
 
@@ -184,7 +184,7 @@ describe('Documents', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast')), 5000, 'Timed out waiting for confirmation message');
+      await helpers.waitForToast();
     });
   });
 
@@ -219,7 +219,7 @@ describe('Documents', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast')), 5000, 'Timed out waiting for confirmation message');
+      await helpers.waitForToast();
     });
   });
 
@@ -252,7 +252,7 @@ describe('Documents', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast')), 5000, 'Timed out waiting for confirmation message');
+      await helpers.waitForToast();
     });
   });
 
@@ -278,7 +278,7 @@ describe('Documents', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast')), 5000, 'Timed out waiting for confirmation message');
+      await helpers.waitForToast();
     });
   });
 
@@ -304,7 +304,7 @@ describe('Documents', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast')), 5000, 'Timed out waiting for confirmation message');
+      await helpers.waitForToast();
     });
   });
 
@@ -333,7 +333,7 @@ describe('Documents', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast')), 5000, 'Timed out waiting for confirmation message');
+      await helpers.waitForToast();
     });
   });
 
@@ -362,7 +362,7 @@ describe('Documents', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast')), 5000, 'Timed out waiting for confirmation message');
+      await helpers.waitForToast();
     });
   });
 });

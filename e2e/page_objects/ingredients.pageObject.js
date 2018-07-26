@@ -1,7 +1,7 @@
+const helpers = require('../helpers');
+
 module.exports = function() {
-  this.url = 'https://dashboard-' + browser.params.env + '.parkopoly.fr/#/ingredients';
-  this.toast = $('md-toast');
-  this.spinner = $('spinner');
+  this.url = '/#/ingredients';
   this.searchbar = element(by.model('ingredCtrl.selected'));
   this.searchbarInput = this.searchbar.element(by.model('$select.search'));
   this.searchbarDropdown = element(by.repeater('object in $select.items'));
@@ -17,9 +17,8 @@ module.exports = function() {
   this.editButton = $('#editButton');
 
   this.get = async function() {
-    const EC = await protractor.ExpectedConditions;
     await browser.get(this.url);
-    return browser.wait(EC.not(EC.presenceOf(this.spinner)), 15000,
-    'Timed out while waiting for the page to load');
+    return helpers.waitFor($('spinner'), 15000,
+    'Couldn\'t reach ' + this.url + ' in time');
   };
 };

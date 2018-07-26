@@ -1,5 +1,4 @@
 const helpers = require('../helpers');
-const EC = protractor.ExpectedConditions;
 const IngredientsPageObject = require('../page_objects/ingredients.pageObject');
 const CostPageObject = require('../page_objects/ingredients.cost.pageObject');
 
@@ -36,6 +35,7 @@ describe('Costs', function() {
 
   beforeAll(async function() {
     await DashboardIngredients.get();
+    await helpers.waitForSpinner();
   });
 
   describe('Create cost_paris_customerFree cost', function() {
@@ -78,7 +78,7 @@ describe('Costs', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast'), 5000));
+      await helpers.waitForToast();
     });
   });
 });

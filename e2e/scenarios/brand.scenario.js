@@ -1,4 +1,4 @@
-const EC = protractor.ExpectedConditions;
+const helpers = require('../helpers');
 const IngredientsPageObject = require('../page_objects/ingredients.pageObject');
 const BrandPageObject = require('../page_objects/ingredients.brand.pageObject');
 
@@ -42,6 +42,7 @@ describe('Brands', function() {
 
   beforeAll(async function() {
     await DashboardIngredients.get();
+    await helpers.waitForSpinner();
   });
 
   describe('Renault PUD', function() {
@@ -73,7 +74,7 @@ describe('Brands', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast'), 5000));
+      await helpers.waitForToast();
     });
   });
 
@@ -107,7 +108,7 @@ describe('Brands', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast'), 5000));
+      await helpers.waitForToast();
     });
   });
 
@@ -140,7 +141,7 @@ describe('Brands', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast'), 5000));
+      await helpers.waitForToast();
     });
   });
 
@@ -177,7 +178,7 @@ describe('Brands', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast'), 5000));
+      await helpers.waitForToast();
     });
   });
 
@@ -214,7 +215,7 @@ describe('Brands', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast'), 5000));
+      await browser.waitForToast();
     });
   });
 });

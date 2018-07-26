@@ -1,4 +1,4 @@
-const EC = protractor.ExpectedConditions;
+const helpers = require('../helpers');
 const IngredientsPageObject = require('../page_objects/ingredients.pageObject');
 const BcPageObject = require('../page_objects/ingredients.bc.pageObject');
 
@@ -27,10 +27,11 @@ describe('Booking codes', function() {
   obsolete.values.name = 'obsolete ' + browser.params.ts;
   obsolete.values.expiry = '01/01/2017';
   obsolete.values.salary = '0';
-  obsolete.values.salaryAdd = '1000';
+  obsolete.values.salaryAdd = '10';
 
   beforeAll(async function() {
     await DashboardIngredients.get();
+    await helpers.waitForSpinner();
   });
 
   describe('Create dfl booking code', function() {
@@ -48,7 +49,7 @@ describe('Booking codes', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast')), 5000, 'Timed out waiting for confirmation message');
+      await helpers.waitForToast();
     });
   });
 
@@ -67,7 +68,7 @@ describe('Booking codes', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast'), 5000));
+      await helpers.waitForToast();
     });
   });
 
@@ -86,7 +87,7 @@ describe('Booking codes', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast'), 5000));
+      await helpers.waitForToast();
     });
   });
 
@@ -105,7 +106,7 @@ describe('Booking codes', function() {
 
     it('should submit the form', async function() {
       await DashboardIngredients.submitButton.click();
-      await browser.wait(EC.presenceOf($('md-toast'), 5000));
+      await helpers.waitForToast();
     });
   });
 })
