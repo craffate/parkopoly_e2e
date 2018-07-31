@@ -58,5 +58,17 @@ module.exports = {
   waitFor: async function(el, t, msg) {
     const EC = protractor.ExpectedConditions;
     return browser.wait(EC.presenceOf(el), t, msg);
+  },
+  waitForNo: async function(el, t, msg) {
+    const EC = protractor.ExpectedConditions;
+    return browser.wait(EC.not(EC.presenceOf(el)), t, msg);
+  },
+  waitForVisibility: async function(el, t, msg) {
+    const EC = protractor.ExpectedConditions;
+    return browser.wait(EC.visibilityOf(el), t, msg);
+  },
+  waitForNoVisibility: async function(el, t, msg) {
+    const EC = protractor.ExpectedConditions;
+    return browser.wait(EC.not(EC.visibilityOf(el)), t, msg);
   }
 };
