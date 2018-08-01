@@ -7,12 +7,12 @@ describe('Drivers', function() {
   driverLille = new UsersPageObject();
   driverLille.values.lname = 'Driver';
   driverLille.values.fname = 'Lille';
-  driverLille.values.email = 'driver' + browser.params.ts + '@parkopoly.fr';
+  driverLille.values.email = 'driver_lille' + browser.params.ts + '@parkopoly.fr';
   driverLille.values.address = 'Lille, France';
   driverLille.values.phone = '0101010101';
   driverLille.values.status = 'ACTIVE';
   driverLille.values.badges = [];
-  driverLille.values.points = '3';
+  driverLille.values.points = '0';
   driverLille.values.occupation = 'SELF_EMPLOYED';
   driverLille.values.uniform = 'White shirt, black pants';
   driverLille.values.comment = 'Thinks the Earth is flat';
@@ -22,6 +22,24 @@ describe('Drivers', function() {
   driverLille.values.depositDate = '01/01/2018';
   driverLille.values.depositComment = 'There is no spoon';
 
+
+  driverParisDS = new UsersPageObject();
+  driverParisDS.values.lname = 'Driver';
+  driverParisDS.values.fname = 'Paris';
+  driverParisDS.values.email = 'driver_paris_ds_pude' + browser.params.ts + '@parkopoly.fr';
+  driverParisDS.values.address = '130 Rue de Lourmel';
+  driverParisDS.values.phone = '0101010101';
+  driverParisDS.values.status = 'ACTIVE';
+  driverParisDS.values.badges = ['DS'];
+  driverParisDS.values.points = '0';
+  driverParisDS.values.occupation = 'SELF_EMPLOYED';
+  driverParisDS.values.uniform = 'White shirt, black pants';
+  driverParisDS.values.comment = 'Used to be a Shaolin monk';
+  driverParisDS.values.unpaid = true;
+  driverParisDS.values.vat = false;
+  driverParisDS.values.deposit = '1500';
+  driverParisDS.values.depositDate = '31/01/2018';
+  driverParisDS.values.depositComment = 'Fear is the path to the dark side';
 
   beforeAll(async function() {
     await driversPage.get();
@@ -60,6 +78,45 @@ describe('Drivers', function() {
     it('should submit the form', async function() {
       await driverLille.submitButton.click();
       await helpers.waitForNo(driverLille.createDriverDialog, 5000,
+      'Couldn\'t close the creation form dialog');
+    });
+  });
+
+  describe('driverParis_DS-PUDE', function() {
+    it('should open the driver creation dialog', async function() {
+      await driverParisDS.createDriverButton.click();
+      await helpers.waitFor(driverParisDS.createDriverDialog, 5000,
+      'Couldn\'t open the creation form dialog');
+    });
+
+    it('should fill the form', async function() {
+      await driverParisDS.lastNameInput.sendKeys(driverParisDS.values.lname);
+      await driverParisDS.firstNameInput.sendKeys(driverParisDS.values.fname);
+      await driverParisDS.emailInput.sendKeys(driverParisDS.values.email);
+      await driverParisDS.addressInput.sendKeys(driverParisDS.values.address);
+      await driverParisDS.telInput.sendKeys(driverParisDS.values.phone);
+      await driverParisDS.status.click();
+      driverParisDS.values.status = await helpers.getFromDropdown(
+        driverParisDS.values.status, driverParisDS.statusDropdownAll);
+      await driverParisDS.values.status.click();
+      await driverParisDS.badgeInput.sendKeys(driverParisDS.values.badge[0]);
+      await driverParisDS.badgeSelectAllButton.click();
+      await driverParisDS.pointsInput.sendKeys(driverParisDS.values.points);
+      await driverParisDS.occupation.click();
+      driverParisDS.values.occupation = await helpers.getFromDropdown(
+        driverParisDS.values.occupation, driverParisDS.statusDropdownAll);
+      await driverParisDS.equipmentInput.sendKeys(driverParisDS.values.uniform);
+      await driverParisDS.commentInput.sendKeys(driverParisDS.values.comment);
+      await helpers.switchCheckbox(driverParisDS.unpaidSwitch, driverParisDS.values.unpaid);
+      await helpers.switchCheckbox(driverParisDS.vatSwitch, driverParisDS.values.vat);
+      await driverParisDS.depositInput.sendKeys(driverParisDS.values.deposit);
+      await driverParisDS.depositDateInput.sendKeys(driverParisDS.values.depositDate);
+      await driverParisDS.depositCommentInput.sendKeys(driverParisDS.values.depositComment);
+    });
+
+    it('should submit the form', async function() {
+      await driverParisDS.submitButton.click();
+      await helpers.waitForNo(driverParisDS.createDriverDialog, 5000,
       'Couldn\'t close the creation form dialog');
     });
   });
