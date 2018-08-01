@@ -1,9 +1,27 @@
 const helpers = require('../helpers');
 
 module.exports = function() {
+  this.values = {lname: null,
+  fname: null,
+  email: null,
+  address: null,
+  phone: null,
+  status: null,
+  badges: null,
+  points: null,
+  occupation: null,
+  uniform: null,
+  comment: null,
+  unpaid: null,
+  vat: null,
+  deposit: null,
+  depositDate: null,
+  depositComment: null};
+
   this.url = '/#/drivers';
   this.searchInput = element(by.model('driversCtrl.search'));
-  this.createDriverButtom = element(by.model('driversCtrl.createDriver()'));
+  this.createDriverButton = element(by.model('driversCtrl.createDriver()'));
+  this.createDriverDialog = element(by.id('create-driver'));
   this.lastNameInput = element(by.model('cdCtrl.newDriver.lastName'));
   this.firstNameInput = element(by.model('cdCtrl.newDriver.firstName'));
   this.emailInput = element(by.model('cdCtrl.newDriver.login'));
