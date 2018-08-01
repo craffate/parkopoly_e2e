@@ -2,9 +2,9 @@ const helpers = require('../helpers');
 const DriversPageObject = require('../page_objects/drivers.pageObject');
 
 describe('Drivers', function() {
-  driversPage = new UsersPageObject();
+  driversPage = new DriversPageObject();
 
-  driverLille = new UsersPageObject();
+  driverLille = new DriversPageObject();
   driverLille.values.lname = 'Driver';
   driverLille.values.fname = 'Lille';
   driverLille.values.email = 'driver_lille' + browser.params.ts + '@parkopoly.fr';
@@ -22,7 +22,7 @@ describe('Drivers', function() {
   driverLille.values.depositDate = '01/01/2018';
   driverLille.values.depositComment = 'There is no spoon';
 
-  driverParisDS = new UsersPageObject();
+  driverParisDS = new DriversPageObject();
   driverParisDS.values.lname = 'Driver';
   driverParisDS.values.fname = 'Paris DS';
   driverParisDS.values.email = 'driver_paris_ds_pude' + browser.params.ts + '@parkopoly.fr';
@@ -40,7 +40,7 @@ describe('Drivers', function() {
   driverParisDS.values.depositDate = '12/04/2018';
   driverParisDS.values.depositComment = 'Fear is the path to the dark side';
 
-  driverParisRenault = new UsersPageObject();
+  driverParisRenault = new DriversPageObject();
   driverParisRenault.values.lname = 'Driver';
   driverParisRenault.values.fname = 'Paris Renault';
   driverParisRenault.values.email = 'driver_paris_vn_renault' + browser.params.ts + '@parkopoly.fr';
@@ -58,7 +58,7 @@ describe('Drivers', function() {
   driverParisRenault.values.depositDate = '28/01/2018';
   driverParisRenault.values.depositComment = 'UNLIMITED POWER!';
 
-  driverParisAll = new UsersPageObject();
+  driverParisAll = new DriversPageObject();
   driverParisAll.values.lname = 'Driver';
   driverParisAll.values.fname = 'Paris All';
   driverParisAll.values.email = 'driver_paris_all' + browser.params.ts + '@parkopoly.fr';
