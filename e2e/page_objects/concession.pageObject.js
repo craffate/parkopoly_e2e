@@ -2,9 +2,8 @@ const helpers = require('../helpers');
 
 module.exports = function() {
   this.url = '/#/admin_point_of_sales_list';
-/*  This needs a unique attribute to be properly identified
-**  this.pointOfSaleButton = $('[ng-click="poslCtrl.toggleListView()"]');
-**  this.pointOfSaleGroupButton = $('[ng-click="poslCtrl.toggleListView()"]'); */
+  this.pointOfSaleButton = element(by.id('concessionsTopCard')).$('button');
+  this.pointOfSaleGroupButton = element(by.id('concessionGroupsTopCard')).$('button');
   this.filterInput = element(by.model('poslCtrl.search'));
   this.createPointOfSaleButton = $('[ng-click="poslCtrl.createPointOfSales()"]');
   this.createPointOfSaleDialog = element(by.id('create-point-of-sale'));
