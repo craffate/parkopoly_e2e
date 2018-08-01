@@ -1,5 +1,5 @@
 const helpers = require('../helpers');
-const DriversPageObject = require('../page_object/users.pageObject');
+const DriversPageObject = require('../page_objects/drivers.pageObject');
 
 describe('Drivers', function() {
   driversPage = new UsersPageObject();
