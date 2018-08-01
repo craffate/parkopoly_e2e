@@ -23,7 +23,7 @@ describe('Users', function() {
   manager_PSA.values.password = 'PSA@123';
 
   beforeAll(async function() {
-    usersPage.get();
+    await usersPage.get();
   });
 
   describe('manager_renault', function() {
