@@ -2,6 +2,7 @@ const helpers = require('../helpers');
 const DriversPageObject = require('../page_objects/drivers.pageObject');
 
 describe('Drivers', function() {
+  debugger;
   driversPage = new DriversPageObject();
 
   driverLille = new DriversPageObject();
@@ -94,13 +95,15 @@ describe('Drivers', function() {
       await driverLille.addressInput.sendKeys(driverLille.values.address);
       await driverLille.telInput.sendKeys(driverLille.values.phone);
       await driverLille.status.click();
-      driverLille.values.status = await helpers.getFromDropdown(
-        driverLille.values.status, driverLille.statusDropdownAll);
-      await driverLille.values.status.click();
+      driverLille.values.status = await helpers.getFromNonMaterialDropdown(
+        driverLille.values.status, 'status', driverLille.statusDropdownAll);
+      await driverLille.values.status[0].click();
+      await driverLille.badgeSelectAllButton.click();
       await driverLille.pointsInput.sendKeys(driverLille.values.points);
       await driverLille.occupation.click();
-      driverLille.values.occupation = await helpers.getFromDropdown(
-        driverLille.values.occupation, driverLille.statusDropdownAll);
+      driverLille.values.occupation = await helpers.getFromNonMaterialDropdown(
+        driverLille.values.occupation, 'p', driverLille.occupationDropdownAll);
+      await driverLille.values.occupation[0].click();
       await driverLille.equipmentInput.sendKeys(driverLille.values.uniform);
       await driverLille.commentInput.sendKeys(driverLille.values.comment);
       await helpers.switchCheckbox(driverLille.unpaidSwitch, driverLille.values.unpaid);
@@ -130,16 +133,15 @@ describe('Drivers', function() {
       await driverParisDS.emailInput.sendKeys(driverParisDS.values.email);
       await driverParisDS.addressInput.sendKeys(driverParisDS.values.address);
       await driverParisDS.telInput.sendKeys(driverParisDS.values.phone);
-      await driverParisDS.status.click();
-      driverParisDS.values.status = await helpers.getFromDropdown(
-        driverParisDS.values.status, driverParisDS.statusDropdownAll);
-      await driverParisDS.values.status.click();
-      await driverParisDS.badgeInput.sendKeys(driverParisDS.values.badge[0]);
+      driverParisDS.values.status = await helpers.getFromNonMaterialDropdown(
+        driverParisDS.values.status, 'status', driverParisDS.statusDropdownAll);
+      await driverParisDS.values.status[0].click();
       await driverParisDS.badgeSelectAllButton.click();
       await driverParisDS.pointsInput.sendKeys(driverParisDS.values.points);
       await driverParisDS.occupation.click();
-      driverParisDS.values.occupation = await helpers.getFromDropdown(
-        driverParisDS.values.occupation, driverParisDS.statusDropdownAll);
+      driverParisDS.values.occupation = await helpers.getFromNonMaterialDropdown(
+        driverParisDS.values.occupation, 'p', driverParisDS.occupationDropdownAll);
+      await driverParisDS.values.occupation[0].click();
       await driverParisDS.equipmentInput.sendKeys(driverParisDS.values.uniform);
       await driverParisDS.commentInput.sendKeys(driverParisDS.values.comment);
       await helpers.switchCheckbox(driverParisDS.unpaidSwitch, driverParisDS.values.unpaid);
@@ -169,16 +171,16 @@ describe('Drivers', function() {
       await driverParisRenault.emailInput.sendKeys(driverParisRenault.values.email);
       await driverParisRenault.addressInput.sendKeys(driverParisRenault.values.address);
       await driverParisRenault.telInput.sendKeys(driverParisRenault.values.phone);
-      await driverParisRenault.status.click();
-      driverParisRenault.values.status = await helpers.getFromDropdown(
-        driverParisRenault.values.status, driverParisRenault.statusDropdownAll);
-      await driverParisRenault.values.status.click();
+      driverParisRenault.values.status = await helpers.getFromNonMaterialDropdown(
+        driverParisRenault.values.status, 'status', driverParisRenault.statusDropdownAll);
+      await driverParisRenault.values.status[0].click();
       await driverParisRenault.badgeInput.sendKeys(driverParisRenault.values.badge[0]);
       await driverParisRenault.badgeSelectAllButton.click();
       await driverParisRenault.pointsInput.sendKeys(driverParisRenault.values.points);
       await driverParisRenault.occupation.click();
-      driverParisRenault.values.occupation = await helpers.getFromDropdown(
-        driverParisRenault.values.occupation, driverParisRenault.statusDropdownAll);
+      driverParisRenault.values.occupation = await helpers.getFromNonMaterialDropdown(
+        driverParisRenault.values.occupation, 'p', driverParisRenault.occupationDropdownAll);
+      await driverParisRenault.values.occupation[0].click();
       await driverParisRenault.equipmentInput.sendKeys(driverParisRenault.values.uniform);
       await driverParisRenault.commentInput.sendKeys(driverParisRenault.values.comment);
       await helpers.switchCheckbox(driverParisRenault.unpaidSwitch, driverParisRenault.values.unpaid);
@@ -208,15 +210,15 @@ describe('Drivers', function() {
       await driverParisAll.emailInput.sendKeys(driverParisAll.values.email);
       await driverParisAll.addressInput.sendKeys(driverParisAll.values.address);
       await driverParisAll.telInput.sendKeys(driverParisAll.values.phone);
-      await driverParisAll.status.click();
-      driverParisAll.values.status = await helpers.getFromDropdown(
-        driverParisAll.values.status, driverParisAll.statusDropdownAll);
-      await driverParisAll.values.status.click();
+      driverParisAll.values.status = await helpers.getFromNonMaterialDropdown(
+        driverParisAll.values.status, 'status', driverParisAll.statusDropdownAll);
+      await driverParisRenault.values.status[0].click();
       await driverParisAll.badgeSelectAllButton.click();
       await driverParisAll.pointsInput.sendKeys(driverParisAll.values.points);
       await driverParisAll.occupation.click();
-      driverParisAll.values.occupation = await helpers.getFromDropdown(
-        driverParisAll.values.occupation, driverParisAll.statusDropdownAll);
+      driverParisAll.values.occupation = await helpers.getFromNonMaterialDropdown(
+        driverParisAll.values.occupation, 'p', driverParisAll.occupationDropdownAll);
+      await driverParisAll.values.occupation[0].click();
       await driverParisAll.equipmentInput.sendKeys(driverParisAll.values.uniform);
       await driverParisAll.commentInput.sendKeys(driverParisAll.values.comment);
       await helpers.switchCheckbox(driverParisAll.unpaidSwitch, driverParisAll.values.unpaid);
