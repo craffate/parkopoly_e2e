@@ -34,9 +34,9 @@ module.exports = {
       });
     });
   },
-  getFromNonMaterialDropdown: async function(s, arr) {
+  getFromNonMaterialDropdown: async function(s, b, arr) {
     return arr.filter(function(el, idx) {
-      return el.$('div').element(by.binding('status')).getText().then(function(val) {
+      return el.element(by.binding(b)).getText().then(function(val) {
         return s === val;
       });
     });
