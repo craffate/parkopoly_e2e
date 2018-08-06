@@ -8,11 +8,11 @@ describe('Logos', function() {
 
   renault = new LogoPageObject();
   renault.values.name = 'Renault ' + browser.params.ts;
-  renault.values.path = path.resolve(__dirname, '../../assets/renault.png');
+  renault.values.path = path.resolve(__dirname, '../../resources/logos/renault.png');
 
   ds = new LogoPageObject();
   ds.values.name = 'DS ' + browser.params.ts;
-  ds.values.path = path.resolve(__dirname, '../../assets/ds.png');
+  ds.values.path = path.resolve(__dirname, '../../resources/logos/ds.png');
 
   beforeAll(async function() {
     await DashboardIngredients.get();
@@ -28,13 +28,14 @@ describe('Logos', function() {
     it('should fill the logo form', async function() {
       await renault.searchbar.click();
       await renault.searchbarDropdownAll.get(0).click();
-      await browser.executeScript('document.querySelectorAll(\'input[type="file"]\')[0].style.display = \'inline\';');
+      await helpers.displayUpload(renault.uploadButtonInput);
       await renault.nameInput.clear().sendKeys(renault.values.name);
-      await renault.uploadButtonInput.sendKeys(renault.values.path);
+      await helpers.uploadFile(renault.values.path, renault.uploadButtonInput);
     });
 
     it('should submit the form', async function() {
       await DashboardIngredients.editButton.click();
+      await helpers.waitForSpinner();
       await helpers.waitForToast();
     });
   });
@@ -46,15 +47,16 @@ describe('Logos', function() {
     });
 
     it('should fill the logo form', async function() {
-      await renault.searchbar.click();
-      await renault.searchbarDropdownAll.get(0).click();
-      await browser.executeScript('document.querySelectorAll(\'input[type="file"]\')[0].style.display = \'inline\';');
+      await ds.searchbar.click();
+      await ds.searchbarDropdownAll.get(0).click();
+      await helpers.displayUpload(ds.uploadButtonInput);
       await ds.nameInput.clear().sendKeys(ds.values.name);
-      await ds.uploadButtonInput.sendKeys(ds.values.path);
+      await helpers.uploadFile(ds.values.path, ds.uploadButtonInput);
     });
 
     it('should submit the form', async function() {
       await DashboardIngredients.editButton.click();
+      await helpers.waitForSpinner();
       await helpers.waitForToast();
     });
   });
