@@ -34,6 +34,13 @@ module.exports = {
       });
     });
   },
+  getFromNonMaterialDropdown: async function(s, arr) {
+    return arr.filter(function(el, idx) {
+      return el.$('div').element(by.binding('status')).getText().then(function(val) {
+        return s === val;
+      });
+    });
+  },
   displayUpload: async function(fileInput) {
     return browser.executeScript('arguments[0].style.visibility = "visible"; arguments[0].style.display = "block";', fileInput);
   },
