@@ -35,11 +35,10 @@ module.exports = {
     });
   },
   displayUpload: async function(fileInput) {
-    return browser.executeScript('arguments[0].css("visibility", "visible"); arguments[0].css("display", "block");', fileInput);
+    return browser.executeScript('arguments[0].style.visibility = "visible"; arguments[0].style.display = "block";', fileInput);
   },
   uploadFile: async function(path, fileInput) {
-    const absolutePath = await path.resolve(__dirname, path);
-    return fileInput.sendKeys(absolutePath);
+    return fileInput.sendKeys(path);
   },
   scrollIntoView: async function(el) {
     const loc = await el.getLocation();
