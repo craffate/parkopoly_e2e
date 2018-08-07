@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Renault",
+    "charge": "2.5",
+    "invoiceRadio": null,
+    "subscriptionRadio": null,
+    "contractNumber": "1800",
+    "startDate": "01/01/2018",
+    "endDate": "01/01/2020",
+    "brands": null
+  },
+  {
+    "name": "DS",
+    "charge": "2.5",
+    "invoiceRadio": null,
+    "subscriptionRadio": null,
+    "contractNumber": "182",
+    "startDate": "01/01/2018",
+    "endDate": "01/01/2020",
+    "brands": null
+  }
+]

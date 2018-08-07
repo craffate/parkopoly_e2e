@@ -1,9 +1,6 @@
 const helpers = require('../helpers');
 
 module.exports = function() {
-  this.values = {name: null, charge: null, invoiceRadio: null, subscriptionRadio: null,
-    contractNumber: null, startDate: null, endDate: null, brands: null};
-
   this.url = '/#/accounts';
   this.searchBar = element(by.model('$select.search'));
   this.searchBarDropdown = element(by.repeater('item in $select.items'));
