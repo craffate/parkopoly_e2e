@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Paris",
+    "modelFilter": "Paris",
+    "missionFilter": null,
+    "option": null,
+    "bc": null
+  },
+  {
+    "name": "Renault",
+    "modelFilter": "Renault",
+    "missionFilter": null,
+    "option": null,
+    "bc": null
+  },
+  {
+    "name": "DS",
+    "modelFilter": "DS",
+    "missionFilter": null,
+    "option": null,
+    "bc": null
+  },
+  {
+    "name": "MeM DS",
+    "modelFilter": "ds world_paris_vn",
+    "missionFilter": null,
+    "option": null,
+    "bc": ["DS World_ MeM"]
+  }
+]

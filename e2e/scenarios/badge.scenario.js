@@ -1,26 +1,11 @@
 const helpers = require('../helpers');
 const IngredientsPageObject = require('../page_objects/ingredients.pageObject');
 const BadgePageObject = require('../page_objects/ingredients.badge.pageObject');
+const specData = require('../data/badge.scenario.data.json');
 
 describe('Badge', function() {
   DashboardIngredients = new IngredientsPageObject();
-
-  paris = new BadgePageObject();
-  paris.values.name = 'Paris ' + browser.params.ts;
-  paris.values.modelFilter = 'Paris';
-
-  renault = new BadgePageObject();
-  renault.values.name = 'Renault ' + browser.params.ts;
-  renault.values.modelFilter = 'Renault';
-
-  ds = new BadgePageObject();
-  ds.values.name = 'DS ' + browser.params.ts;
-  ds.values.modelFilter = 'DS';
-
-  memDS = new BadgePageObject();
-  memDS.values.name = 'MeM DS ' + browser.params.ts;
-  memDS.values.modelFilter = 'ds world_paris_vn';
-  memDS.values.bc = ['DS World_ Mem'];
+  badgePage = new BadgePageObject();
 
   beforeAll(async function() {
     await DashboardIngredients.get();
@@ -29,62 +14,26 @@ describe('Badge', function() {
     await DashboardIngredients.searchbarDropdownBadge.click();
   });
 
-  describe('Create Paris badge', function() {
-    it('should fill the form', async function() {
-      await paris.nameInput.sendKeys(paris.values.name);
-      await paris.model.click();
-      await paris.modelInput.sendKeys(paris.values.modelFilter);
-      await paris.modelSelectAllButton.click();
-    });
+  dataSpec(specData, (data, iteration) => {
+    describe(`Create ${data.name} badge`, function() {
+      it('should fill the form', async function() {
+        await badgePage.nameInput.sendKeys(data.name + browser.params.ts);
+        await badgePage.model.click();
+        await badgePage.modelInput.sendKeys(data.modelFilter);
+        await badgePage.modelSelectAllButton.click();
+        if (data.bc !== null) {
+          await badgePage.bookingcodes.click();
+          await badgePage.bookingcodesSearchInput.sendKeys(data.bc[0]);
+          data.bc[0] = await badgePage.bookingcodesDropdownAll.first();
+          await data.bc[0].click();
+          await data.bc[0].sendKeys(protractor.Key.ESCAPE);
+        };
+      });
 
-    it('should submit the form', async function() {
-      await DashboardIngredients.submitButton.click();
-      await helpers.waitForToast();
-    });
-  });
-
-  describe('Create Renault badge', function() {
-    it('should fill the form', async function() {
-      await renault.nameInput.sendKeys(renault.values.name);
-      await renault.model.click();
-      await renault.modelInput.sendKeys(renault.values.modelFilter);
-      await renault.modelSelectAllButton.click();
-    });
-
-    it('should submit the form', async function() {
-      await DashboardIngredients.submitButton.click();
-      await helpers.waitForToast();
-    });
-  });
-
-  describe('Create DS badge', function() {
-    it('should fill the form', async function() {
-      await ds.nameInput.sendKeys(ds.values.name);
-      await ds.model.click();
-      await ds.modelInput.sendKeys(ds.values.modelFilter);
-      await ds.modelSelectAllButton.click();
-    });
-
-    it('should submit the form', async function() {
-      await DashboardIngredients.submitButton.click();
-      await helpers.waitForToast();
-    });
-  });
-
-  describe('Create DS MeM badge', function() {
-    it('should fill the form', async function() {
-      await memDS.nameInput.sendKeys(memDS.values.name);
-      await memDS.model.click();
-      await memDS.modelInput.sendKeys(memDS.values.modelFilter);
-      await memDS.modelSelectAllButton.click();
-      memDS.values.bc[0] = await helpers.getFromDropdown(memDS.values.bc[0], memDS.values.bookingcodesDropdownAll);
-      await helpers.scrollIntoView(memDS.values.bc[0]);
-      await memDS.values.bc[0].click();
-    });
-
-    it('should submit the form', async function() {
-      await DashboardIngredients.submitButton.click();
-      await helpers.waitForToast();
+      it('should submit the form', async function() {
+        await DashboardIngredients.submitButton.click();
+        await helpers.waitForToast();
+      });
     });
   });
 });

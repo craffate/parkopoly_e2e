@@ -1,6 +1,4 @@
 module.exports = function() {
-  this.values = {name: null, modelFilter: null, missionFilter: null, option: null, bc: null};
-
   this.searchbar = element(by.model('badgeFormCtrl.selectedObject'));
   this.searchbarInput = this.searchbar.element(by.model('$select.search'));
   this.searchbarDropdown = element(by.repeater('object in $select.items'));
@@ -23,6 +21,7 @@ module.exports = function() {
   this.optionsDropdownIs = element(by.repeater('opt in badgeFormCtrl.all.optionLabels.INTER_SITE'));
   this.optionsDropdownIsAll = element.all(by.repeater('opt in badgeFormCtrl.all.optionLabels.INTER_SITE'));
   this.bookingcodes = element(by.model('badgeFormCtrl.newObject.missionFilter.bookingCodeSet'));
+  this.bookingcodesSearchInput = element(by.model('bcSearch'));
   this.bookingcodesDropdown = element(by.repeater('code in badgeFormCtrl.all.bookingCodes'));
   this.bookingcodesDropdownAll = element.all(by.repeater('code in badgeFormCtrl.all.bookingCodes'));
 };
