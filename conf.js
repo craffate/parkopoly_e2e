@@ -42,7 +42,7 @@ exports.config = {
       const rs = Array.isArray(data) ? data : [data];
 
       rs.forEach((r, idx) => {
-        test(r, idx + 1);
+        spec(r, idx + 1);
       });
     };
     /* Synchronization causes problem when using browser.get()
