@@ -1,5 +1,6 @@
 const helpers = require('../helpers');
 const AccountsPageObject = require('../page_objects/accounts.pageObject');
+const specData = require('../data/accounts.scenario.data.json');
 
 describe('Accounts', function() {
   const accountsPage = new AccountsPageObject();
@@ -9,8 +10,7 @@ describe('Accounts', function() {
     await helpers.waitForSpinner();
   });
 
-  dataSpec(require('../data/accounts.scenario.data.json'),
-    (data, iteration) => {
+  dataSpec(specData, (data, iteration) => {
     describe(`Create ${data.name} account`, function() {
       it('should fill the account form', async function() {
         await accountsPage.createAccountButton.click();

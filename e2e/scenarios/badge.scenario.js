@@ -4,8 +4,8 @@ const BadgePageObject = require('../page_objects/ingredients.badge.pageObject');
 const specData = require('../data/badge.scenario.data.json');
 
 describe('Badge', function() {
-  DashboardIngredients = new IngredientsPageObject();
-  badgePage = new BadgePageObject();
+  const DashboardIngredients = new IngredientsPageObject();
+  const badgePage = new BadgePageObject();
 
   beforeAll(async function() {
     await DashboardIngredients.get();
