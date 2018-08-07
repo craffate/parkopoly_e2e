@@ -45,94 +45,92 @@ describe('Parkopoly dashboard drivers page', function() {
         await driversPage.createDriverButton.click();
       });
 
-      describe('When the driver creation dialog is open, check for required elements', function() {
-        it('should open the driver creation dialog', async function() {
-          await expect(driversPage.createDriverDialog.isDisplayed()).toBe(true);
-        });
+      it('should open the driver creation dialog', async function() {
+        await expect(driversPage.createDriverDialog.isDisplayed()).toBe(true);
+      });
 
-        it('should have a last name input', async function() {
-          await expect(driversPage.lastNameInput.isDisplayed()).toBe(true);
-        });
+      it('should have a last name input', async function() {
+        await expect(driversPage.lastNameInput.isDisplayed()).toBe(true);
+      });
 
-        it('should have a first name input', async function() {
-          await expect(driversPage.firstNameInput.isDisplayed()).toBe(true);
-        });
+      it('should have a first name input', async function() {
+        await expect(driversPage.firstNameInput.isDisplayed()).toBe(true);
+      });
 
-        it('should have an email input', async function() {
-          await expect(driversPage.emailInput.isDisplayed()).toBe(true);
-        });
+      it('should have an email input', async function() {
+        await expect(driversPage.emailInput.isDisplayed()).toBe(true);
+      });
 
-        it('should have an address input', async function() {
-          await expect(driversPage.addressInput.isDisplayed()).toBe(true);
-        });
+      it('should have an address input', async function() {
+        await expect(driversPage.addressInput.isDisplayed()).toBe(true);
+      });
 
-        it('should have a phone input', async function() {
-          await expect(driversPage.telInput.isDisplayed()).toBe(true);
-        });
+      it('should have a phone input', async function() {
+        await expect(driversPage.telInput.isDisplayed()).toBe(true);
+      });
 
-        it('should have a status dropdown menu', async function() {
-          await expect(driversPage.status.isDisplayed()).toBe(true);
-        });
+      it('should have a status dropdown menu', async function() {
+        await expect(driversPage.status.isDisplayed()).toBe(true);
+      });
 
-        it('should have a badge menu', async function() {
-          await expect(driversPage.badge.isDisplayed()).toBe(true);
-        });
+      it('should have a badge menu', async function() {
+        await expect(driversPage.badge.isDisplayed()).toBe(true);
+      });
 
-        it('should have a select all badges button', async function() {
-          await expect(driversPage.badgeSelectAllButton.isDisplayed()).toBe(true);
-        });
+      it('should have a select all badges button', async function() {
+        await expect(driversPage.badgeSelectAllButton.isDisplayed()).toBe(true);
+      });
 
-        it('should have a points input', async function() {
-          await expect(driversPage.pointsInput.isDisplayed()).toBe(true);
-        });
+      it('should have a points input', async function() {
+        await expect(driversPage.pointsInput.isDisplayed()).toBe(true);
+      });
 
-        it('should have an occupation dropdown menu', async function() {
-          await expect(driversPage.pointsInput.isDisplayed()).toBe(true);
-        });
+      it('should have an occupation dropdown menu', async function() {
+        await expect(driversPage.pointsInput.isDisplayed()).toBe(true);
+      });
 
-        it('should have an equipment input', async function() {
-          await expect(driversPage.equipmentInput.isDisplayed()).toBe(true);
-        });
+      it('should have an equipment input', async function() {
+        await expect(driversPage.equipmentInput.isDisplayed()).toBe(true);
+      });
 
-        it('should have a comment input', async function() {
-          await expect(driversPage.commentInput.isDisplayed()).toBe(true);
-        });
+      it('should have a comment input', async function() {
+        await expect(driversPage.commentInput.isDisplayed()).toBe(true);
+      });
 
-        it('should have an unpaid switch', async function() {
-          await expect(driversPage.unpaidSwitch.isDisplayed()).toBe(true);
-        });
+      it('should have an unpaid switch', async function() {
+        await expect(driversPage.unpaidSwitch.isDisplayed()).toBe(true);
+      });
 
-        it('should have a VAT switch', async function() {
-          await expect(driversPage.vatSwitch.isDisplayed()).toBe(true);
-        });
+      it('should have a VAT switch', async function() {
+        await expect(driversPage.vatSwitch.isDisplayed()).toBe(true);
+      });
 
-        it('should have a sponsor dropdown menu', async function() {
-          await expect(driversPage.sponsor.isDisplayed()).toBe(true);
-        });
+      it('should have a sponsor dropdown menu', async function() {
+        await expect(driversPage.sponsor.isDisplayed()).toBe(true);
+      });
 
-        it('should have a sponsor amount input', async function() {
-          await expect(driversPage.sponsorAmountInput.isDisplayed()).toBe(true);
-        });
+      it('should have a sponsor amount input', async function() {
+        await expect(driversPage.sponsorAmountInput.isDisplayed()).toBe(true);
+      });
 
-        it('should have a sponsor paid date datepicker', async function() {
-          await expect(driversPage.sponsorPayDateDatepicker.isDisplayed()).toBe(true);
-        });
+      it('should have a sponsor paid date datepicker', async function() {
+        await expect(driversPage.sponsorPayDateDatepicker.isDisplayed()).toBe(true);
+      });
 
-        it('should have a deposit input', async function() {
-          await expect(driversPage.depositInput.isDisplayed()).toBe(true);
-        });
+      it('should have a deposit input', async function() {
+        await expect(driversPage.depositInput.isDisplayed()).toBe(true);
+      });
 
-        it('should have a deposit date datepicker', async function() {
-          await expect(driversPage.depositDateDatepicker.isDisplayed()).toBe(true);
-        });
+      it('should have a deposit date datepicker', async function() {
+        await expect(driversPage.depositDateDatepicker.isDisplayed()).toBe(true);
+      });
 
-        it('should have a deposit comment input', async function() {
-          await expect(driversPage.depositCommentInput.isDisplayed()).toBe(true);
-        });
+      it('should have a deposit comment input', async function() {
+        await expect(driversPage.depositCommentInput.isDisplayed()).toBe(true);
+      });
 
-        it('should have a submit button', async function() {
-          await expect(driversPage.submitButton.isDisplayed()).toBe(true);
-        });
+      it('should have a submit button', async function() {
+        await expect(driversPage.submitButton.isDisplayed()).toBe(true);
       });
 
       it('should fill the last name input', async function() {
