@@ -38,6 +38,13 @@ exports.config = {
   },
   baseUrl: 'https://dashboard-test.parkopoly.fr',
   onPrepare: async function() {
+    global.dataSpec = (data, spec) => {
+      const rs = Array.isArray(data) ? data : [data];
+
+      rs.forEach((r, idx) => {
+        test(r, idx + 1);
+      });
+    };
     /* Synchronization causes problem when using browser.get()
      * with AngularJS apps. It took me hours to figure that out.
      * It never ever occured to me that a GOOGLE PRODUCT
