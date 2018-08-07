@@ -154,7 +154,7 @@ describe('Parkopoly dashboard drivers page', function() {
       });
 
       it('should click the status dropdown menu', async function() {
-        await drivers.status.click();
+        await driversPage.status.click();
       });
 
       it('should select an option from the status dropdown', async function() {
