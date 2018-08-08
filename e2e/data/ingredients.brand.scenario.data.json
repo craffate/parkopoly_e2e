@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Renault PUD",
+    "color": "#ff8000",
+    "min": "1",
+    "logo": "renault",
+    "alias": "RRG Paris",
+    "missionType": ["PICKUP", "DELIVERY"]
+  },
+  {
+    "name": "Renault VN",
+    "color": "#ff8000",
+    "min": "1",
+    "logo": "renault",
+    "alias": "RRG Paris",
+    "missionType": null
+  },
+  {
+    "name": "PSA IS",
+    "color": "#0080ff",
+    "min": "1",
+    "logo": "psa",
+    "alias": "PSA",
+    "missionType": null
+  },
+  {
+    "name": "DS PUDE",
+    "color": "#b2b2b2",
+    "min": "24",
+    "logo": "ds",
+    "alias": "RRG Paris",
+    "missionType": null
+  },
+  {
+    "name": "Peugeot PUDE",
+    "color": "#0080ff",
+    "min": "24",
+    "logo": "peugeot",
+    "alias": "Peugeot",
+    "missionType": null
+  }
+]
