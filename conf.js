@@ -1,12 +1,10 @@
 const reporters = require('jasmine-reporters');
-const htmlReporter = require('protractor-jasmine2-html-reporter');
+const htmlReporter = require('protractor-beautiful-reporter');
 const helpers = require('./e2e/helpers');
 
 exports.config = {
   SELENIUM_PROMISE_MANAGER: false,
   rootElement: 'html',
-  seleniumServerJar: './bin/selenium-server-standalone-3.12.0.jar',
-  seleniumPort: '4444',
   seleniumAddress: 'http://localhost:4444/wd/hub',
   framework: 'jasmine2',
   directConnect: false,
@@ -54,22 +52,17 @@ exports.config = {
      * could fail miserably when doing so.
      */
     const EC = protractor.ExpectedConditions;
-    browser.waitForAngularEnabled(false);
+    await browser.waitForAngularEnabled(false);
     await jasmine.getEnv().addReporter(new reporters.TerminalReporter({
       verbosity: 3,
       color: true,
       showStack: false
     }));
-    await jasmine.getEnv().addReporter(new reporters.JUnitXmlReporter({
-      savePath: 'reports/xml',
-      consolidateAll: false
-    }));
     await jasmine.getEnv().addReporter(new htmlReporter({
-      savePath: 'reports/html',
-      screenshotFolder: 'screenshots',
-      takeScreenshots: true,
-      consolidateAll: false
-    }));
+      baseDirectory: 'reports/html',
+      screenshotsSubfolder: 'screenshots',
+      jsonsSubfolder: 'json'
+    }).getJasmine2Reporter());
     await browser.driver.manage().deleteAllCookies(); 
     await browser.get('/#/login');
     await browser.executeScript('window.localStorage.clear();');
