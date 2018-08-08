@@ -1,6 +1,4 @@
 module.exports = function() {
-  this.values = {name: null, expiry: null, salary: null, salaryAdd: null};
-
   this.searchbar = element(by.model('bookingCodeFormCtrl.selectedObject'));
   this.searchbarInput = this.searchbar.element(by.model('$select.search'));
   this.searchbarDropdown = this.searchbar.element(by.repeater('object in $select.items'));

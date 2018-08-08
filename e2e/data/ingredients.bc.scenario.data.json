@@ -1,0 +1,26 @@
+[
+  {
+    "name": "dfl",
+    "expiry": "01/01/2020",
+    "salary": "1",
+    "salaryAdd": "0"
+  },
+  {
+    "name": "f100",
+    "expiry": "01/01/2020",
+    "salary": "100",
+    "salaryAdd": "0"
+  },
+  {
+    "name": "equal1000",
+    "expiry": "01/01/2020",
+    "salary": "0",
+    "salaryAdd": "1000"
+  },
+  {
+    "name": "obsolete",
+    "expiry": "01/01/2017",
+    "salary": "0",
+    "salaryAdd": "10"
+  }
+]
