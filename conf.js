@@ -59,9 +59,13 @@ exports.config = {
       showStack: false
     }));
     await jasmine.getEnv().addReporter(new htmlReporter({
-      baseDirectory: 'reports/html',
+      baseDirectory: 'reports',
       screenshotsSubfolder: 'screenshots',
-      jsonsSubfolder: 'json'
+      jsonsSubfolder: 'json',
+      docName: `${Date.now()}.html`,
+      docTitle: 'Parkopoly E2E tests report',
+      preserveDirectory: false,
+      gatherBrowserLogs: true
     }).getJasmine2Reporter());
     await browser.driver.manage().deleteAllCookies(); 
     await browser.get('/#/login');
