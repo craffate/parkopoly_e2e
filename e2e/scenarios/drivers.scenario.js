@@ -72,8 +72,8 @@ describe('Drivers', function() {
       });
 
       it('should submit the form', async function() {
-        await driverLille.submitButton.click();
-        await helpers.waitForNo(driverLille.createDriverDialog, 5000,
+        await driversPage.submitButton.click();
+        await helpers.waitForNo(driversPage.createDriverDialog, 5000,
           'Couldn\'t close the creation form dialog');
       });
     });
