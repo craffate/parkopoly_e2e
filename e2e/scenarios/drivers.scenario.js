@@ -1,63 +1,9 @@
 const helpers = require('../helpers');
 const DriversPageObject = require('../page_objects/drivers.pageObject');
+const specData = require('../data/drivers.scenario.data.json');
 
 describe('Drivers', function() {
-  debugger;
   driversPage = new DriversPageObject();
-
-  driverLille = new DriversPageObject();
-  driverLille.values.lname = 'Driver';
-  driverLille.values.fname = 'Lille';
-  driverLille.values.email = 'driver_lille' + browser.params.ts + '@parkopoly.fr';
-  driverLille.values.address = 'Lille, France';
-  driverLille.values.phone = '0101010101';
-  driverLille.values.status = 'ACTIVE';
-  driverLille.values.badges = [];
-  driverLille.values.points = '0';
-  driverLille.values.occupation = 'SELF_EMPLOYED';
-  driverLille.values.uniform = 'White shirt, black pants';
-  driverLille.values.comment = 'Thinks the Earth is flat';
-  driverLille.values.unpaid = true;
-  driverLille.values.vat = false;
-  driverLille.values.deposit = '500';
-  driverLille.values.depositDate = '01/01/2018';
-  driverLille.values.depositComment = 'There is no spoon';
-
-  driverParisDS = new DriversPageObject();
-  driverParisDS.values.lname = 'Driver';
-  driverParisDS.values.fname = 'Paris DS';
-  driverParisDS.values.email = 'driver_paris_ds_pude' + browser.params.ts + '@parkopoly.fr';
-  driverParisDS.values.address = '130 Rue de Lourmel';
-  driverParisDS.values.phone = '0101010101';
-  driverParisDS.values.status = 'ACTIVE';
-  driverParisDS.values.badges = ['DS'];
-  driverParisDS.values.points = '0';
-  driverParisDS.values.occupation = 'SELF_EMPLOYED';
-  driverParisDS.values.uniform = 'White shirt, black pants';
-  driverParisDS.values.comment = 'Used to be a Shaolin monk';
-  driverParisDS.values.unpaid = true;
-  driverParisDS.values.vat = false;
-  driverParisDS.values.deposit = '1500';
-  driverParisDS.values.depositDate = '12/04/2018';
-  driverParisDS.values.depositComment = 'Fear is the path to the dark side';
-
-  driverParisRenault = new DriversPageObject();
-  driverParisRenault.values.lname = 'Driver';
-  driverParisRenault.values.fname = 'Paris Renault';
-  driverParisRenault.values.email = 'driver_paris_vn_renault' + browser.params.ts + '@parkopoly.fr';
-  driverParisRenault.values.address = '130 Rue de Lourmel';
-  driverParisRenault.values.phone = '0101010101';
-  driverParisRenault.values.status = 'ACTIVE';
-  driverParisRenault.values.badges = ['Renault'];
-  driverParisRenault.values.points = '0';
-  driverParisRenault.values.occupation = 'SELF_EMPLOYED';
-  driverParisRenault.values.uniform = 'White shirt, black pants';
-  driverParisRenault.values.comment = 'Can\'t count past 34';
-  driverParisRenault.values.unpaid = true;
-  driverParisRenault.values.vat = false;
-  driverParisRenault.values.deposit = '1500';
-  driverParisRenault.values.depositDate = '28/01/2018';
-  driverParisRenault.values.depositComment = 'UNLIMITED POWER!';
 
   driverParisAll = new DriversPageObject();
   driverParisAll.values.lname = 'Driver';
@@ -81,157 +27,55 @@ describe('Drivers', function() {
     await driversPage.get();
   });
 
-  describe('driverLille', function() {
-    it('should open the driver creation dialog', async function() {
-      await driverLille.createDriverButton.click();
-      await helpers.waitFor(driverLille.createDriverDialog, 5000,
-      'Couldn\'t open the creation form dialog');
-    });
+  dataSpec(specData, (data, iteration) => {
+    describe(`Create ${data.lname} ${data.fname} driver`, function() {
+      it('should open the driver creation dialog', async function() {
+        await driversPage.createDriverButton.click();
+        await helpers.waitFor(driversPage.createDriverDialog, 5000,
+          'Couldn\'t open the creation form dialog');
+      });
 
-    it('should fill the form', async function() {
-      await driverLille.lastNameInput.sendKeys(driverLille.values.lname);
-      await driverLille.firstNameInput.sendKeys(driverLille.values.fname);
-      await driverLille.emailInput.sendKeys(driverLille.values.email);
-      await driverLille.addressInput.sendKeys(driverLille.values.address);
-      await driverLille.telInput.sendKeys(driverLille.values.phone);
-      await driverLille.status.click();
-      driverLille.values.status = await helpers.getFromNonMaterialDropdown(
-        driverLille.values.status, 'status', driverLille.statusDropdownAll);
-      await driverLille.values.status[0].click();
-      await driverLille.badgeSelectAllButton.click();
-      await driverLille.pointsInput.sendKeys(driverLille.values.points);
-      await driverLille.occupation.click();
-      driverLille.values.occupation = await helpers.getFromNonMaterialDropdown(
-        driverLille.values.occupation, 'p', driverLille.occupationDropdownAll);
-      await driverLille.values.occupation[0].click();
-      await driverLille.equipmentInput.sendKeys(driverLille.values.uniform);
-      await driverLille.commentInput.sendKeys(driverLille.values.comment);
-      await helpers.switchCheckbox(driverLille.unpaidSwitch, driverLille.values.unpaid);
-      await helpers.switchCheckbox(driverLille.vatSwitch, driverLille.values.vat);
-      await driverLille.depositInput.sendKeys(driverLille.values.deposit);
-      await driverLille.depositDateInput.sendKeys(driverLille.values.depositDate);
-      await driverLille.depositCommentInput.sendKeys(driverLille.values.depositComment);
-    });
+      it('should fill the form', async function() {
+        await driversPage.lastNameInput.sendKeys(data.lname);
+        await driversPage.firstNameInput.sendKeys(data.fname);
+        await driversPage.emailInput.sendKeys(data.email);
+        await driversPage.addressInput.sendKeys(data.address);
+        await driversPage.telInput.sendKeys(data.phone);
+        await driversPage.status.click();
+        data.status = await helpers.getFromNonMaterialDropdown(
+          data.status, 'status', driversPage.statusDropdownAll);
+        await data.status[0].click();
 
-    it('should submit the form', async function() {
-      await driverLille.submitButton.click();
-      await helpers.waitForNo(driverLille.createDriverDialog, 5000,
-      'Couldn\'t close the creation form dialog');
-    });
-  });
+        if (data.badges !== null) {
+          await helpers.asyncForEach(data.badges, async (s) => {
+            let el;
 
-  describe('driverParis_DS-PUDE', function() {
-    it('should open the driver creation dialog', async function() {
-      await driverParisDS.createDriverButton.click();
-      await helpers.waitFor(driverParisDS.createDriverDialog, 5000,
-      'Couldn\'t open the creation form dialog');
-    });
+            el = await helpers.getFromDropdown(s, driversPage.badgeDropdownAll);
+            await driversPage.badge.click();
+            await helpers.scrollIntoView(el);
+            await el.click();
+          });
+        };
 
-    it('should fill the form', async function() {
-      await driverParisDS.lastNameInput.sendKeys(driverParisDS.values.lname);
-      await driverParisDS.firstNameInput.sendKeys(driverParisDS.values.fname);
-      await driverParisDS.emailInput.sendKeys(driverParisDS.values.email);
-      await driverParisDS.addressInput.sendKeys(driverParisDS.values.address);
-      await driverParisDS.telInput.sendKeys(driverParisDS.values.phone);
-      driverParisDS.values.status = await helpers.getFromNonMaterialDropdown(
-        driverParisDS.values.status, 'status', driverParisDS.statusDropdownAll);
-      await driverParisDS.values.status[0].click();
-      await driverParisDS.badgeSelectAllButton.click();
-      await driverParisDS.pointsInput.sendKeys(driverParisDS.values.points);
-      await driverParisDS.occupation.click();
-      driverParisDS.values.occupation = await helpers.getFromNonMaterialDropdown(
-        driverParisDS.values.occupation, 'p', driverParisDS.occupationDropdownAll);
-      await driverParisDS.values.occupation[0].click();
-      await driverParisDS.equipmentInput.sendKeys(driverParisDS.values.uniform);
-      await driverParisDS.commentInput.sendKeys(driverParisDS.values.comment);
-      await helpers.switchCheckbox(driverParisDS.unpaidSwitch, driverParisDS.values.unpaid);
-      await helpers.switchCheckbox(driverParisDS.vatSwitch, driverParisDS.values.vat);
-      await driverParisDS.depositInput.sendKeys(driverParisDS.values.deposit);
-      await driverParisDS.depositDateInput.sendKeys(driverParisDS.values.depositDate);
-      await driverParisDS.depositCommentInput.sendKeys(driverParisDS.values.depositComment);
-    });
+        await driversPage.pointsInput.sendKeys(data.points);
+        await driversPage.occupation.click();
+        data.occupation = await helpers.getFromNonMaterialDropdown(
+          data.occupation, 'p', driversPage.occupationDropdownAll);
+        await data.occupation[0].click();
+        await driversPage.equipmentInput.sendKeys(datauniform);
+        await driversPage.commentInput.sendKeys(data.comment);
+        await helpers.switchCheckbox(driversPage.unpaidSwitch, data.unpaid);
+        await helpers.switchCheckbox(driversPage.vatSwitch, data.vat);
+        await driversPage.depositInput.sendKeys(data.deposit);
+        await driversPage.depositDateInput.sendKeys(data.depositDate);
+        await driversPage.depositCommentInput.sendKeys(data.depositComment);
+      });
 
-    it('should submit the form', async function() {
-      await driverParisDS.submitButton.click();
-      await helpers.waitForNo(driverParisDS.createDriverDialog, 5000,
-      'Couldn\'t close the creation form dialog');
-    });
-  });
-
-  describe('driverParis_Renault-VN', function() {
-    it('should open the driver creation dialog', async function() {
-      await driverParisRenault.createDriverButton.click();
-      await helpers.waitFor(driverParisRenault.createDriverDialog, 5000,
-      'Couldn\'t open the creation form dialog');
-    });
-
-    it('should fill the form', async function() {
-      await driverParisRenault.lastNameInput.sendKeys(driverParisRenault.values.lname);
-      await driverParisRenault.firstNameInput.sendKeys(driverParisRenault.values.fname);
-      await driverParisRenault.emailInput.sendKeys(driverParisRenault.values.email);
-      await driverParisRenault.addressInput.sendKeys(driverParisRenault.values.address);
-      await driverParisRenault.telInput.sendKeys(driverParisRenault.values.phone);
-      driverParisRenault.values.status = await helpers.getFromNonMaterialDropdown(
-        driverParisRenault.values.status, 'status', driverParisRenault.statusDropdownAll);
-      await driverParisRenault.values.status[0].click();
-      await driverParisRenault.badgeInput.sendKeys(driverParisRenault.values.badge[0]);
-      await driverParisRenault.badgeSelectAllButton.click();
-      await driverParisRenault.pointsInput.sendKeys(driverParisRenault.values.points);
-      await driverParisRenault.occupation.click();
-      driverParisRenault.values.occupation = await helpers.getFromNonMaterialDropdown(
-        driverParisRenault.values.occupation, 'p', driverParisRenault.occupationDropdownAll);
-      await driverParisRenault.values.occupation[0].click();
-      await driverParisRenault.equipmentInput.sendKeys(driverParisRenault.values.uniform);
-      await driverParisRenault.commentInput.sendKeys(driverParisRenault.values.comment);
-      await helpers.switchCheckbox(driverParisRenault.unpaidSwitch, driverParisRenault.values.unpaid);
-      await helpers.switchCheckbox(driverParisRenault.vatSwitch, driverParisRenault.values.vat);
-      await driverParisRenault.depositInput.sendKeys(driverParisRenault.values.deposit);
-      await driverParisRenault.depositDateInput.sendKeys(driverParisRenault.values.depositDate);
-      await driverParisRenault.depositCommentInput.sendKeys(driverParisRenault.values.depositComment);
-    });
-
-    it('should submit the form', async function() {
-      await driverParisRenault.submitButton.click();
-      await helpers.waitForNo(driverParisRenault.createDriverDialog, 5000,
-      'Couldn\'t close the creation form dialog');
-    });
-  });
-
-  describe('driverParis_All', function() {
-    it('should open the driver creation dialog', async function() {
-      await driverParisAll.createDriverButton.click();
-      await helpers.waitFor(driverParisAll.createDriverDialog, 5000,
-      'Couldn\'t open the creation form dialog');
-    });
-
-    it('should fill the form', async function() {
-      await driverParisAll.lastNameInput.sendKeys(driverParisAll.values.lname);
-      await driverParisAll.firstNameInput.sendKeys(driverParisAll.values.fname);
-      await driverParisAll.emailInput.sendKeys(driverParisAll.values.email);
-      await driverParisAll.addressInput.sendKeys(driverParisAll.values.address);
-      await driverParisAll.telInput.sendKeys(driverParisAll.values.phone);
-      driverParisAll.values.status = await helpers.getFromNonMaterialDropdown(
-        driverParisAll.values.status, 'status', driverParisAll.statusDropdownAll);
-      await driverParisRenault.values.status[0].click();
-      await driverParisAll.badgeSelectAllButton.click();
-      await driverParisAll.pointsInput.sendKeys(driverParisAll.values.points);
-      await driverParisAll.occupation.click();
-      driverParisAll.values.occupation = await helpers.getFromNonMaterialDropdown(
-        driverParisAll.values.occupation, 'p', driverParisAll.occupationDropdownAll);
-      await driverParisAll.values.occupation[0].click();
-      await driverParisAll.equipmentInput.sendKeys(driverParisAll.values.uniform);
-      await driverParisAll.commentInput.sendKeys(driverParisAll.values.comment);
-      await helpers.switchCheckbox(driverParisAll.unpaidSwitch, driverParisAll.values.unpaid);
-      await helpers.switchCheckbox(driverParisAll.vatSwitch, driverParisAll.values.vat);
-      await driverParisAll.depositInput.sendKeys(driverParisAll.values.deposit);
-      await driverParisAll.depositDateInput.sendKeys(driverParisAll.values.depositDate);
-      await driverParisAll.depositCommentInput.sendKeys(driverParisAll.values.depositComment);
-    });
-
-    it('should submit the form', async function() {
-      await driverParisAll.submitButton.click();
-      await helpers.waitForNo(driverParisAll.createDriverDialog, 5000,
-      'Couldn\'t close the creation form dialog');
+      it('should submit the form', async function() {
+        await driverLille.submitButton.click();
+        await helpers.waitForNo(driverLille.createDriverDialog, 5000,
+          'Couldn\'t close the creation form dialog');
+      });
     });
   });
 });

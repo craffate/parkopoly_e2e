@@ -1,23 +1,6 @@
 const helpers = require('../helpers');
 
 module.exports = function() {
-  this.values = {lname: null,
-  fname: null,
-  email: null,
-  address: null,
-  phone: null,
-  status: null,
-  badges: null,
-  points: null,
-  occupation: null,
-  uniform: null,
-  comment: null,
-  unpaid: null,
-  vat: null,
-  deposit: null,
-  depositDate: null,
-  depositComment: null};
-
   this.url = '/#/drivers';
   this.searchInput = element(by.model('driversCtrl.search'));
   this.createDriverButton = $('button[ng-click="driversCtrl.createDriver()"]');
@@ -29,7 +12,7 @@ module.exports = function() {
   this.telInput = element(by.model('cdCtrl.newDriver.phoneNumber'));
   this.status = element(by.model('cdCtrl.newDriver.statusEnum'));
   this.statusDropdownAll = element.all(by.repeater('status in $select.items'));
-  this.badge = element(by.model('cdCtrl.newDriver.badgeDtoSet'));
+  this.badge = element(by.id('badges'));
   this.badgeInput = this.badge.$('input');
   this.badgeDropdownAll = element.all(by.repeater('item in $select.items'));
   this.badgeSelectAllButton = element(by.id('badges')).element(by.id('selectAllButton'));
