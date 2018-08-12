@@ -5,24 +5,6 @@ const specData = require('../data/drivers.scenario.data.json');
 describe('Drivers', function() {
   driversPage = new DriversPageObject();
 
-  driverParisAll = new DriversPageObject();
-  driverParisAll.values.lname = 'Driver';
-  driverParisAll.values.fname = 'Paris All';
-  driverParisAll.values.email = 'driver_paris_all' + browser.params.ts + '@parkopoly.fr';
-  driverParisAll.values.address = '130 Rue de Lourmel';
-  driverParisAll.values.phone = '0101010101';
-  driverParisAll.values.status = 'ACTIVE';
-  driverParisAll.values.badges = [];
-  driverParisAll.values.points = '0';
-  driverParisAll.values.occupation = 'SELF_EMPLOYED';
-  driverParisAll.values.uniform = 'White shirt, black pants';
-  driverParisAll.values.comment = 'Likes blue berries';
-  driverParisAll.values.unpaid = true;
-  driverParisAll.values.vat = false;
-  driverParisAll.values.deposit = '1500';
-  driverParisAll.values.depositDate = '28/01/2018';
-  driverParisAll.values.depositComment = 'It\'s over Anakin! I have the high ground!';
-
   beforeAll(async function() {
     await driversPage.get();
   });
