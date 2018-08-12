@@ -6,7 +6,7 @@ exports.config = {
   SELENIUM_PROMISE_MANAGER: false,
   rootElement: 'html',
   seleniumAddress: 'http://localhost:4444/wd/hub',
-  framework: 'jasmine2',
+  framework: 'jasmine',
   directConnect: false,
   specs: ['./e2e/**/*.spec.js'],
   suites: {
@@ -16,10 +16,12 @@ exports.config = {
   jasmineNodeOpts: {
     isVerbose: true,
     defaultTimeoutInterval: 120000,
-    print: function() {}
+    print: () => {}
   },
   capabilities: {
     browserName: 'chrome',
+    shardTestFiles: true,
+    maxInstances: 3,
     chromeOptions: {
       args: ['--disable-extensions', '--show-fps-counter=true',
       '--disable-infobars', '--incognito', '--disable-gpu',
@@ -28,7 +30,6 @@ exports.config = {
   },
   params: {
     ts: Date.now(),
-    env: 'test',
     login: {
       usr: process.env.USR_E2E,
       pwd: process.env.PWD_E2E
