@@ -1,6 +1,4 @@
 module.exports = function() {
-  this.values = {name: null, path: null};
-
   this.searchbar = element(by.model('logoFormCtrl.selectedObject'));
   this.searchbarInput = element(by.model('$select.search'));
   this.searchbarDropdown = element(by.repeater('object in $select.items'));
