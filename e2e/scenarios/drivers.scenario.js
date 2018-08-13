@@ -3,7 +3,7 @@ const DriversPageObject = require('../page_objects/drivers.pageObject');
 const specData = require('../data/drivers.scenario.data.json');
 
 describe('Drivers', function() {
-  driversPage = new DriversPageObject();
+  const driversPage = new DriversPageObject();
 
   beforeAll(async function() {
     await driversPage.get();
