@@ -1,0 +1,30 @@
+[
+  {
+    "lname": "Manager",
+    "fname": "Renault",
+    "brandFilter": ["RRG", "DS"],
+    "email": "manager_renault@e2e.com",
+    "company": "Renault",
+    "function": "Manager",
+    "status": "USER_MANAGER",
+    "accountable": true,
+    "quickbook": true,
+    "password": "Renault@123",
+    "penalty": true,
+    "alert": true
+  },
+  {
+    "lname": "Manager",
+    "fname": "PSA",
+    "brandFilter": ["PSA"],
+    "email": "manager_PSA@e2e.com",
+    "company": "PSA",
+    "function": "Manager",
+    "status": "USER_MANAGER",
+    "accountable": true,
+    "quickbook": true,
+    "password": "Psa@123",
+    "penalty": true,
+    "alert": true
+  }
+]

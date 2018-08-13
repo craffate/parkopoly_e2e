@@ -1,15 +1,6 @@
 const helpers = require('../helpers');
 
 module.exports = function() {
-  this.values = {lname: null,
-    fname: null,
-    brandFilter: null,
-    pointFilter: null,
-    email: null,
-    company: null,
-    function: null,
-    password: null};
-
   this.url = '/#/users';
   this.searchbar = element(by.model('userListCtrl.search'));
   this.createUserButton = $('[ng-click="userListCtrl.createUser()"]');
@@ -22,6 +13,7 @@ module.exports = function() {
   this.passwordInput = element(by.model('createUserCtrl.userModel.password'));
   this.roleRadioGroup = element(by.model('createUserCtrl.userModel.role'));
   this.brandInput = element(by.model('$select.search'));
+  this.brandDropdownAll = element.all(by.repeater('item in $select.items'));
   this.selectAllButton = element(by.id('selectAllButton'));
   this.managerRadio = this.roleRadioGroup.$('[value="USER_MANAGER"]');
   this.userRadio = this.roleRadioGroup.$('[value="USER"]');
