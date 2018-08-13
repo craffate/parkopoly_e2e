@@ -1,0 +1,93 @@
+[
+  {
+    "name": "CGVRenault",
+    "path": null,
+    "alertNoUpload": false,
+    "encrypt": false,
+    "dispWebAppAfter": false,
+    "dispWebApp": true,
+    "quality": false,
+    "brands": ["Renault"],
+    "missionFilter": ["PICKUP", "DELIVERY", "EXPRESS"],
+    "optionFilter": null,
+    "bc": ["Renault"]
+  },
+  {
+    "name": "Ordre Reparation",
+    "path": null,
+    "alertNoUpload": false,
+    "encrypt": false,
+    "dispWebAppAfter": false,
+    "dispWebApp": true,
+    "quality": false,
+    "brands": ["Renault", "DS"],
+    "missionFilter": ["PICKUP", "DELIVERY", "EXPRESS"],
+    "optionFilter": ["PUD_VR", "DEFAULT"],
+    "bc": ["Renault", "DS"]
+  },
+  {
+    "name": "Contrat Pret",
+    "path": null,
+    "alertNoUpload": false,
+    "encrypt": false,
+    "dispWebAppAfter": false,
+    "dispWebApp": true,
+    "quality": false,
+    "brands": ["Renault", "DS"],
+    "missionFilter": ["PICKUP"],
+    "optionFilter": ["PU_VR"],
+    "bc": ["Renault", "DS"]
+  },
+  {
+    "name": "Permis",
+    "path": null,
+    "alertNoUpload": false,
+    "encrypt": false,
+    "dispWebAppAfter": true,
+    "dispWebApp": false,
+    "quality": false,
+    "brands": ["Renault", "DS"],
+    "missionFilter": ["PICKUP"],
+    "optionFilter": ["PU_VR"],
+    "bc": ["Renault", "DS"]
+  },
+  {
+    "name": "VN Concession",
+    "path": null,
+    "alertNoUpload": false,
+    "encrypt": false,
+    "dispWebAppAfter": true,
+    "dispWebApp": false,
+    "quality": false,
+    "brands": null,
+    "missionFilter": ["VN_DELIVERY"],
+    "optionFilter": null,
+    "bc": null
+  },
+  {
+    "name": "CGVDS",
+    "path": null,
+    "alertNoUpload": false,
+    "encrypt": false,
+    "dispWebAppAfter": false,
+    "dispWebApp": true,
+    "quality": false,
+    "brands": ["DS"],
+    "missionFilter": ["PICKUP", "DELIVERY", "EXPRESS"],
+    "optionFilter": null,
+    "bc": ["DS"]
+  },
+  {
+    "name": "CGVPeugeot",
+    "path": null,
+    "alertNoUpload": false,
+    "encrypt": false,
+    "dispWebAppAfter": false,
+    "dispWebApp": true,
+    "quality": false,
+    "brands": ["Peugeot"],
+    "missionFilter": ["PICKUP", "DELIVERY", "EXPRESS"],
+    "optionFilter": null,
+    "bc": ["Peugeot"]
+  }
+]
