@@ -1,0 +1,16 @@
+[
+  {
+    "name": "cancel48hMissionPrice",
+    "factor": "1",
+    "price": null,
+    "delay": "48",
+    "type": null
+  },
+  {
+    "name": "waiting20m5e",
+    "factor": null,
+    "price": "5",
+    "delay": "0.33",
+    "type": null
+  }
+]

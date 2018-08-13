@@ -1,102 +1,44 @@
 const helpers = require('../helpers');
 const IngredientsPageObject = require('../page_objects/ingredients.pageObject');
 const PenaltyPageObject = require('../page_objects/ingredients.penalty.pageObject');
+const specData = require('../data/ingredients.penalty.scenario.data.json');
 
 describe('Penalties', function() {
-  DashboardIngredients = new IngredientsPageObject();
-
-  cancel48hMissionPrice = new PenaltyPageObject();
-  cancel48hMissionPrice.values.name = 'cancel48hMissionPrice ' + browser.params.ts;
-  cancel48hMissionPrice.values.factor = '1';
-  cancel48hMissionPrice.values.delay = '48';
-
-  cancel1hMissionPrice = new PenaltyPageObject();
-  cancel1hMissionPrice.values.name = 'cancel1hMissionPrice ' + browser.params.ts;
-  cancel1hMissionPrice.values.factor = '1';
-  cancel1hMissionPrice.values.delay = '1';
-
-  waiting20m5e = new PenaltyPageObject();
-  waiting20m5e.values.name = 'waiting20m5e ' + browser.params.ts;
-  waiting20m5e.values.price = '5';
-  waiting20m5e.values.delay = '0.33';
+  const DashboardIngredients = new IngredientsPageObject();
+  const penaltyPage = new PenaltyPageObject();
 
   beforeAll(async function() {
     await DashboardIngredients.get();
     await helpers.waitForSpinner();
+    await DashboardIngredients.searchbar.click();
+    await DashboardIngredients.searchbarDropdownPenalty.click();
   });
 
-  describe('Create cancel48hMissionPrice penalty', function() {
-    it('should select the penalty option from the searchbar', async function() {
-      await DashboardIngredients.searchbar.click();
-      await DashboardIngredients.searchbarDropdownPenalty.click();
-    });
+  dataSpec(specData, (data, iteration) => {
+    describe(`Create ${data.name} penalty`, function() {
+      it('should select the mission type', async function() {
+        await penaltyPage.type.click();
+        let el = await helpers.getFromDropdown('CANCEL', penaltyPage.typeDropdownAll);
+        await el[0].click();
+      });
 
-    it('should select the mission type', async function() {
-      await cancel48hMissionPrice.type.click();
-      let el = await helpers.getFromDropdown('CANCEL', cancel48hMissionPrice.typeDropdownAll);
-      await el[0].click();
-    });
+      it('should fill the penalty form', async function() {
+        await penaltyPage.nameInput.clear().sendKeys(data.name);
+        await helpers.checkCheckbox(penaltyPage.priceFactorCheckbox);
 
-    it('should fill the penalty form', async function() {
-      await cancel48hMissionPrice.nameInput.clear().sendKeys(cancel48hMissionPrice.values.name);
-      await helpers.checkCheckbox(cancel48hMissionPrice.priceFactorCheckbox);
-      await cancel48hMissionPrice.priceFactorInput.clear().sendKeys(cancel48hMissionPrice.values.factor);
-      await cancel48hMissionPrice.delayInput.clear().sendKeys(cancel48hMissionPrice.values.delay);
-    });
+        if (data.factor !== null) {
+          await penaltyPage.priceFactorInput.clear().sendKeys(data.factor);
+        }
 
-    it('should submit the form', async function() {
-      await DashboardIngredients.submitButton.click();
-      await helpers.waitForToast();
-    });
-  });
+        if (data.price !== null) {
+          await penaltyPage.priceInput.clear().sendKeys(data.price);
+        }
+      });
 
-  describe('Create cancel1hMissionPrice penalty', function() {
-    it('should select the penalty option from the searchbar', async function() {
-      await DashboardIngredients.searchbar.click();
-      await DashboardIngredients.searchbarDropdownPenalty.click();
-    });
-
-    it('should select the mission type', async function() {
-      await cancel1hMissionPrice.type.click();
-      let el = await helpers.getFromDropdown('CANCEL', cancel1hMissionPrice.typeDropdownAll);
-      await el[0].click();
-    });
-
-    it('should fill the penalty form', async function() {
-      await cancel1hMissionPrice.nameInput.clear().sendKeys(cancel1hMissionPrice.values.name);
-      await helpers.checkCheckbox(cancel1hMissionPrice.priceFactorCheckbox);
-      await cancel1hMissionPrice.priceFactorInput.clear().sendKeys(cancel1hMissionPrice.values.factor);
-      await cancel1hMissionPrice.delayInput.clear().sendKeys(cancel1hMissionPrice.values.delay);
-    });
-
-    it('should submit the form', async function() {
-      await DashboardIngredients.submitButton.click();
-      await helpers.waitForToast();
-    });
-  });
-
-  describe('Create waiting20m5e penalty', function() {
-    it('should select the penalty option from the searchbar', async function() {
-      await DashboardIngredients.searchbar.click();
-      await DashboardIngredients.searchbarDropdownPenalty.click();
-    });
-
-    it('should select the mission type', async function() {
-      await waiting20m5e.type.click();
-      let el = await helpers.getFromDropdown('CANCEL', waiting20m5e.typeDropdownAll);
-      await el[0].click();
-    });
-
-    it('should fill the penalty form', async function() {
-      await waiting20m5e.nameInput.clear().sendKeys(waiting20m5e.values.name);
-      await helpers.uncheckCheckbox(waiting20m5e.priceFactorCheckbox);
-      await waiting20m5e.priceInput.clear().sendKeys(waiting20m5e.values.price);
-      await waiting20m5e.delayInput.clear().sendKeys(waiting20m5e.values.delay);
-    });
-
-    it('should submit the form', async function() {
-      await DashboardIngredients.submitButton.click();
-      await helpers.waitForToast();
+      it('should submit the form', async function() {
+        await DashboardIngredients.submitButton.click();
+        await helpers.waitForToast();
+      });
     });
   });
 });
