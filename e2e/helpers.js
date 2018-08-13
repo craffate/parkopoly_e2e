@@ -8,25 +8,36 @@ module.exports = {
       return regex.test(currUrl);
     }, t, 'Couldn\'t reach ' + url + ' in less than ' + t + 'ms');
   },
+
+  asyncForEach: async function(arr, callback) {
+    for (let idx = 0; idx < arr.length; idx++) {
+      await callback(arr[idx], idx, arr);
+    }
+  },
+
   getRandomInt: function(max) {
     return Math.floor(Math.random() * Math.floor(max));
   },
+
   checkCheckbox: async function(checkbox) {
     if (await checkbox.getAttribute('aria-checked') === 'false') {
       return checkbox.click();
     }
   },
+
   uncheckCheckbox: async function(checkbox) {
     if (await checkbox.getAttribute('aria-checked') === 'true') {
       return checkbox.click();
     }
   },
+
   switchCheckbox: async function(checkbox, b) {
     const state = await (/true/).test(await checkbox.getAttribute('aria-checked'));
     if (state !== b) {
       return checkbox.click();
     }
   },
+
   getFromDropdown: async function(s, arr) {
     return arr.filter(function(el, idx) {
       return el.getAttribute('value').then(function(val) {
@@ -34,6 +45,7 @@ module.exports = {
       });
     });
   },
+
   getFromNonMaterialDropdown: async function(s, b, arr) {
     return arr.filter(function(el, idx) {
       return el.element(by.binding(b)).getText().then(function(val) {
@@ -41,38 +53,47 @@ module.exports = {
       });
     });
   },
+
   displayUpload: async function(fileInput) {
     return browser.executeScript('arguments[0].style.visibility = "visible"; arguments[0].style.display = "block";', fileInput);
   },
+
   uploadFile: async function(path, fileInput) {
     return fileInput.sendKeys(path);
   },
+
   scrollIntoView: async function(el) {
     const loc = await el.getLocation();
     return browser.executeScript('window.scrollTo(' + loc.x + ', ' + loc.y + ');');
   },
+
   waitForSpinner: async function() {
     const EC = protractor.ExpectedConditions;
     return browser.wait(EC.not(EC.visibilityOf($('spinner'))), 60000,
     'Page couldn\'t load in time');
   },
+
   waitForToast: async function() {
     const EC = protractor.ExpectedConditions;
     return browser.wait(EC.not(EC.visibilityOf($('md-toast'))), 60000,
     'Page couldn\'t load in time');
   },
+
   waitFor: async function(el, t, msg) {
     const EC = protractor.ExpectedConditions;
     return browser.wait(EC.presenceOf(el), t, msg);
   },
+
   waitForNo: async function(el, t, msg) {
     const EC = protractor.ExpectedConditions;
     return browser.wait(EC.not(EC.presenceOf(el)), t, msg);
   },
+
   waitForVisibility: async function(el, t, msg) {
     const EC = protractor.ExpectedConditions;
     return browser.wait(EC.visibilityOf(el), t, msg);
   },
+
   waitForNoVisibility: async function(el, t, msg) {
     const EC = protractor.ExpectedConditions;
     return browser.wait(EC.not(EC.visibilityOf(el)), t, msg);
