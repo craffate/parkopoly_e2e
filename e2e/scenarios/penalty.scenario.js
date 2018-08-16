@@ -16,14 +16,8 @@ describe('Penalties', function() {
 
   dataSpec(specData, (data, iteration) => {
     describe(`Create ${data.name} penalty`, function() {
-      it('should select the mission type', async function() {
-        await penaltyPage.type.click();
-        let el = await helpers.getFromDropdown('CANCEL', penaltyPage.typeDropdownAll);
-        await el[0].click();
-      });
-
       it('should fill the penalty form', async function() {
-        await penaltyPage.nameInput.clear().sendKeys(data.name);
+        await penaltyPage.nameInput.clear().sendKeys(data.name + TIMESTAMP);
         await helpers.checkCheckbox(penaltyPage.priceFactorCheckbox);
 
         if (data.factor !== null) {
@@ -33,6 +27,11 @@ describe('Penalties', function() {
         if (data.price !== null) {
           await penaltyPage.priceInput.clear().sendKeys(data.price);
         }
+
+        await penaltyPage.type.click();
+        const el = await helpers.getFromDropdown(data.type,
+          penaltyPage.typeDropdownAll);
+        await el[0].click();
       });
 
       it('should submit the form', async function() {

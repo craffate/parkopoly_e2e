@@ -17,7 +17,7 @@ describe('Badge', function() {
   dataSpec(specData, (data, iteration) => {
     describe(`Create ${data.name} badge`, function() {
       it('should fill the form', async function() {
-        await badgePage.nameInput.sendKeys(data.name + browser.params.ts);
+        await badgePage.nameInput.sendKeys(data.name + TIMESTAMP);
         await badgePage.model.click();
         await badgePage.modelInput.sendKeys(data.modelFilter);
         await badgePage.modelSelectAllButton.click();

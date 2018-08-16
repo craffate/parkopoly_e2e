@@ -21,7 +21,7 @@ describe('Users', function() {
       it('should fill the form', async function() {
         await usersPage.lnameInput.sendKeys(data.lname);
         await usersPage.fnameInput.sendKeys(data.fname);
-        await usersPage.emailInput.sendKeys(data.email + browser.params.ts);
+        await usersPage.emailInput.sendKeys(data.email + TIMESTAMP);
         await usersPage.companyInput.sendKeys(data.company);
         await usersPage.functionInput.sendKeys(data.function);
         await usersPage.passwordInput.sendKeys(data.password);

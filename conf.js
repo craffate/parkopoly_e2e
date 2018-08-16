@@ -10,6 +10,12 @@ exports.config = {
   directConnect: false,
   specs: ['./e2e/**/*.spec.js'],
   suites: {
+    brands: [
+      './e2e/scenarios/penalty.scenario.js',
+    //  './e2e/scenarios/bc.scenario.js',
+      './e2e/scenarios/logos.scenario.js',
+      './e2e/scenarios/brand.scenario.js'
+    ],
     cft: './e2e/cft/**/*.spec.js',
     scenarios: './e2e/scenarios/**/*.scenario.js'
   },
@@ -20,7 +26,7 @@ exports.config = {
   },
   capabilities: {
     browserName: 'chrome',
-    shardTestFiles: true,
+    shardTestFiles: false,
     maxInstances: 3,
     chromeOptions: {
       args: ['--disable-extensions', '--show-fps-counter=true',
@@ -29,7 +35,6 @@ exports.config = {
     }
   },
   params: {
-    ts: Date.now(),
     login: {
       usr: process.env.USR_E2E,
       pwd: process.env.PWD_E2E
@@ -37,6 +42,7 @@ exports.config = {
   },
   baseUrl: 'https://dashboard-test.parkopoly.fr',
   onPrepare: async function() {
+    global.TIMESTAMP = await Date.now();
     global.dataSpec = (data, spec) => {
       const rs = Array.isArray(data) ? data : [data];
 
@@ -69,7 +75,7 @@ exports.config = {
       gatherBrowserLogs: true
     }).getJasmine2Reporter());
     await browser.driver.manage().deleteAllCookies(); 
-    await browser.get('/#/login');
+    await browser.get('https://dashboard-test.parkopoly.fr/#/login');
     await browser.executeScript('window.localStorage.clear();');
     await browser.executeScript('window.sessionStorage.clear();');
     await browser.wait(EC.presenceOf($('[name="userForm"]')), 5000, 'Login form not found');
