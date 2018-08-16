@@ -1,10 +1,10 @@
 [
   {
     "name": "Renault",
-    "path": null
+    "path": "./resources/logos/renault.png"
   },
   {
     "name": "DS",
-    "path": null
+    "path": "./resources/logos/ds.png"
   }
 ]

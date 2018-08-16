@@ -1,3 +1,4 @@
+const path = require('path');
 const helpers = require('../helpers');
 const IngredientsPageObject = require('../page_objects/ingredients.pageObject');
 const LogoPageObject = require('../page_objects/ingredients.logo.pageObject');
@@ -21,7 +22,7 @@ describe('Logos', function() {
         await logosPage.searchbarDropdownAll.first().click();
         await helpers.displayUpload(logosPage.uploadButtonInput);
         await logosPage.nameInput.clear().sendKeys(data.name);
-        await helpers.uploadFile(data.path, logosPage.uploadButtonInput);
+        await helpers.uploadFile(path.resolve(data.path), logosPage.uploadButtonInput);
       });
 
       it('should submit the form', async function() {
