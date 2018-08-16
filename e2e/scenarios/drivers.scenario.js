@@ -44,7 +44,7 @@ describe('Drivers', function() {
         data.occupation = await helpers.getFromNonMaterialDropdown(
           data.occupation, 'p', driversPage.occupationDropdownAll);
         await data.occupation[0].click();
-        await driversPage.equipmentInput.sendKeys(datauniform);
+        await driversPage.equipmentInput.sendKeys(data.uniform);
         await driversPage.commentInput.sendKeys(data.comment);
         await helpers.switchCheckbox(driversPage.unpaidSwitch, data.unpaid);
         await helpers.switchCheckbox(driversPage.vatSwitch, data.vat);
