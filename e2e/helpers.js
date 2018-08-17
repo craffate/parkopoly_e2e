@@ -79,22 +79,26 @@ module.exports = {
     'Page couldn\'t load in time');
   },
 
-  waitFor: async function(el, t, msg) {
+  waitFor: async function(el, t = TIMEOUT,
+  msg = "Element was still absent after " + TIMEOUT + " milliseconds") {
     const EC = protractor.ExpectedConditions;
     return browser.wait(EC.presenceOf(el), t, msg);
   },
 
-  waitForNo: async function(el, t, msg) {
+  waitForNo: async function(el, t = TIMEOUT,
+  msg = "Element was still present after " + TIMEOUT + " milliseconds") {
     const EC = protractor.ExpectedConditions;
     return browser.wait(EC.not(EC.presenceOf(el)), t, msg);
   },
 
-  waitForVisibility: async function(el, t, msg) {
+  waitForVisibility: async function(el, t = TIMEOUT,
+  msg = "Element was still invisible after " + TIMEOUT + " milliseconds") {
     const EC = protractor.ExpectedConditions;
     return browser.wait(EC.visibilityOf(el), t, msg);
   },
 
-  waitForNoVisibility: async function(el, t, msg) {
+  waitForNoVisibility: async function(el, t = TIMEOUT,
+  msg = "Element was still visible after " + TIMEOUT + " milliseconds") {
     const EC = protractor.ExpectedConditions;
     return browser.wait(EC.not(EC.visibilityOf(el)), t, msg);
   }
