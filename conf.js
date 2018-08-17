@@ -31,7 +31,7 @@ exports.config = {
     chromeOptions: {
       args: ['--disable-extensions', '--show-fps-counter=true',
         '--disable-infobars', '--incognito', '--disable-gpu',
-        '--headless', '--start-maximized']
+        /*'--headless',*/ '--start-maximized']
     }
   },
   params: {
@@ -43,7 +43,9 @@ exports.config = {
   baseUrl: 'https://dashboard-test.parkopoly.fr',
   onPrepare: async function() {
     try {
+      browser.ignoreSynchronization = false;
       global.TIMESTAMP = await Date.now();
+      global.TIMEOUT = 15000;
       global.dataSpec = (data, spec) => {
         const rs = Array.isArray(data) ? data : [data];
 
@@ -68,7 +70,8 @@ exports.config = {
         gatherBrowserLogs: true
       }).getJasmine2Reporter());
 
-      await browser.get(browser.baseUrl + '/#/login');
+      await browser.driver.get(browser.baseUrl + '/#/login');
+      await helpers.waitForVisibility(browser.element(by.css('form[name="userForm"]')));
       await browser.driver.findElement(by.css('[type="email"]')).sendKeys(browser.params.login.usr);
       await browser.driver.findElement(by.css('[type="password"]')).sendKeys(browser.params.login.pwd);
       await browser.driver.findElement(by.css('[type="submit"]')).click();
