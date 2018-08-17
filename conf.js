@@ -31,7 +31,8 @@ exports.config = {
     chromeOptions: {
       args: ['--disable-extensions', '--show-fps-counter=true',
         '--disable-infobars', '--incognito', '--disable-gpu',
-        /*'--headless',*/ '--start-maximized']
+        '--headless', '--start-maximized',
+        '--disable-web-security', '--allow-running-insecure-content']
     }
   },
   params: {
