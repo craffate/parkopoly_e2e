@@ -76,10 +76,9 @@ exports.config = {
       await browser.driver.findElement(by.css('[type="email"]')).sendKeys(browser.params.login.usr);
       await browser.driver.findElement(by.css('[type="password"]')).sendKeys(browser.params.login.pwd);
       await browser.driver.findElement(by.css('[type="submit"]')).click();
+      return protractor.promise.fulfilled();
     } catch (err) {
       return protractor.promise.rejected(err);
-    } finally {
-      return protractor.promise.fulfilled();
     };
   }
 };
