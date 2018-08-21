@@ -31,8 +31,10 @@ exports.config = {
     chromeOptions: {
       args: ['--disable-extensions', '--show-fps-counter=true',
         '--disable-infobars', '--incognito', '--disable-gpu',
-        '--headless', '--start-maximized',
-        '--disable-web-security', '--allow-running-insecure-content']
+        /*'--headless',*/ '--start-maximized',
+        '--disable-web-security', '--allow-running-insecure-content',
+        '--allow-insecure-localhost', '--disable-browser-side-navigation',
+        '--reduce-security-for-testing']
     }
   },
   params: {
@@ -43,42 +45,38 @@ exports.config = {
   },
   baseUrl: 'https://dashboard-test.parkopoly.fr',
   onPrepare: async function() {
-    try {
-      browser.ignoreSynchronization = false;
-      global.TIMESTAMP = await Date.now();
-      global.TIMEOUT = 15000;
-      global.dataSpec = (data, spec) => {
-        const rs = Array.isArray(data) ? data : [data];
+    browser.ignoreSynchronization = false;
+    global.TIMESTAMP = await Date.now();
+    global.TIMEOUT = 15000;
+    global.dataSpec = (data, spec) => {
+      const rs = Array.isArray(data) ? data : [data];
 
-        rs.forEach((r, idx) => {
-          spec(r, idx + 1);
-        });
-      };
-
-      await jasmine.getEnv().addReporter(new reporters.TerminalReporter({
-        verbosity: 3,
-        color: true,
-        showStack: false
-      }));
-
-      await jasmine.getEnv().addReporter(new htmlReporter({
-        baseDirectory: 'reports',
-        screenshotsSubfolder: 'screenshots',
-        jsonsSubfolder: 'json',
-        docName: `${Date.now()}.html`,
-        docTitle: 'Parkopoly E2E tests report',
-        preserveDirectory: false,
-        gatherBrowserLogs: true
-      }).getJasmine2Reporter());
-
-      await browser.driver.get(browser.baseUrl + '/#/login');
-      await helpers.waitForVisibility(browser.element(by.css('form[name="userForm"]')));
-      await browser.driver.findElement(by.css('[type="email"]')).sendKeys(browser.params.login.usr);
-      await browser.driver.findElement(by.css('[type="password"]')).sendKeys(browser.params.login.pwd);
-      await browser.driver.findElement(by.css('[type="submit"]')).click();
-      return protractor.promise.fulfilled();
-    } catch (err) {
-      return protractor.promise.rejected(err);
+      rs.forEach((r, idx) => {
+        spec(r, idx + 1);
+      });
     };
+
+    await jasmine.getEnv().addReporter(new reporters.TerminalReporter({
+      verbosity: 3,
+      color: true,
+      showStack: false
+    }));
+
+    await jasmine.getEnv().addReporter(new htmlReporter({
+      baseDirectory: 'reports',
+      screenshotsSubfolder: 'screenshots',
+      jsonsSubfolder: 'json',
+      docName: `${Date.now()}.html`,
+      docTitle: 'Parkopoly E2E tests report',
+      preserveDirectory: false,
+      gatherBrowserLogs: true
+    }).getJasmine2Reporter());
+
+    await browser.driver.get(browser.baseUrl + '/#/login');
+    await helpers.waitForVisibility(browser.element(by.css('form[name="userForm"]')));
+    await browser.driver.findElement(by.css('[type="email"]')).sendKeys(browser.params.login.usr);
+    await browser.driver.findElement(by.css('[type="password"]')).sendKeys(browser.params.login.pwd);
+    await browser.driver.findElement(by.css('[type="submit"]')).click();
+    return helpers.testUrl(browser.baseUrl + '/#/calendar_bo', 10000);
   }
 };
