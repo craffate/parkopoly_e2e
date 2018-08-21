@@ -7,6 +7,7 @@
     "reports_clear": "rm -f ./reports/xml/*.xml && rm -f ./reports/html/*.html && rm -f ./reports/html/screenshots/*.png",
     "wd_start": "webdriver-manager start",
     "wd_update": "webdriver-manager update",
+    "wd_update_ie": "webdriver-manager update --ie",
     "pt_start": "protractor conf.js",
     "pt_cft": "protractor conf.js --suite cft",
     "pt_scenarios": "protractor conf.js --suite scenarios"
