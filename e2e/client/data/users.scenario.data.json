@@ -1,0 +1,16 @@
+[
+  {
+    "status": "roleManager",
+    "quickbooking": false,
+    "noAccess": false,
+    "lastName": "Manager",
+    "firstName": "Renault",
+    "email": "managerrenault@e2e.com",
+    "company": "RRG",
+    "function": "Manager",
+    "brands": ["RRG"],
+    "concessions": ["Renault"],
+    "notifications": false,
+    "emailNotifications": false
+  }
+]
