@@ -42,6 +42,6 @@ module.exports = function() {
   };
 
   this.getClick = async function() {
-    await usersButton.click();
+    await this.usersButton.click();
   };
 }

@@ -5,12 +5,12 @@ const specData = require('../data/users.scenario.data.json');
 describe('Users', function() {
   const usersPage = new UsersPageObject();
 
-  beforeAll(async function() {
-    await usersPage.getClick();
-  });
-
   dataSpec(specData, (data, iteration) => {
     describe(`Create ${data.firstName} ${data.lastName} user`, function() {
+      it('should navigate to the users page', async function() {
+        await usersPage.getClick();
+      });
+
       it('should open the user creating dialog', async function() {
         await usersPage.newuserButton.click();
       });
