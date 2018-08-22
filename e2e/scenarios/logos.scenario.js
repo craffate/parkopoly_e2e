@@ -18,15 +18,13 @@ describe('Logos', function() {
   dataSpec(specData, (data, iteration) => {
     describe(`Create ${data.name} logo`, function() {
       it('should fill the logo form', async function() {
-        await logosPage.searchbar.click();
-        await logosPage.searchbarDropdownAll.first().click();
         await helpers.displayUpload(logosPage.uploadButtonInput);
-        await logosPage.nameInput.clear().sendKeys(data.name);
         await helpers.uploadFile(path.resolve(data.path), logosPage.uploadButtonInput);
+        await logosPage.nameInput.sendKeys(TIMESTAMP);
       });
 
       it('should submit the form', async function() {
-        await DashboardIngredients.editButton.click();
+        await DashboardIngredients.createButton.click();
         await helpers.waitForSpinner();
         await helpers.waitForToast();
       });
