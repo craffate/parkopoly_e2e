@@ -47,7 +47,7 @@ module.exports = function() {
       if (ret.name === null ||
         ret.concession === null ||
         ret.client === null)
-        reject('Error');
+        reject('Error creating a cost zone');
       else
         resolve(ret);
     });

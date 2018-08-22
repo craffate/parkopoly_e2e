@@ -27,7 +27,7 @@ module.exports = function() {
   this.submitButton = element(by.id('submitButton'));
 
   this.get = async function() {
-    await browser.get(this.url);
+    await browser.driver.get(this.url);
     return helpers.waitForSpinner();
   };
 };

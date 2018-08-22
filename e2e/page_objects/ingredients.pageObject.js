@@ -14,11 +14,10 @@ module.exports = function() {
   this.searchbarDropdownLogo = element(by.repeater('object in $select.items').row(5));
   this.searchbarDropdownPenalty = element(by.repeater('object in $select.items').row(6));
   this.submitButton = $('[type="submit"]');
-  this.editButton = $('#editButton');
+  this.editButton = element(by.id('editButton'));
+  this.createButton = element(by.id('createButton'));
 
   this.get = async function() {
-    await browser.get(this.url);
-    return helpers.waitFor($('spinner'), 15000,
-    'Couldn\'t reach ' + this.url + ' in time');
+    return browser.driver.get(this.url);
   };
 };

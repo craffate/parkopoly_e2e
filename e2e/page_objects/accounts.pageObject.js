@@ -22,7 +22,7 @@ module.exports = function() {
   this.createAccountDialogSubmitButton = this.createAccountDialog.$('[type="submit"]');
 
   this.get = async function() {
-    await browser.get(this.url);
+    await browser.driver.get(this.url);
     return helpers.waitFor($('spinner'), 15000,
     'Couldn\'t reach ' + this.url + ' in time');
   };
