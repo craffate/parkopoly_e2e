@@ -1,7 +1,7 @@
 const helpers = require('../helpers');
 
 module.exports = function() {
-  this.url = '/#/ingredients';
+  this.url = '#/ingredients';
   this.searchbar = element(by.model('ingredCtrl.selected'));
   this.searchbarInput = this.searchbar.element(by.model('$select.search'));
   this.searchbarDropdown = element(by.repeater('object in $select.items'));
@@ -18,6 +18,6 @@ module.exports = function() {
   this.createButton = element(by.id('createButton'));
 
   this.get = async function() {
-    return browser.driver.get(this.url);
+    return browser.driver.get(browser.baseUrl + this.url);
   };
 };

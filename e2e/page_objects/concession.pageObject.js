@@ -1,7 +1,7 @@
 const helpers = require('../helpers');
 
 module.exports = function() {
-  this.url = '/#/admin_point_of_sales_list';
+  this.url = '#/admin_point_of_sales_list';
   this.pointOfSaleButton = element(by.id('concessionsTopCard')).$('button');
   this.pointOfSaleGroupButton = element(by.id('concessionGroupsTopCard')).$('button');
   this.filterInput = element(by.model('poslCtrl.search'));
@@ -41,7 +41,7 @@ module.exports = function() {
   this.pointOfSaleGroupSubmitButton = element(by.id('submitButton'));
 
   this.get = async function() {
-    await browser.driver.get(this.url);
+    await browser.driver.get(browser.baseUrl + this.url);
     return helpers.waitForSpinner();
   }
 };

@@ -1,7 +1,7 @@
 const helpers = require('../helpers');
 
 module.exports = function() {
-  this.url = '/#/drivers';
+  this.url = '#/drivers';
   this.searchInput = element(by.model('driversCtrl.search'));
   this.createDriverButton = $('button[ng-click="driversCtrl.createDriver()"]');
   this.createDriverDialog = element(by.id('create-driver'));
@@ -37,7 +37,7 @@ module.exports = function() {
   this.submitButton = element(by.id('submitButton'));
 
   this.get = async function() {
-    await browser.driver.get(this.url);
+    await browser.driver.get(browser.baseUrl + this.url);
     return helpers.waitForSpinner();
   };
 };

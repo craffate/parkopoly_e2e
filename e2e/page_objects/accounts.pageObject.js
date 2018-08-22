@@ -1,7 +1,7 @@
 const helpers = require('../helpers');
 
 module.exports = function() {
-  this.url = '/#/accounts';
+  this.url = '#/accounts';
   this.searchBar = element(by.model('$select.search'));
   this.searchBarDropdown = element(by.repeater('item in $select.items'));
   this.searchBarDropdownAll = element.all(by.repeater('item in $select.items'));
@@ -22,7 +22,7 @@ module.exports = function() {
   this.createAccountDialogSubmitButton = this.createAccountDialog.$('[type="submit"]');
 
   this.get = async function() {
-    await browser.driver.get(this.url);
+    await browser.driver.get(browser.baseUrl + this.url);
     return helpers.waitFor($('spinner'), 15000,
     'Couldn\'t reach ' + this.url + ' in time');
   };

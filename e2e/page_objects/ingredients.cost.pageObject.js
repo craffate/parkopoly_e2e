@@ -1,6 +1,4 @@
 module.exports = function() {
-  this.values = {name: null, costZones: []};
-
   this.searchbar = element(by.model('costFormCtrl.selectedObject'));
   this.searchbarInput = this.searchbar.element(by.model('$select.search'));
   this.searchbarDropdown = this.searchbar.element(by.repeater('object in $select.items'));

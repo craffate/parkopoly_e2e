@@ -1,7 +1,7 @@
 const helpers = require('../helpers');
 
 module.exports = function() {
-  this.url = '/#/users';
+  this.url = '#/users';
   this.searchbar = element(by.model('userListCtrl.search'));
   this.createUserButton = $('[ng-click="userListCtrl.createUser()"]');
   this.createUserDialog = element(by.id('create-user'));
@@ -27,7 +27,7 @@ module.exports = function() {
   this.submitButton = element(by.id('submitButton'));
 
   this.get = async function() {
-    await browser.driver.get(this.url);
+    await browser.driver.get(browser.baseUrl + this.url);
     return helpers.waitForSpinner();
   };
 };
