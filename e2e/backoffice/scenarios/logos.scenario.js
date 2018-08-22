@@ -1,5 +1,5 @@
 const path = require('path');
-const helpers = require('../helpers');
+const helpers = require('../../helpers');
 const IngredientsPageObject = require('../page_objects/ingredients.pageObject');
 const LogoPageObject = require('../page_objects/ingredients.logo.pageObject');
 const specData = require('../data/ingredients.logos.scenario.data.json');

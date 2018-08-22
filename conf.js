@@ -8,7 +8,7 @@ exports.config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
   framework: 'jasmine2',
   directConnect: false,
-  specs: ['./e2e/**/*.spec.js'],
+  specs: ['./e2e/backoffice/**/*.spec.js'],
   suites: {
     brands: [
       './e2e/backoffice/scenarios/penalty.scenario.js',

@@ -1,4 +1,4 @@
-const helpers = require('../helpers');
+const helpers = require('../../helpers');
 const AccountsPageObject = require('../page_objects/accounts.pageObject');
 const specData = require('../data/accounts.scenario.data.json');
 

@@ -1,4 +1,4 @@
-const helpers = require('../helpers');
+const helpers = require('../../helpers');
 const DriversPageObject = require('../page_objects/drivers.pageObject');
 const specData = require('../data/drivers.scenario.data.json');
 

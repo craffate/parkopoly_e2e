@@ -1,4 +1,4 @@
-const helpers = require('../helpers');
+const helpers = require('../../helpers');
 
 module.exports = function() {
   this.url = '#/admin_point_of_sales_list';

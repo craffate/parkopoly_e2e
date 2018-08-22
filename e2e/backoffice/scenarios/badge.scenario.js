@@ -1,4 +1,4 @@
-const helpers = require('../helpers');
+const helpers = require('../../helpers');
 const IngredientsPageObject = require('../page_objects/ingredients.pageObject');
 const BadgePageObject = require('../page_objects/ingredients.badge.pageObject');
 const specData = require('../data/badge.scenario.data.json');
