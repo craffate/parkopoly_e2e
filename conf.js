@@ -31,7 +31,7 @@ exports.config = {
     chromeOptions: {
       args: ['--disable-extensions', '--show-fps-counter=true',
         '--disable-infobars', '--incognito', '--disable-gpu',
-        /*'--headless',*/ '--start-maximized',
+        '--headless', '--start-maximized',
         '--disable-web-security', '--allow-running-insecure-content',
         '--allow-insecure-localhost', '--disable-browser-side-navigation',
         '--reduce-security-for-testing']
@@ -43,7 +43,7 @@ exports.config = {
       pwd: process.env.PWD_E2E
     }
   },
-  baseUrl: 'https://dashboard-test.parkopoly.fr',
+  baseUrl: 'https://dashboard-test.parkopoly.fr/',
   onPrepare: async function() {
     browser.ignoreSynchronization = false;
     global.TIMESTAMP = await Date.now();
@@ -72,11 +72,11 @@ exports.config = {
       gatherBrowserLogs: true
     }).getJasmine2Reporter());
 
-    await browser.driver.get(browser.baseUrl + '/#/login');
+    await browser.driver.get(browser.baseUrl + '#/login');
     await helpers.waitForVisibility(browser.element(by.css('form[name="userForm"]')));
     await browser.driver.findElement(by.css('[type="email"]')).sendKeys(browser.params.login.usr);
     await browser.driver.findElement(by.css('[type="password"]')).sendKeys(browser.params.login.pwd);
     await browser.driver.findElement(by.css('[type="submit"]')).click();
-    return helpers.testUrl(browser.baseUrl + '/#/calendar_bo', 10000);
+    return helpers.testUrl(browser.baseUrl + '#/calendar_bo', 10000);
   }
 };
