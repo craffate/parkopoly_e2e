@@ -11,7 +11,7 @@ describe('Users', function() {
         await usersPage.getClick();
       });
 
-      it('should open the user creating dialog', async function() {
+      it('should open the user creation dialog', async function() {
         await usersPage.newuserButton.click();
       });
 
