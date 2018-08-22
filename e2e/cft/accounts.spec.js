@@ -1,5 +1,5 @@
-const helpers = require('../../helpers');
-const AccountsPageObject = require('../../page_objects/accounts.pageObject');
+const helpers = require('../helpers');
+const AccountsPageObject = require('../page_objects/accounts.pageObject');
 
 describe('Parkopoly dashboard accounts page', function() {
   DashboardAccounts = new AccountsPageObject();

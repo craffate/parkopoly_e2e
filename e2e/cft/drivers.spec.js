@@ -114,7 +114,7 @@ describe('Parkopoly dashboard drivers page', function() {
       });
 
       it('should have a sponsor paid date datepicker', async function() {
-        await expect(driversPage.sponsorPayDateDatepicker.isDisplayed()).toBe(true);
+        await expect(driversPage.sponsorPayDatepicker.isDisplayed()).toBe(true);
       });
 
       it('should have a deposit input', async function() {
