@@ -11,13 +11,13 @@ exports.config = {
   specs: ['./e2e/**/*.spec.js'],
   suites: {
     brands: [
-      './e2e/scenarios/penalty.scenario.js',
-      //  './e2e/scenarios/bc.scenario.js',
-      './e2e/scenarios/logos.scenario.js',
-      './e2e/scenarios/brand.scenario.js'
+      './e2e/backoffice/scenarios/penalty.scenario.js',
+      './e2e/backoffice/scenarios/bc.scenario.js',
+      './e2e/backoffice/scenarios/logos.scenario.js',
+      './e2e/backoffice/scenarios/brand.scenario.js'
     ],
-    cft: './e2e/cft/**/*.spec.js',
-    scenarios: './e2e/scenarios/**/*.scenario.js'
+    cft: './e2e/backoffice/cft/**/*.spec.js',
+    scenarios: './e2e/backoffice/scenarios/**/*.scenario.js'
   },
   jasmineNodeOpts: {
     isVerbose: true,
