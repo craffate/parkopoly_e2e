@@ -18,7 +18,7 @@ describe('Penalties', function() {
     describe(`Create ${data.name} penalty`, function() {
       it('should fill the penalty form', async function() {
         await penaltyPage.nameInput.clear().sendKeys(data.name + TIMESTAMP);
-        await helpers.checkCheckbox(penaltyPage.priceFactorCheckbox);
+        await helpers.switchCheckbox(penaltyPage.priceFactorCheckbox, (data.factor !== null));
 
         if (data.factor !== null) {
           await penaltyPage.priceFactorInput.clear().sendKeys(data.factor);
@@ -32,6 +32,8 @@ describe('Penalties', function() {
         const el = await helpers.getFromDropdown(data.type,
           penaltyPage.typeDropdownAll);
         await el[0].click();
+        await helpers.waitForNoVisibility(el[0],
+          3000, 'Couldn\'t close the penalty type dropdown');
       });
 
       it('should submit the form', async function() {
