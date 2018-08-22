@@ -2,6 +2,7 @@ const helpers = require('../../helpers');
 
 module.exports = function() {
   this.url = 'users';
+  this.usersButton = $('a[href="/users"]');
 
   this.searchform = $('par-text-search > form');
   this.searchformInput = this.searchform.$('input');
@@ -35,4 +36,12 @@ module.exports = function() {
 
   this.cancelButton = this.dialog.element(by.buttonText('Annuler'));
   this.createButton = this.dialog.element(by.buttonText('Créer'));
+
+  this.get = async function() {
+    await browser.get(this.url);
+  };
+
+  this.getClick = async function() {
+    await usersButton.click();
+  };
 }
