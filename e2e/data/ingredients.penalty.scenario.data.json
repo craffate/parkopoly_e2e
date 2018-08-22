@@ -4,13 +4,13 @@
     "factor": "1",
     "price": null,
     "delay": "48",
-    "type": null
+    "type": "CANCEL"
   },
   {
     "name": "waiting20m5e",
     "factor": null,
     "price": "5",
     "delay": "0.33",
-    "type": null
+    "type": "DELAY"
   }
 ]
