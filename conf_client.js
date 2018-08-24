@@ -6,7 +6,9 @@ exports.config = {
   SELENIUM_PROMISE_MANAGER: false,
   seleniumAddress: 'http://localhost:4444/wd/hub',
   framework: 'jasmine2',
-  directConnect: false,
+  directConnect: true,
+  allScriptsTimeout: 30000,
+  useAllAngular2AppRoots: true,
   specs: ['./e2e/client/**/*.spec.js'],
   suites: {
     scenarios: './e2e/client/scenarios/**/*.scenario.js'
@@ -64,6 +66,7 @@ exports.config = {
       gatherBrowserLogs: true
     }).getJasmine2Reporter());
 
+    await browser.waitForAngularEnabled(false);
     await browser.get('login');
     await browser.driver.findElement(by.name('email')).sendKeys(browser.params.login.usr);
     await browser.driver.findElement(by.name('password')).sendKeys(browser.params.login.pwd);
