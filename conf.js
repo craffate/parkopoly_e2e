@@ -1,23 +1,37 @@
+const fs = require('fs');
 const reporters = require('jasmine-reporters');
 const htmlReporter = require('protractor-beautiful-reporter');
 const helpers = require('./e2e/helpers');
 
+const tsPath = './TIMESTAMP';
+
 exports.config = {
   SELENIUM_PROMISE_MANAGER: false,
   rootElement: 'html',
-  seleniumAddress: 'http://localhost:4444/wd/hub',
   framework: 'jasmine2',
-  directConnect: false,
+  directConnect: true,
   specs: ['./e2e/backoffice/**/*.spec.js'],
   suites: {
-    brands: [
-      './e2e/backoffice/scenarios/penalty.scenario.js',
-      './e2e/backoffice/scenarios/bc.scenario.js',
-      './e2e/backoffice/scenarios/logos.scenario.js',
-      './e2e/backoffice/scenarios/brand.scenario.js'
+    '1-6': [
+      './e2e/backoffice/scenarios/accounts.scenario.js',                /* 1 */
+      /*'./e2e/backoffice/scenarios/zone.scenario.js',*/                /* 1 */
+      /*'./e2e/backoffice/scenarios/city.scenario.js',*/                /* 1 */
+      './e2e/backoffice/scenarios/penalty.scenario.js',                 /* 1 */
+      './e2e/backoffice/scenarios/bc.scenario.js',                      /* 1 */
+      './e2e/backoffice/scenarios/logos.scenario.js',                   /* 1 */
+      /*'./e2e/backoffice/scenarios/cost.scenario.js',*/                /* 2 */
+      './e2e/backoffice/scenarios/brand.scenario.js',                   /* 2 */
+      './e2e/backoffice/scenarios/document.scenario.js',                /* 3 */
+      './e2e/backoffice/scenarios/badge.scenario.js',                   /* 3 */
+      './e2e/backoffice/scenarios/concession.scenario.js',              /* 4 */
+      './e2e/backoffice/scenarios/concession_group.scenario.js',        /* 5 */
+      './e2e/backoffice/scenarios/users.scenario.js'                    /* 6 */
+    ],
+    '9-9': [
+      /*'./e2e/backoffice/scenarios/admin.scenario.js'*/                /* 9 */
+      './e2e/backoffice/scenarios/drivers.scenario.js'                  /* 9 */
     ],
     cft: './e2e/backoffice/cft/**/*.spec.js',
-    scenarios: './e2e/backoffice/scenarios/**/*.scenario.js'
   },
   jasmineNodeOpts: {
     isVerbose: true,
@@ -46,8 +60,13 @@ exports.config = {
   baseUrl: 'https://dashboard-test.parkopoly.fr/',
   onPrepare: async function() {
     browser.ignoreSynchronization = false;
-    global.TIMESTAMP = await Date.now();
+
+    global.TIMESTAMP = fs.existsSync(tsPath) ?
+    fs.readFileSync(tsPath, 'utf8') :
+    await Date.now();
+
     global.TIMEOUT = 15000;
+
     global.dataSpec = (data, spec) => {
       const rs = Array.isArray(data) ? data : [data];
 
