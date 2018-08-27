@@ -12,7 +12,7 @@ module.exports = {
   asyncForEach: async function(arr, callback) {
     for (let idx = 0; idx < arr.length; idx++) {
       await callback(arr[idx], idx, arr);
-    }
+    };
   },
 
   getRandomInt: function(max) {
