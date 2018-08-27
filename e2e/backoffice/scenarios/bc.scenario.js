@@ -20,7 +20,7 @@ describe('Booking codes', function() {
       });
 
       it('should fill the booking code form', async function() {
-        await bcPage.nameInput.sendKeys(data.name);
+        await bcPage.nameInput.sendKeys(data.name + TIMESTAMP);
         await bcPage.expirationDatepickerInput.sendKeys(data.expiry);
         await bcPage.driverSalaryFactorInput.sendKeys(data.salary);
         await bcPage.driverSalaryAddonInput.sendKeys(data.salaryAdd);
