@@ -14,7 +14,7 @@ describe('Accounts', function() {
     describe(`Create ${data.name} account`, function() {
       it('should fill the account form', async function() {
         await accountsPage.createAccountButton.click();
-        await accountsPage.createAccountDialogNameInput.sendKeys(data.name);
+        await accountsPage.createAccountDialogNameInput.sendKeys(data.name + TIMESTAMP);
         await accountsPage.createAccountDialogChargeInput.sendKeys(data.charge);
         await accountsPage.createAccountDialogContractNumberInput.sendKeys(data.contractNumber);
         await accountsPage.createAccountDialogInvoiceRadioGroup.$$('md-radio-button').first().click();
