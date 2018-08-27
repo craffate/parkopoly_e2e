@@ -2,7 +2,7 @@
   {
     "lname": "Manager",
     "fname": "Renault",
-    "brandFilter": ["RRG", "DS"],
+    "brandFilter": ["RRG"],
     "email": "manager_renault@e2e.com",
     "company": "Renault",
     "function": "Manager",
