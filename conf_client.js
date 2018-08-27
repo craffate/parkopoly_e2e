@@ -40,8 +40,13 @@ exports.config = {
   baseUrl: 'https://client-test.parkopoly.fr/',
   onPrepare: async function() {
     browser.ignoreSynchronization = false;
-    global.TIMESTAMP = await Date.now();
+
+    global.TIMESTAMP = fs.existsSync(tsPath) ?
+    fs.readFileSync(tsPath, 'utf8') :
+    await Date.now();
+
     global.TIMEOUT = 15000;
+
     global.dataSpec = (data, spec) => {
       const rs = Array.isArray(data) ? data : [data];
 
