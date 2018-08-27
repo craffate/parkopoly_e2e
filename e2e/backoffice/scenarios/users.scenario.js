@@ -19,28 +19,32 @@ describe('Users', function() {
       });
 
       it('should fill the form', async function() {
-        await usersPage.lnameInput.sendKeys(data.lname);
+        await usersPage.lnameInput.sendKeys(data.lname + TIMESTAMP);
         await usersPage.fnameInput.sendKeys(data.fname);
         await usersPage.emailInput.sendKeys(data.email + TIMESTAMP);
         await usersPage.companyInput.sendKeys(data.company);
         await usersPage.functionInput.sendKeys(data.function);
         await usersPage.passwordInput.sendKeys(data.password);
 
-        if (data.status === "USER_ADMIN") {
-          usersPage.adminRadio.click();
-        } else if (data.status === "USER_MANAGER") {
-          usersPage.managerRadio.click();
+        if (data.status === 'USER_ADMIN') {
+          await usersPage.adminRadio.click();
+        } else if (data.status === 'USER_MANAGER') {
+          await usersPage.managerRadio.click();
         } else {
-          usersPage.userRadio.click();
+          await usersPage.userRadio.click();
         }
 
-        helpers.asyncForEach(data.brandFilter, async (s) => {
-          let el;
+        await helpers.asyncForEach(data.brandFilter, async (s) => {
+          let elText;
 
-          el = await helpers.getFromDropdown(s, usersPage.brandDropdownAll);
-          await usersPage.brandDropdown.click();
-          await helpers.scrollIntoView(el);
-          await el.click();
+          await usersPage.brand.click();
+          await usersPage.brandInput.sendKeys(s);
+
+          elText = usersPage.brandDropdownAll.first().$('div > span').getText();
+
+          await browser.wait(expect(elText).toContain(s),
+          5000, `Search for brand ${s} failed`);
+          return usersPage.selectAllButton.click();
         });
 
         await helpers.switchCheckbox(usersPage.accountableCheckbox, data.accountable);
