@@ -46,6 +46,14 @@ module.exports = {
     });
   },
 
+  getFromDynamicDropdown: async function(s, arr) {
+    return arr.filter(function(wrap, idx) {
+      return el.$('div').getText().then(function(val) {
+        return s === val;
+      });
+    });
+  },
+
   getFromNonMaterialDropdown: async function(s, b, arr) {
     return arr.filter(function(el, idx) {
       return el.element(by.binding(b)).getText().then(function(val) {
