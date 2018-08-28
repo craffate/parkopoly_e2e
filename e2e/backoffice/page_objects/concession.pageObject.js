@@ -11,19 +11,23 @@ module.exports = function() {
   this.pointOfSaleNameInput = element(by.model('cposAdminCtrl.pointOfSales.name'));
   this.pointOfSalePhoneInput = element(by.model('cposAdminCtrl.pointOfSales.phoneNumberForCustomer'));
   this.pointOfSaleShortNameInput = element(by.model('cposAdminCtrl.pointOfSales.shortName'));
-  this.pointOfSaleShortBonusInput = element(by.model('cposAdminCtrl.pointOfSales.bonusDriverSalary'));
+  this.pointOfSaleBonusInput = element(by.model('cposAdminCtrl.pointOfSales.bonusDriverSalary'));
   this.pointOfSaleActiveSwitch = element(by.model('cposAdminCtrl.pointOfSales.available'));
   this.pointOfSaleCity = element(by.model('cposAdminCtrl.pointOfSales.cityId'));
+  this.pointOfSaleCityResults = this.pointOfSaleCity.all(by.repeater('city in cposAdminCtrl.cities'));
   this.pointOfSaleGroup = element(by.model('cposAdminCtrl.pointOfSales.concessionGroupId'));
   this.pointOfSaleGroupInput = this.pointOfSaleGroup.$('input');
+  this.pointOfSaleResults = this.pointOfSaleGroup.all(by.repeater('concessionGroup in $select.items'));
   this.pointOfSaleMessageInput = element(by.model('cposAdminCtrl.pointOfSales.standardMessageForDriver'));
   this.pointOfSaleDay = element(by.model('day.name'));
   this.pointOfSaleDayInput = this.pointOfSaleDay.$('input');
-  this.pointOfSaleDayStartInput = element(by.model('day.start'));
-  this.pointOfSaleDayEndInput = element(by.model('day.stop'));
-  this.pointOfSaleDayPauseCheckbox = element(by.model('day.pauseFlag'));
-  this.pointOfSaleDayPauseStartInput = element(by.model('day.pauseStart'));
-  this.pointOfSaleDayPauseEndInput = element(by.model('day.pauseStop'));
+  this.pointOfSaleDayResults = this.pointOfSaleDay.all(by.repeater('day in $select.items'));
+  this.pointOfSaleDayStartInput = element.all(by.model('day.start'));
+  this.pointOfSaleDayEndInput = element.all(by.model('day.stop'));
+  this.pointOfSaleDayPauseCheckbox = element.all(by.model('day.pauseFlag'));
+  this.pointOfSaleDayPauseStartInput = element.all(by.model('day.pauseStart'));
+  this.pointOfSaleDayPauseEndInput = element.all(by.model('day.pauseStop'));
+  this.pointOfSaleAddDayButton = $('[ng-click="cposAdminCtrl.pushObject(cposAdminCtrl.pointOfSales.mappedDays)"')
   this.pointOfSaleAnnualPudInput = element(by.model('cposAdminCtrl.pointOfSales.annualPudEstimate'));
   this.pointOfSaleAnnualVnInput = element(by.model('cposAdminCtrl.pointOfSales.annualVnEstimate'));
   this.pointOfSaleAnnualVoInput = element(by.model('cposAdminCtrl.pointOfSales.annualVoEstimate'));
@@ -41,7 +45,6 @@ module.exports = function() {
   this.pointOfSaleGroupSubmitButton = element(by.id('submitButton'));
 
   this.get = async function() {
-    await browser.driver.get(browser.baseUrl + this.url);
-    return helpers.waitForSpinner();
+    return browser.driver.get(browser.baseUrl + this.url);
   }
 };
