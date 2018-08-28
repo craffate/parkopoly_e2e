@@ -12,5 +12,47 @@
     "concessions": ["Renault"],
     "notifications": false,
     "emailNotifications": false
+  },
+  {
+    "status": "roleManager",
+    "quickbooking": false,
+    "noAccess": false,
+    "lastName": "Manager",
+    "firstName": "PSA",
+    "email": "managerPSA@e2e.com",
+    "company": "PSA",
+    "function": "Manager",
+    "brands": ["PSA", "Peugeot", "Citroen"],
+    "concessions": ["PSA", "Peugeot", "Citroen"],
+    "notifications": false,
+    "emailNotifications": false
+  },
+  {
+    "status": "roleUser",
+    "quickbooking": false,
+    "noAccess": false,
+    "lastName": "User",
+    "firstName": "Renault",
+    "email": "userrenault@e2e.com",
+    "company": "RRG",
+    "function": "User",
+    "brands": ["RRG"],
+    "concessions": ["Renault"],
+    "notifications": false,
+    "emailNotifications": false
+  },
+  {
+    "status": "roleUser",
+    "quickbooking": false,
+    "noAccess": false,
+    "lastName": "User",
+    "firstName": "Republique",
+    "email": "userrepublique@e2e.com",
+    "company": "Republique",
+    "function": "User",
+    "brands": ["Republique"],
+    "concessions": ["Republique"],
+    "notifications": false,
+    "emailNotifications": false
   }
 ]
