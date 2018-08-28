@@ -54,6 +54,14 @@ module.exports = {
     });
   },
 
+  getFromBindHtmlDropdown: async function(s, b, arr) {
+    return arr.filter(function(el, idx) {
+      return el.$(`span[ng-bind-html="${b}"]`).getText().then(function(val) {
+        return s === val;
+      });
+    });
+  },
+
   displayUpload: async function(fileInput) {
     return browser.executeScript('arguments[0].style.visibility = "visible"; arguments[0].style.display = "block";', fileInput);
   },
