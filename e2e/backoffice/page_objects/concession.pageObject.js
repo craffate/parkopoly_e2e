@@ -32,7 +32,7 @@ module.exports = function() {
   this.pointOfSaleAnnualVnInput = element(by.model('cposAdminCtrl.pointOfSales.annualVnEstimate'));
   this.pointOfSaleAnnualVoInput = element(by.model('cposAdminCtrl.pointOfSales.annualVoEstimate'));
   this.pointOfSaleAnnualCommentInput = element(by.model('cposAdminCtrl.pointOfSales.commentEstimate'));
-  this.pointOfSaleSubmitButtom = element(by.id('submitButton'));
+  this.pointOfSaleSubmitButton = element(by.id('submitButton'));
 
   this.createPointOfSaleGroupButton = $('poslCtrl.createConcessionGroup()');
   this.createPointOfSaleGroupDialog = element(by.id('create-concession-group'));
