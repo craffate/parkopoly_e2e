@@ -77,13 +77,13 @@ module.exports = {
 
   waitForSpinner: async function() {
     const EC = protractor.ExpectedConditions;
-    return browser.wait(EC.not(EC.visibilityOf($('spinner'))), 60000,
+    return browser.wait(EC.not(EC.visibilityOf($('spinner'))), TIMEOUT,
     'Page couldn\'t load in time');
   },
 
   waitForToast: async function() {
     const EC = protractor.ExpectedConditions;
-    return browser.wait(EC.not(EC.visibilityOf($('md-toast'))), 60000,
+    return browser.wait(EC.not(EC.visibilityOf($('md-toast'))), TIMEOUT,
     'Page couldn\'t load in time');
   },
 
