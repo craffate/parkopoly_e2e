@@ -48,7 +48,7 @@ module.exports = {
 
   getFromDynamicDropdown: async function(s, arr) {
     return arr.filter(function(wrap, idx) {
-      return el.$('div').getText().then(function(val) {
+      return wrap.$('div').getText().then(function(val) {
         return s === val;
       });
     });
