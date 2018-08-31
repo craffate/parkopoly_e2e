@@ -48,7 +48,7 @@
     "active": true,
     "city": "Paris",
     "info": "Good luck!",
-    "group": "PSA St-Quentin-en-Yvelines",
+    "group": "PSA Retail",
     "openHours": {"Lundi": ["7:30", "18:15", "12:00", "13:30"],
                   "Mardi": ["7:30", "18:15", "12:00", "13:30"],
                   "Mercredi": ["7:30", "18:15", "12:00", "13:30"],
