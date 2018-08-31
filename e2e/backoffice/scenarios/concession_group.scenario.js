@@ -25,7 +25,7 @@ describe('Concession groups', function() {
       });
 
       it('should fill the form', async function() {
-        await concessionPage.pointOfSaleGroupNameInput.sendKeys(data.name);
+        await concessionPage.pointOfSaleGroupNameInput.sendKeys(data.name + ' ' + TIMESTAMP);
       });
 
       it('should submit the form', async function() {
