@@ -21,13 +21,15 @@ describe('Concessions', function() {
 
       it('should open the point of sale creation form dialog', async function() {
         await concessionPage.createPointOfSaleButton.click();
-        await helpers.waitFor(concessionPage.createPointOfSaleDialog);
+        await helpers.waitForVisibility(concessionPage.createPointOfSaleDialog);
       });
 
       it('should fill the form', async function() {
         let el;
 
         await concessionPage.pointOfSaleAddressInput.sendKeys(data.address);
+        await concessionPage.pointOfSaleAddressInput.sendKeys(protractor.Key.DOWN);
+        await concessionPage.pointOfSaleAddressInput.sendKeys(protractor.Key.RETURN);
         await concessionPage.pointOfSaleNameInput.sendKeys(data.name + TIMESTAMP);
         await concessionPage.pointOfSalePhoneInput.sendKeys(data.phone);
         await concessionPage.pointOfSaleShortNameInput.sendKeys(data.shortname + TIMESTAMP);
@@ -35,10 +37,14 @@ describe('Concessions', function() {
         await concessionPage.pointOfSaleCity.click();
         el = await helpers.getFromDynamicDropdown(data.city, concessionPage.pointOfSaleCityResults);
         await el[0].click();
-        await concessionPage.pointOfSaleActiveSwitch.click();
+
+        if (data.active === true) {
+          await concessionPage.pointOfSaleActiveSwitch.click();
+        };
+
         await concessionPage.pointOfSaleGroup.click();
         await concessionPage.pointOfSaleGroupInput.sendKeys(data.group);
-        await concessionPage.pointOfSaleResults[0].click();
+        await concessionPage.pointOfSaleGroupResults.first().click();
 
         await helpers.asyncForEach(data.openHours, async (key, idx) => {
           if (await concessionPage.pointOfSaleAddDayButton.isPresent()) {
