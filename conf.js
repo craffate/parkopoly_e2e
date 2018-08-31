@@ -9,7 +9,8 @@ exports.config = {
   SELENIUM_PROMISE_MANAGER: false,
   rootElement: 'html',
   framework: 'jasmine2',
-  directConnect: true,
+  seleniumAddress: 'http://localhost:4444/wd/hub',
+  directConnect: false,
   specs: ['./e2e/backoffice/**/*.spec.js'],
   suites: {
     '1-6': [
@@ -23,8 +24,8 @@ exports.config = {
       './e2e/backoffice/scenarios/brand.scenario.js',                   /* 2 */
       './e2e/backoffice/scenarios/document.scenario.js',                /* 3 */
       './e2e/backoffice/scenarios/badge.scenario.js',                   /* 3 */
-      './e2e/backoffice/scenarios/concession.scenario.js',              /* 4 */
-      './e2e/backoffice/scenarios/concession_group.scenario.js',        /* 5 */
+      './e2e/backoffice/scenarios/concession_group.scenario.js',        /* 4 */
+      './e2e/backoffice/scenarios/concession.scenario.js',              /* 5 */
       './e2e/backoffice/scenarios/users.scenario.js'                    /* 6 */
     ],
     '9-9': [
@@ -38,8 +39,8 @@ exports.config = {
     defaultTimeoutInterval: 120000,
     print: () => {}
   },
-  capabilities: {
-    browserName: 'chrome',
+  multiCapabilities: [
+    {browserName: 'chrome',
     shardTestFiles: false,
     maxInstances: 3,
     chromeOptions: {
@@ -51,6 +52,14 @@ exports.config = {
         '--reduce-security-for-testing']
     }
   },
+    {browserName: 'firefox',
+    firefoxOptions: {
+      args: ['--headless']
+    },
+    'moz:firefoxOptions': {
+      args: ['--headless']
+    }
+  }],
   params: {
     login: {
       usr: process.env.USR_E2E,
@@ -59,13 +68,13 @@ exports.config = {
   },
   baseUrl: 'https://dashboard-test.parkopoly.fr/',
   onPrepare: async function() {
-    browser.ignoreSynchronization = false;
+    await browser.waitForAngularEnabled(true);
 
     global.TIMESTAMP = fs.existsSync(tsPath) ?
     fs.readFileSync(tsPath, 'utf8') :
     await Date.now();
 
-    global.TIMEOUT = 15000;
+    global.TIMEOUT = 120000;
 
     global.dataSpec = (data, spec) => {
       const rs = Array.isArray(data) ? data : [data];
