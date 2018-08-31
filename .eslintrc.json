@@ -1,9 +1,9 @@
 {
-	"parserOptions": {
-		"ecmaVersion": 8
-	},
-    "plugins": [
-      "protractor"
-    ],
-	"extends": "plugin:protractor/recommended"
+  "parserOptions": {
+    "ecmaVersion": 8
+  },
+  "plugins": [
+    "protractor"
+  ],
+  "extends": "plugin:protractor/recommended"
 }
