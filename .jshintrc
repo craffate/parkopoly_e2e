@@ -1,4 +1,5 @@
 {
   "esversion": 6,
-  "maxdepth": 3
+  "maxdepth": 3,
+  "jasmine": true
 }
