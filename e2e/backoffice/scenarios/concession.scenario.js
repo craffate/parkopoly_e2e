@@ -43,7 +43,7 @@ describe('Concessions', function() {
         };
 
         await concessionPage.pointOfSaleGroup.click();
-        await concessionPage.pointOfSaleGroupInput.sendKeys(data.group);
+        await concessionPage.pointOfSaleGroupInput.sendKeys(data.group + ' ' + TIMESTAMP);
         await concessionPage.pointOfSaleGroupResults.first().click();
 
         await helpers.asyncForEach(data.openHours, async (key, idx) => {
