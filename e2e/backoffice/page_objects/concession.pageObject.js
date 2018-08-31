@@ -5,7 +5,7 @@ module.exports = function() {
   this.pointOfSaleButton = element(by.id('concessionsTopCard')).$('button');
   this.pointOfSaleGroupButton = element(by.id('concessionGroupsTopCard')).$('button');
   this.filterInput = element(by.model('poslCtrl.search'));
-  this.createPointOfSaleButton = $('[ng-click="poslCtrl.createPointOfSales()"]');
+  this.createPointOfSaleButton = $('button[ng-click="poslCtrl.createPointOfSales()"]');
   this.createPointOfSaleDialog = element(by.id('create-point-of-sale'));
   this.pointOfSaleAddressInput = element(by.model('cposAdminCtrl.pointOfSales.address'));
   this.pointOfSaleNameInput = element(by.model('cposAdminCtrl.pointOfSales.name'));
@@ -34,7 +34,7 @@ module.exports = function() {
   this.pointOfSaleAnnualCommentInput = element(by.model('cposAdminCtrl.pointOfSales.commentEstimate'));
   this.pointOfSaleSubmitButton = element(by.id('submitButton'));
 
-  this.createPointOfSaleGroupButton = $('poslCtrl.createConcessionGroup()');
+  this.createPointOfSaleGroupButton = $('button[ng-click="poslCtrl.createConcessionGroup()"]');
   this.createPointOfSaleGroupDialog = element(by.id('create-concession-group'));
   this.pointOfSaleGroupNameInput = element(by.model('ccgCtrl.concessionGroup.name'));
   this.pointOfSaleGroupList = element(by.id('point-of-sale-select'));
