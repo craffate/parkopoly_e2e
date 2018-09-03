@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Parkopoly_E2E",
+    "charge": 4,
+    "invoiceMode": "MANUALLY",
+    "invoiceSub": "MONTHLY",
+    "contractNum": "123",
+    "startDate": "01/01/2018",
+    "endData": "01/01/2030"
+  },
+  {
+    "name": "Parkopoly_E2E",
+    "charge": 4,
+    "invoiceMode": "INDIVIDUAL",
+    "invoiceSub": "QUARTERLY",
+    "contractNum": "1234",
+    "startDate": "01/01/2018",
+    "endData": "01/01/2030"
+  },
+  {
+    "name": "Parkopoly_E2E",
+    "charge": 4,
+    "invoiceMode": "MONTHLY",
+    "invoiceSub": "YEARLY",
+    "contractNum": "12345",
+    "startDate": "01/01/2018",
+    "endData": "01/01/2030"
+  }
+]
