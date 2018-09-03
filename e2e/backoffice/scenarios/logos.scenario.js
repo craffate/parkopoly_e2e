@@ -25,7 +25,6 @@ describe('Logos', function() {
 
       it('should submit the form', async function() {
         await DashboardIngredients.createButton.click();
-        await helpers.waitForSpinner();
         await helpers.waitForToast();
       });
     });
