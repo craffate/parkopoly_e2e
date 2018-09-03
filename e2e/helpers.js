@@ -38,6 +38,14 @@ module.exports = {
     }
   },
 
+  getFromInvoiceGroup: async function(s, arr) {
+    return arr.filter(function(el, idx) {
+      return el.getAttribute('value').then(function(val) {
+        return s === val;
+      });
+    });
+  },
+
   getFromDropdown: async function(s, arr) {
     return arr.filter(function(el, idx) {
       return el.getAttribute('value').then(function(val) {
