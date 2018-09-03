@@ -6,5 +6,9 @@
   {
     "name": "DS",
     "path": "./resources/logos/ds.png"
+  },
+  {
+    "name": "peugeot",
+    "path": "./resources/logos/peugeot.png"
   }
 ]
