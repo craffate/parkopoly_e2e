@@ -29,8 +29,9 @@ describe('Concession groups', function() {
       });
 
       it('should submit the form', async function() {
+        await helpers.scrollIntoView(concessionPage.pointOfSaleGroupSubmitButton);
         await concessionPage.pointOfSaleGroupSubmitButton.click();
-        await helpers.waitForToast();
+        await helpers.waitForNoVisibility(concessionPage.createPointOfSaleGroupDialog);
       });
     });
   });
