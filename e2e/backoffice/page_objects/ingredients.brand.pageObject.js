@@ -9,6 +9,7 @@ module.exports = function() {
   this.logoSearchbar = element(by.model('brandFormCtrl.newObject.brandLogoDto'));
   this.logoSearchbarInput = this.logoSearchbar.element(by.model('$select.search'));
   this.logoSearchbarDropdown = this.logoSearchbar.element(by.repeater('object in $select.items'));
+  this.logoSearchbarDropdownAll = this.logoSearchbar.all(by.repeater('object in $select.items'));
   this.missiontypeDropdown = element(by.model('brandFormCtrl.newObject.missionTypeEnumSet'));
   this.missiontypeDropdownTypes = element(by.repeater('type in brandFormCtrl.all.types'));
   this.missiontypeDropdownTypesAll = element.all(by.repeater('type in brandFormCtrl.all.types'));
