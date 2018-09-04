@@ -10,8 +10,14 @@ module.exports = {
   },
 
   asyncForEach: async function(arr, callback) {
-    for (let idx = 0; idx < arr.length; idx++) {
-      await callback(arr[idx], idx, arr);
+    if (Array.isArray(arr)) {
+      for (let idx = 0; idx < arr.length; idx++) {
+        await callback(arr[idx], idx, arr);
+      };
+    } else {
+      for (let idx in arr) {
+        await callback(arr[idx], idx, arr);
+      };
     };
   },
 
@@ -78,6 +84,15 @@ module.exports = {
     s = s.trim();
     return arr.filter(function(el, idx) {
       return el.$(`span[ng-bind-html="${b}"]`).getText().then(function(val) {
+        return val.includes(s);
+      });
+    });
+  },
+
+  deleteMe: async function(s, arr) {
+    s = s.trim();
+    return arr.filter(function(el, idx) {
+      return el.$('span').getText().then(function(val) {
         return val.includes(s);
       });
     });
