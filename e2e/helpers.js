@@ -39,6 +39,7 @@ module.exports = {
   },
 
   getFromInvoiceGroup: async function(s, arr) {
+    s = s.trim();
     return arr.filter(function(el, idx) {
       return el.getAttribute('value').then(function(val) {
         return val.includes(s);
@@ -47,6 +48,7 @@ module.exports = {
   },
 
   getFromDropdown: async function(s, arr) {
+    s = s.trim();
     return arr.filter(function(el, idx) {
       return el.getAttribute('value').then(function(val) {
         return val.includes(s);
@@ -55,6 +57,7 @@ module.exports = {
   },
 
   getFromDynamicDropdown: async function(s, arr) {
+    s = s.trim();
     return arr.filter(function(wrap, idx) {
       return wrap.$('div').getText().then(function(val) {
         return val.includes(s);
@@ -63,6 +66,7 @@ module.exports = {
   },
 
   getFromNonMaterialDropdown: async function(s, b, arr) {
+    s = s.trim();
     return arr.filter(function(el, idx) {
       return el.element(by.binding(b)).getText().then(function(val) {
         return val.includes(s);
@@ -71,6 +75,7 @@ module.exports = {
   },
 
   getFromBindHtmlDropdown: async function(s, b, arr) {
+    s = s.trim();
     return arr.filter(function(el, idx) {
       return el.$(`span[ng-bind-html="${b}"]`).getText().then(function(val) {
         return val.includes(s);
