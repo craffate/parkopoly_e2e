@@ -41,7 +41,7 @@ module.exports = {
   getFromInvoiceGroup: async function(s, arr) {
     return arr.filter(function(el, idx) {
       return el.getAttribute('value').then(function(val) {
-        return s === val;
+        return val.includes(s);
       });
     });
   },
@@ -49,7 +49,7 @@ module.exports = {
   getFromDropdown: async function(s, arr) {
     return arr.filter(function(el, idx) {
       return el.getAttribute('value').then(function(val) {
-        return s === val;
+        return val.includes(s);
       });
     });
   },
@@ -57,7 +57,7 @@ module.exports = {
   getFromDynamicDropdown: async function(s, arr) {
     return arr.filter(function(wrap, idx) {
       return wrap.$('div').getText().then(function(val) {
-        return s === val;
+        return val.includes(s);
       });
     });
   },
@@ -65,7 +65,7 @@ module.exports = {
   getFromNonMaterialDropdown: async function(s, b, arr) {
     return arr.filter(function(el, idx) {
       return el.element(by.binding(b)).getText().then(function(val) {
-        return s === val;
+        return val.includes(s);
       });
     });
   },
@@ -73,7 +73,7 @@ module.exports = {
   getFromBindHtmlDropdown: async function(s, b, arr) {
     return arr.filter(function(el, idx) {
       return el.$(`span[ng-bind-html="${b}"]`).getText().then(function(val) {
-        return s === val;
+        return val.includes(s);
       });
     });
   },
@@ -94,35 +94,35 @@ module.exports = {
   waitForSpinner: async function() {
     const EC = protractor.ExpectedConditions;
     return browser.wait(EC.not(EC.visibilityOf($('spinner'))), TIMEOUT,
-    'Page couldn\'t load in time');
+      'Page couldn\'t load in time');
   },
 
   waitForToast: async function() {
     const EC = protractor.ExpectedConditions;
     return browser.wait(EC.not(EC.visibilityOf($('md-toast'))), TIMEOUT,
-    'Page couldn\'t load in time');
+      'Page couldn\'t load in time');
   },
 
   waitFor: async function(el, t = TIMEOUT,
-  msg = "Element was still absent after " + TIMEOUT + " milliseconds") {
+    msg = "Element was still absent after " + TIMEOUT + " milliseconds") {
     const EC = protractor.ExpectedConditions;
     return browser.wait(EC.presenceOf(el), t, msg);
   },
 
   waitForNo: async function(el, t = TIMEOUT,
-  msg = "Element was still present after " + TIMEOUT + " milliseconds") {
+    msg = "Element was still present after " + TIMEOUT + " milliseconds") {
     const EC = protractor.ExpectedConditions;
     return browser.wait(EC.not(EC.presenceOf(el)), t, msg);
   },
 
   waitForVisibility: async function(el, t = TIMEOUT,
-  msg = "Element was still invisible after " + TIMEOUT + " milliseconds") {
+    msg = "Element was still invisible after " + TIMEOUT + " milliseconds") {
     const EC = protractor.ExpectedConditions;
     return browser.wait(EC.visibilityOf(el), t, msg);
   },
 
   waitForNoVisibility: async function(el, t = TIMEOUT,
-  msg = "Element was still visible after " + TIMEOUT + " milliseconds") {
+    msg = "Element was still visible after " + TIMEOUT + " milliseconds") {
     const EC = protractor.ExpectedConditions;
     return browser.wait(EC.not(EC.visibilityOf(el)), t, msg);
   }
