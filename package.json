@@ -6,8 +6,10 @@
   "scripts": {
     "reports_clear": "rm -f ./reports/xml/*.xml && rm -f ./reports/html/*.html && rm -f ./reports/html/screenshots/*.png",
     "wd_start": "webdriver-manager start",
+    "wd_start_old": "webdriver-manager start --versions.standalone 3.0.1",
     "wd_update": "webdriver-manager update",
     "wd_update_ie": "webdriver-manager update --ie",
+    "wd_update_old": "webdriver-manager update --versions.standalone 3.0.1",
     "pt_start": "protractor conf.js",
     "pt_cft": "protractor conf.js --suite cft",
     "pt_scenarios": "protractor conf.js --suite scenarios"

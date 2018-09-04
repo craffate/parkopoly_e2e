@@ -41,14 +41,18 @@ This package contains a bunch of different tests for [Parkopoly](http://www.park
 
 2. Update the webdrivers by typing:
 	```
-	npm run wd_update
+	npm run wd_update_old
+	```
+	Optionally, you can update Internet Explorer on a Windows machine by typing:
+	```
+	npm run wd_update_ie
 	```
 
 ### How to use
 
 1. Open a terminal, navigate to the project repository and type:
 	```
-	npm run wd_start
+	npm run wd_start_old
 	```
 
 2. Open __another__ terminal, navigate to the project repository and type one of the following commands:
