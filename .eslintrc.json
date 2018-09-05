@@ -5,5 +5,9 @@
   "plugins": [
     "protractor"
   ],
-  "extends": "plugin:protractor/recommended"
+  "extends": "plugin:protractor/recommended",
+  "rules": {
+    "protractor/no-repetitive-locators": 0,
+    "protractor/no-repetitive-selectors": 0
+  }
 }
