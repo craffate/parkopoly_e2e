@@ -14,7 +14,7 @@
     "unpaid": true,
     "vat": false,
     "deposit": "500",
-    "depositData": "01/01/2018",
+    "depositDate": "01/01/2018",
     "depositComment": "There is no spoon"
   },
   {
@@ -32,7 +32,7 @@
     "unpaid": true,
     "vat": false,
     "deposit": "1500",
-    "depositData": "12/04/2018",
+    "depositDate": "12/04/2018",
     "depositComment": "Fear is the path to the dark side"
   },
   {
@@ -68,7 +68,7 @@
     "unpaid": true,
     "vat": false,
     "deposit": "1500",
-    "depositData": "28/01/2018",
+    "depositDate": "28/01/2018",
     "depositComment": "It's over Anakin! I have the high ground!"
   }
 ]
