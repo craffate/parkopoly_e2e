@@ -20,8 +20,8 @@ describe('Drivers', function() {
         let el;
 
         await driversPage.lastNameInput.sendKeys(data.lname);
-        await driversPage.firstNameInput.sendKeys(data.fname);
-        await driversPage.emailInput.sendKeys(data.email);
+        await driversPage.firstNameInput.sendKeys(data.fname + TIMESTAMP);
+        await driversPage.emailInput.sendKeys(data.email + TIMESTAMP);
         await driversPage.addressInput.sendKeys(data.address);
         await driversPage.addressInput.sendKeys(protractor.Key.DOWN);
         await driversPage.addressInput.sendKeys(protractor.Key.ENTER);
