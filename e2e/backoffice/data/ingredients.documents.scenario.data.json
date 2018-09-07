@@ -1,7 +1,7 @@
 [
   {
     "name": "CGVRenault",
-    "path": null,
+    "path": "./resources/documents/lorem.pdf",
     "alertNoUpload": false,
     "encrypt": false,
     "dispWebAppAfter": false,
@@ -14,7 +14,7 @@
   },
   {
     "name": "Ordre Reparation",
-    "path": null,
+    "path": "./resources/documents/lorem.pdf",
     "alertNoUpload": false,
     "encrypt": false,
     "dispWebAppAfter": false,
@@ -27,7 +27,7 @@
   },
   {
     "name": "Contrat Pret",
-    "path": null,
+    "path": "./resources/documents/lorem.pdf",
     "alertNoUpload": false,
     "encrypt": false,
     "dispWebAppAfter": false,
@@ -36,11 +36,11 @@
     "brands": ["Renault", "DS"],
     "missionFilter": ["PICKUP"],
     "optionFilter": ["PU_VR"],
-    "bc": ["Renault", "DS"]
+    "bc": ["dfl", "f100", "equal1000"]
   },
   {
     "name": "Permis",
-    "path": null,
+    "path": "./resources/documents/lorem.pdf",
     "alertNoUpload": false,
     "encrypt": false,
     "dispWebAppAfter": true,
@@ -49,11 +49,11 @@
     "brands": ["Renault", "DS"],
     "missionFilter": ["PICKUP"],
     "optionFilter": ["PU_VR"],
-    "bc": ["Renault", "DS"]
+    "bc": ["dfl", "f100", "equal1000"]
   },
   {
     "name": "VN Concession",
-    "path": null,
+    "path": "./resources/documents/lorem.pdf",
     "alertNoUpload": false,
     "encrypt": false,
     "dispWebAppAfter": true,
@@ -62,11 +62,11 @@
     "brands": null,
     "missionFilter": ["VN_DELIVERY"],
     "optionFilter": null,
-    "bc": null
+    "bc": ["dfl", "f100", "equal1000"]
   },
   {
     "name": "CGVDS",
-    "path": null,
+    "path": "./resources/documents/lorem.pdf",
     "alertNoUpload": false,
     "encrypt": false,
     "dispWebAppAfter": false,
@@ -75,11 +75,11 @@
     "brands": ["DS"],
     "missionFilter": ["PICKUP", "DELIVERY", "EXPRESS"],
     "optionFilter": null,
-    "bc": ["DS"]
+    "bc": ["dfl", "f100", "equal1000"]
   },
   {
     "name": "CGVPeugeot",
-    "path": null,
+    "path": "./resources/documents/lorem.pdf",
     "alertNoUpload": false,
     "encrypt": false,
     "dispWebAppAfter": false,
@@ -88,6 +88,6 @@
     "brands": ["Peugeot"],
     "missionFilter": ["PICKUP", "DELIVERY", "EXPRESS"],
     "optionFilter": null,
-    "bc": ["Peugeot"]
+    "bc": ["dfl", "f100", "equal1000"]
   }
 ]
