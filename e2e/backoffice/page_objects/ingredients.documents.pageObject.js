@@ -22,7 +22,7 @@ module.exports = function() {
   this.optionsDropdownExpressAll = element.all(by.repeater('opt in documentFormCtrl.all.optionLabels.EXPRESS'));
   this.optionsDropdownIs = element(by.repeater('opt in documentFormCtrl.all.optionLabels.INTER_SITE'));
   this.optionsDropdownIsAll = element.all(by.repeater('opt in documentFormCtrl.all.optionLabels.INTER_SITE'));
-  this.bookingcodes = element(by.model('ingredCtrl.newObject.missionFilter.bookingCodeSet'));
+  this.bookingcodes = element(by.model('badgeFormCtrl.newObject.missionFilter.bookingCodeSet'));
   this.bookingcodesDropdown = element(by.repeater('code in documentFormCtrl.all.bookingCodes'));
   this.bookingcodesDropdownAll = element.all(by.repeater('code in documentFormCtrl.all.bookingCodes'));
 };
