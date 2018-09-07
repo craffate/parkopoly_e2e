@@ -16,63 +16,65 @@ describe('Documents', function() {
   });
 
   dataSpec(specData, (data, iteration) => {
-    describe('CGVRenault', function() {
+    describe(`Create ${data.name} document`, function() {
       it('should fill the form', async function() {
-        await documentsPage.nameInput.sendKeys(data.name);
-
         if (data.path !== null) {
           await helpers.displayUpload(documentsPage.fileInput);
-          await helpers.uploadFile(data.path, documentsPage.fileInput);
-        }
-/*
+          await helpers.uploadFile(path.resolve(data.path), documentsPage.fileInput);
+        };
+
+        await documentsPage.nameInput.sendKeys(data.name + TIMESTAMP);
         await helpers.switchCheckbox(documentsPage.alertNoUploadSwitch, data.alertNoUpload);
         await helpers.switchCheckbox(documentsPage.encryptSwitch, data.encrypt);
-        await helpers.switchCheckbox(documentsPage.dispWebAppAfterSwitch, data.dispWebAppAfter);
-        await helpers.switchCheckbox(documentsPage.dispWebAppSwitch, data.dispWebApp);
-        await helpers.switchCheckbox(documentsPage.qualitySwitch, data.quality);*/
+        await helpers.switchCheckbox(documentsPage.displayWebAppAfterSwitch, data.dispWebAppAfter);
+        await helpers.switchCheckbox(documentsPage.displayWebAppSwitch, data.dispWebApp);
+        await helpers.switchCheckbox(documentsPage.qualitySwitch, data.quality);
 
         if (data.missionFilter !== null) {
+          await documentsPage.missionType.click();
           await helpers.asyncForEach(data.missionFilter, async (s) => {
             let el;
 
             el = await helpers.getFromDropdown(s, documentsPage.missionTypeDropdownAll);
-            await documentsPage.missionType.click();
-            await helpers.scrollIntoView(el);
-            await el.click();
+            await helpers.scrollIntoView(el[0]);
+            return el[0].click();
           });
+
           await documentsPage.missionTypeDropdown.sendKeys(protractor.Key.ESCAPE);
-        }
+        };
 
         if (data.optionFilter !== null) {
+          await documentsPage.options.click();
           await helpers.asyncForEach(data.optionFilter, async (s) => {
-            let el;
+            let el = null;
             const menus = [documentsPage.optionsDropdownPickupAll,
               documentsPage.optionsDropdownVnAll,
               documentsPage.optionsDropdownExpressAll,
               documentsPage.optionsDropdownIsAll];
-            await helpers.asyncForEach(menus, async (menu) => {
-              const search = helpers.getFromDropdown(s, menu);
 
-              el = s !== undefined ? s : el;
-            });
-            await documentsPage.options.click();
-            await helpers.scrollIntoView(el);
-            await el.click();
+            for (idx = 0; el === null ; i++) {
+              el = helpers.getFromDropdown(s, menus[idx]);
+            };
+
+            await helpers.scrollIntoView(el[0]);
+            return el[0].click();
           });
+
           await documentsPage.missionTypeDropdown.sendKeys(protractor.Key.ESCAPE);
-        }
+        };
 
         if (data.bc !== null) {
+          await documentsPage.bookingcodes.click();
           await helpers.asyncForEach(data.bc, async (s) => {
             let el;
 
-            el = await helpers.getFromDropdown(s, documentsPage.bookingcodesDropdownAll);
-            await documentsPage.bookingcodes.click();
-            await helpers.scrollIntoView(el);
-            await el.click();
+            el = await helpers.getFromDropdown(s + TIMESTAMP, documentsPage.bookingcodesDropdownAll);
+            await helpers.scrollIntoView(el[0]);
+            return el[0].click();
           });
+
           await documentsPage.bookingcodesDropdown.sendKeys(protractor.Key.ESCAPE);
-        }
+        };
       });
 
       it('should submit the form', async function() {
