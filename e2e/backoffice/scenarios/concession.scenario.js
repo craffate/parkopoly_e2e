@@ -36,6 +36,7 @@ describe('Concessions', function() {
         await concessionPage.pointOfSaleBonusInput.sendKeys(data.bonus);
         await concessionPage.pointOfSaleCity.click();
         el = await helpers.getFromDynamicDropdown(data.city, concessionPage.pointOfSaleCityResults);
+        await helpers.scrollIntoView(el[0]);
         await el[0].click();
 
         if (data.active === true) {
@@ -43,25 +44,26 @@ describe('Concessions', function() {
         };
 
         await concessionPage.pointOfSaleGroup.click();
-        await concessionPage.pointOfSaleGroupInput.sendKeys(data.group + ' ' + TIMESTAMP);
-        await concessionPage.pointOfSaleGroupResults.first().click();
+        el = await helpers.getFromBindHtmlDropdown(`${data.group} ${TIMESTAMP}`,
+          'concessionGroup.name', concessionPage.pointOfSaleGroupResults);
+        await el[0].click();
 
-        await helpers.asyncForEach(data.openHours, async (key, idx) => {
+        await helpers.asyncForEach(data.openHours, async (arr, idx) => {
           if (await concessionPage.pointOfSaleAddDayButton.isPresent()) {
             await concessionPage.pointOfSaleAddDayButton.click();
           };
 
-          await concessionPage.pointOfSaleDay.click();
+          await concessionPage.pointOfSaleDay.get(idx).click();
           await concessionPage.pointOfSaleDayResults.first().click();
 
-          if (key.length > 2) {
+          if (arr.length > 2) {
             await concessionPage.pointOfSaleDayPauseCheckbox.get(idx).click();
-            await concessionPage.pointOfSaleStartInput.get(idx).sendKeys(key[2]);
-            await concessionPage.pointOfSaleEndInput.get(idx).sendKeys(key[3]);
+            await concessionPage.pointOfSaleStartInput.get(idx).sendKeys(arr[2]);
+            await concessionPage.pointOfSaleEndInput.get(idx).sendKeys(arr[3]);
           };
 
-          await concessionPage.pointOfSaleDayStartInput.get(idx).sendKeys(key[0]);
-          await concessionPage.pointOfSaleDayEndInput.get(idx).sendKeys(key[1]);
+          await concessionPage.pointOfSaleDayStartInput.get(idx).sendKeys(arr[0]);
+          return concessionPage.pointOfSaleDayEndInput.get(idx).sendKeys(arr[1]);
         });
 
         await concessionPage.pointOfSaleAnnualPudInput.sendKeys(data.volAfterSales);
