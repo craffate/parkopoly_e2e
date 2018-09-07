@@ -27,15 +27,18 @@ describe('Brands', function() {
         await el[0].click();
 
         if (data.missionType !== null) {
+          await brandPage.missiontypeDropdown.click();
+          await helpers.waitForVisibility(brandPage.missiontypeDropdownTypes);
           await helpers.asyncForEach(data.missionType, async (s) => {
             let el;
 
-            await brandPage.missiontypeDropdown.click();
             el = await helpers.getFromDropdown(s,
               brandPage.missiontypeDropdownTypesAll);
-            await el[0].click();
-            return el[0].sendKeys(protractor.Key.ESCAPE);
+            await helpers.scrollIntoView(el[0]);
+            return el[0].click();
           });
+
+          await brandPage.missiontypeDropdownTypesAll.first().sendKeys(protractor.Key.ESCAPE);
         };
 
         await brandPage.accountDropdown.click();
@@ -44,7 +47,7 @@ describe('Brands', function() {
         await brandPage.accountDropdownAccountsAll.first().click();
         await brandPage.penaltySearchbar.click();
         await brandPage.penaltySearchbarInput.sendKeys(TIMESTAMP);
-        await brandPage.penaltySearchbarDropdown.click();
+        await brandPage.penaltySearchbarDropdownAll.first().click();
         await brandPage.aliasInput.sendKeys(data.alias);
         await brandPage.mailOnBookingCheckbox.click();
       });
