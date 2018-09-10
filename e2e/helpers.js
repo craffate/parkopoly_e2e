@@ -89,7 +89,8 @@ module.exports = {
     });
   },
 
-  getFromTickDropdown: async function(s, arr2) {
+  getFromTickDropdown: async function(s, arr) {
+    s = s.trim();
     return arr.filter(function(el, idx) {
       return el.$('div.md-text').getText().then(function(val) {
         return val.includes(s);
