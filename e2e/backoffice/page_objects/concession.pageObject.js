@@ -16,18 +16,17 @@ module.exports = function() {
   this.pointOfSaleCity = element(by.model('cposAdminCtrl.pointOfSales.cityId'));
   this.pointOfSaleCityResults = element.all(by.repeater('city in cposAdminCtrl.cities'));
   this.pointOfSaleGroup = element(by.model('cposAdminCtrl.pointOfSales.concessionGroupId'));
-  this.pointOfSaleGroupInput = this.pointOfSaleGroup.$('input');
-  this.pointOfSaleGroupResults = this.pointOfSaleGroup.all(by.repeater('concessionGroup in $select.items'));
+  this.pointOfSaleGroupInput = this.pointOfSaleGroup.element(by.model('$select.search'));
+  this.pointOfSaleGroupResults = element.all(by.repeater('concessionGroup in $select.items'));
   this.pointOfSaleMessageInput = element(by.model('cposAdminCtrl.pointOfSales.standardMessageForDriver'));
-  this.pointOfSaleDay = element(by.model('day.name'));
-  this.pointOfSaleDayInput = this.pointOfSaleDay.$('input');
+  this.pointOfSaleDay = element.all(by.model('day.name'));
   this.pointOfSaleDayResults = this.pointOfSaleDay.all(by.repeater('day in $select.items'));
   this.pointOfSaleDayStartInput = element.all(by.model('day.start'));
   this.pointOfSaleDayEndInput = element.all(by.model('day.stop'));
   this.pointOfSaleDayPauseCheckbox = element.all(by.model('day.pauseFlag'));
   this.pointOfSaleDayPauseStartInput = element.all(by.model('day.pauseStart'));
   this.pointOfSaleDayPauseEndInput = element.all(by.model('day.pauseStop'));
-  this.pointOfSaleAddDayButton = $('a[ng-click="cposAdminCtrl.pushObject(cposAdminCtrl.pointOfSales.mappedDays)"')
+  this.pointOfSaleAddDayButton = $('a[ng-click="cposAdminCtrl.pushObject(cposAdminCtrl.pointOfSales.mappedDays)"]')
   this.pointOfSaleAnnualPudInput = element(by.model('cposAdminCtrl.pointOfSales.annualPudEstimate'));
   this.pointOfSaleAnnualVnInput = element(by.model('cposAdminCtrl.pointOfSales.annualVnEstimate'));
   this.pointOfSaleAnnualVoInput = element(by.model('cposAdminCtrl.pointOfSales.annualVoEstimate'));
