@@ -10,7 +10,7 @@
     "brands": ["Renault"],
     "missionFilter": ["PICKUP", "DELIVERY", "EXPRESS"],
     "optionFilter": null,
-    "bc": ["Renault"]
+    "bc": ["dfl", "f100", "equal1000"]
   },
   {
     "name": "Ordre Reparation",
@@ -23,7 +23,7 @@
     "brands": ["Renault", "DS"],
     "missionFilter": ["PICKUP", "DELIVERY", "EXPRESS"],
     "optionFilter": ["PUD_VR", "DEFAULT"],
-    "bc": ["Renault", "DS"]
+    "bc": ["dfl", "f100", "equal1000"]
   },
   {
     "name": "Contrat Pret",
