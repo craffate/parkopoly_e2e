@@ -43,32 +43,39 @@ describe('Documents', function() {
           await documentsPage.missionTypeDropdown.sendKeys(protractor.Key.ESCAPE);
         };
 
+        /*
         if (data.optionFilter !== null) {
           await documentsPage.options.click();
           await helpers.asyncForEach(data.optionFilter, async (s) => {
-            let el = null;
             const menus = [documentsPage.optionsDropdownPickupAll,
               documentsPage.optionsDropdownVnAll,
               documentsPage.optionsDropdownExpressAll,
               documentsPage.optionsDropdownIsAll];
 
-            for (idx = 0; el === null ; i++) {
-              el = helpers.getFromDropdown(s, menus[idx]);
-            };
+            await helpers.asyncForEach(menus, async (opt) => {
+              let el;
 
-            await helpers.scrollIntoView(el[0]);
-            return el[0].click();
+              el = await helpers.getFromTickDropdownExact(s, opt);
+              if (el.length > 0) {
+                await helpers.scrollIntoView(el[0]);
+                return el[0].click();
+              } else {
+                return el;
+              };
+            });
           });
 
-          await documentsPage.missionTypeDropdown.sendKeys(protractor.Key.ESCAPE);
+          await documentsPage.optionsDropdownPickupAll.first().sendKeys(protractor.Key.ESCAPE);
         };
+        */
 
         if (data.bc !== null) {
           await documentsPage.bookingcodes.click();
+          await helpers.waitForVisibility(documentsPage.bookingcodesDropdown);
           await helpers.asyncForEach(data.bc, async (s) => {
             let el;
 
-            el = await helpers.getFromDropdown(s + TIMESTAMP, documentsPage.bookingcodesDropdownAll);
+            el = await helpers.getFromTickDropdown(s + TIMESTAMP, documentsPage.bookingcodesDropdownAll);
             await helpers.scrollIntoView(el[0]);
             return el[0].click();
           });
