@@ -95,8 +95,17 @@ module.exports = {
       return el.$('div.md-text').getText().then(function(val) {
         return val.includes(s);
       });
-  });
-},
+    });
+  },
+
+  getFromTickDropdownExact: async function(s, arr) {
+    s = s.trim();
+    return arr.filter(function(el, idx) {
+      return el.$('div.md-text').getText().then(function(val) {
+        return s === val;
+      });
+    });
+  },
 
   deleteMe: async function(s, arr) {
     s = s.trim();
