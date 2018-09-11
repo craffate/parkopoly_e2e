@@ -49,9 +49,11 @@ describe('Concessions', function() {
           'concessionGroup.name', concessionPage.pointOfSaleGroupResults);
         await el[0].click();
 
+        /* Temporary removal
         await helpers.asyncForEach(data.openHours, async (day, idx) => {
           return concessionPage.addDay(day, idx);
         });
+        */
 
         await concessionPage.pointOfSaleAnnualPudInput.sendKeys(data.volAfterSales);
         await concessionPage.pointOfSaleAnnualVnInput.sendKeys(data.volVN);
