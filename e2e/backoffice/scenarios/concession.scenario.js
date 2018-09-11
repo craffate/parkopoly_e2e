@@ -35,6 +35,7 @@ describe('Concessions', function() {
         await concessionPage.pointOfSaleShortNameInput.sendKeys(data.shortname + TIMESTAMP);
         await concessionPage.pointOfSaleBonusInput.sendKeys(data.bonus);
         await concessionPage.pointOfSaleCity.click();
+        await helpers.waitForVisibility(concessionPage.pointOfSaleCityResults.first());
         el = await helpers.getFromDynamicDropdown(data.city, concessionPage.pointOfSaleCityResults);
         await helpers.scrollIntoView(el[0]);
         await el[0].click();
@@ -48,22 +49,8 @@ describe('Concessions', function() {
           'concessionGroup.name', concessionPage.pointOfSaleGroupResults);
         await el[0].click();
 
-        await helpers.asyncForEach(data.openHours, async (arr, idx) => {
-          if (await concessionPage.pointOfSaleAddDayButton.isPresent()) {
-            await concessionPage.pointOfSaleAddDayButton.click();
-          };
-
-          await concessionPage.pointOfSaleDay.get(idx).click();
-          await concessionPage.pointOfSaleDayResults.first().click();
-
-          if (arr.length > 2) {
-            await concessionPage.pointOfSaleDayPauseCheckbox.get(idx).click();
-            await concessionPage.pointOfSaleStartInput.get(idx).sendKeys(arr[2]);
-            await concessionPage.pointOfSaleEndInput.get(idx).sendKeys(arr[3]);
-          };
-
-          await concessionPage.pointOfSaleDayStartInput.get(idx).sendKeys(arr[0]);
-          return concessionPage.pointOfSaleDayEndInput.get(idx).sendKeys(arr[1]);
+        await helpers.asyncForEach(data.openHours, async (day, idx) => {
+          return concessionPage.addDay(day, idx);
         });
 
         await concessionPage.pointOfSaleAnnualPudInput.sendKeys(data.volAfterSales);
