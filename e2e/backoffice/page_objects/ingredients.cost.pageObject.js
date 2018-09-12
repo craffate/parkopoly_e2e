@@ -12,5 +12,5 @@ module.exports = function() {
   this.zone = element(by.repeater('costType in costFormCtrl.newObject.zonedCostTypeDtoSet'));
   this.zoneAll = element.all(by.repeater('costType in costFormCtrl.newObject.zonedCostTypeDtoSet'));
 
-  this.zone = new costZone(this, this.zoneAll.last());
+  this.zoneLast = new costZone(this, this.zoneAll.last());
 };
