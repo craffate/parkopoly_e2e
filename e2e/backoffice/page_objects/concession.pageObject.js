@@ -26,7 +26,7 @@ module.exports = function() {
   this.pointOfSaleDayPauseCheckbox = element.all(by.model('day.pauseFlag'));
   this.pointOfSaleDayPauseStartInput = element.all(by.model('day.pauseStart'));
   this.pointOfSaleDayPauseEndInput = element.all(by.model('day.pauseStop'));
-  this.pointOfSaleAddDayButton = $('a[ng-click="cposAdminCtrl.pushObject(cposAdminCtrl.pointOfSales.mappedDays)"]');
+  this.pointOfSaleAddDayButton = element(by.id('addDayButton'));
   this.pointOfSaleAnnualPudInput = element(by.model('cposAdminCtrl.pointOfSales.annualPudEstimate'));
   this.pointOfSaleAnnualVnInput = element(by.model('cposAdminCtrl.pointOfSales.annualVnEstimate'));
   this.pointOfSaleAnnualVoInput = element(by.model('cposAdminCtrl.pointOfSales.annualVoEstimate'));
@@ -49,7 +49,6 @@ module.exports = function() {
 
   this.addDay = async function(day, idx) {
     if (idx < 7) {
-      await helpers.scrollIntoView(this.pointOfSaleAddDayButton);
       await this.pointOfSaleAddDayButton.click();
     };
 
@@ -57,17 +56,12 @@ module.exports = function() {
     await this.pointOfSaleDayResults.first().click();
 
     if (day.length > 2) {
-      await helpers.scrollIntoView(this.pointOfSaleDayPauseCheckbox);
       await this.pointOfSaleDayPauseCheckbox.get(idx).click();
-      await helpers.scrollIntoView(this.pointOfSaleStartInput);
       await this.pointOfSaleStartInput.get(idx).sendKeys(day[2]);
-      await helpers.scrollIntoView(this.pointOfSaleEndInput);
       await this.pointOfSaleEndInput.get(idx).sendKeys(day[3]);
     };
 
-    await helpers.scrollIntoView(this.pointOfSaleDayStartInput);
     await this.pointOfSaleDayStartInput.get(idx).sendKeys(day[0]);
-    await helpers.scrollIntoView(this.pointOfSaleDayEndInput);
     return this.pointOfSaleDayEndInput.get(idx).sendKeys(day[1]);
   };
 };
