@@ -167,14 +167,13 @@ module.exports = {
 
   loginClient: async function(email, password) {
     const EC = protractor.ExpectedConditions;
-    const logPage = await EC.precenseOf($('form[name="userForm"]'));
 
     email = email.trim();
     password = password.trim();
-    if (logPage === false) {
+    if (await EC.stalenessOf($('form[name="userForm"]'))) {
       await $('ul.nav.navbar-nav.navbar-right.am-user-nav > li.dropdown > a').click();
       await $('a.sign-out-link').click();
-      await helpers.waitForVisibility($('form[name="userForm"'));
+      await browser.wait(EC.visibilityOf($('form[name="userForm"')), TIMEOUT);
     };
 
     await $('input[type="email"]').sendKeys(email);
