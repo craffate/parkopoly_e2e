@@ -163,5 +163,26 @@ module.exports = {
     msg = "Element was still visible after " + TIMEOUT + " milliseconds") {
     const EC = protractor.ExpectedConditions;
     return browser.wait(EC.not(EC.visibilityOf(el)), t, msg);
+  },
+
+  loginClient: async function(email, password) {
+    const EC = protractor.ExpectedConditions;
+    const logPage = await EC.precenseOf($('form[name="userForm"]'));
+
+    email = email.trim();
+    password = password.trim();
+    if (logPage === false) {
+      await $('ul.nav.navbar-nav.navbar-right.am-user-nav > li.dropdown > a').click();
+      await $('a.sign-out-link').click();
+      await helpers.waitForVisibility($('form[name="userForm"'));
+    };
+
+    await $('input[type="email"]').sendKeys(email);
+    await $('input[type="password"]').sendKeys(password);
+    return browser.driver.wait(function() {
+      return browser.driver.getCurrentUrl().then(function(url) {
+        return (browser.baseUrl === url);
+      });
+    }, TIMEOUT);
   }
 };
