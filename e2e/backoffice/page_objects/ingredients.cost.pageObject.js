@@ -11,6 +11,7 @@ module.exports = function() {
   this.addzoneButton = $('[ng-click="costFormCtrl.addZonedCostType()"]');
   this.zone = element(by.repeater('costType in costFormCtrl.newObject.zonedCostTypeDtoSet'));
   this.zoneAll = element.all(by.repeater('costType in costFormCtrl.newObject.zonedCostTypeDtoSet'));
+  this.submitButton = element(by.id('createButton'));
 
   this.zoneLast = new costZone(this, this.zoneAll.last());
 };
