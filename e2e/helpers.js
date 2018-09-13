@@ -178,6 +178,7 @@ module.exports = {
 
     await $('input[type="email"]').sendKeys(email);
     await $('input[type="password"]').sendKeys(password);
+    await $('button[type="submit"]').click();
     return browser.driver.wait(function() {
       return browser.driver.getCurrentUrl().then(function(url) {
         return (browser.baseUrl === url);
