@@ -2,7 +2,7 @@ const helpers = require('../../helpers');
 
 module.exports = function() {
   this.url = 'users';
-  this.usersButton = $('a[href="/users"]');
+  this.routerLink = $('a[href="/users"]');
   this.spinner = $('div.spinner');
 
   this.searchform = $('par-text-search > form');
