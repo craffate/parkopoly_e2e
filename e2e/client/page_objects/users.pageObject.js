@@ -42,7 +42,7 @@ module.exports = function() {
   };
 
   this.getClick = async function() {
-    return this.usersButton.click();
+    return this.routerLink.click();
   };
 
   this.selectFunction = async function(f) {

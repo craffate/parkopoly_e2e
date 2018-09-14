@@ -1,5 +1,6 @@
 [
   {
+    "credsLogin": ["manager_renault@e2e.com", "Renault@123"],
     "status": "roleManager",
     "quickbooking": false,
     "noAccess": false,

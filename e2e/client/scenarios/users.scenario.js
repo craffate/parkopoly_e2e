@@ -7,6 +7,10 @@ describe('Users', function() {
 
   dataSpec(specData, (data, iteration) => {
     describe(`Create ${data.firstName} ${data.lastName} user`, function() {
+      it(`should login as ${data.credsLogin[0]}`, async function() {
+        await helpers.loginClient(data.credsLogin[0] + TIMESTAMP, data.credsLogin[1]);
+      });
+
       it('should navigate to the users page', async function() {
         await usersPage.getClick();
         await helpers.waitForNo(usersPage.spinner);
