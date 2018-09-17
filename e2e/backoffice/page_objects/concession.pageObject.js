@@ -33,6 +33,7 @@ module.exports = function() {
   this.pointOfSaleAddDayButton = element(by.id('addDayButton'));
 
   this.pointOfSaleSubmitButton = element(by.id('submitButton'));
+  this.pointOfSaleConfirmationSubmitButton = $('button[ng-click="createdMessageCtrl.hide()"');
 
   this.createPointOfSaleGroupButton = $('button[ng-click="poslCtrl.createConcessionGroup()"]');
   this.createPointOfSaleGroupDialog = element(by.id('create-concession-group'));

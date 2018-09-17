@@ -86,7 +86,8 @@ describe('Concessions', function() {
 
       it('should submit the form', async function() {
         await concessionPage.pointOfSaleSubmitButton.click();
-        await helpers.waitForToast();
+        await helpers.waitForVisibility(concessionPage.pointOfSaleConfirmationSubmitButton);
+        await concessionPage.pointOfSaleConfirmationSubmitButton.click();
       });
     });
   });
