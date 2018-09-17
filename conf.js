@@ -20,7 +20,7 @@ exports.config = {
       './e2e/backoffice/scenarios/penalty.scenario.js',                 /* 1 */
       './e2e/backoffice/scenarios/bc.scenario.js',                      /* 1 */
       './e2e/backoffice/scenarios/logos.scenario.js',                   /* 1 */
-      /*'./e2e/backoffice/scenarios/cost.scenario.js',*/                /* 2 */
+      './e2e/backoffice/scenarios/cost.scenario.js',                    /* 2 */
       './e2e/backoffice/scenarios/brand.scenario.js',                   /* 2 */
       './e2e/backoffice/scenarios/document.scenario.js',                /* 3 */
       './e2e/backoffice/scenarios/badge.scenario.js',                   /* 3 */
@@ -41,25 +41,25 @@ exports.config = {
   },
   multiCapabilities: [
     {browserName: 'chrome',
-    shardTestFiles: false,
-    maxInstances: 3,
-    chromeOptions: {
-      args: ['--disable-extensions', '--show-fps-counter=true',
-        '--disable-infobars', '--incognito', '--disable-gpu',
-        '--headless', '--start-maximized',
-        '--disable-web-security', '--allow-running-insecure-content',
-        '--allow-insecure-localhost', '--disable-browser-side-navigation',
-        '--reduce-security-for-testing']
-    }
-  },
-    {browserName: 'firefox',
-    firefoxOptions: {
-      args: ['--headless']
+      shardTestFiles: false,
+      maxInstances: 3,
+      chromeOptions: {
+        args: ['--disable-extensions', '--show-fps-counter=true',
+          '--disable-infobars', '--incognito', '--disable-gpu',
+          '--headless', '--start-maximized',
+          '--disable-web-security', '--allow-running-insecure-content',
+          '--allow-insecure-localhost', '--disable-browser-side-navigation',
+          '--reduce-security-for-testing', '--window-size=1800,1600']
+      }
     },
-    'moz:firefoxOptions': {
-      args: ['--headless']
-    }
-  }],
+    {browserName: 'firefox',
+      firefoxOptions: {
+        args: ['--headless']
+      },
+      'moz:firefoxOptions': {
+        args: ['--headless']
+      }
+    }],
   params: {
     login: {
       usr: process.env.USR_E2E,
@@ -71,8 +71,8 @@ exports.config = {
     await browser.waitForAngularEnabled(true);
 
     global.TIMESTAMP = fs.existsSync(tsPath) ?
-    fs.readFileSync(tsPath, 'utf8') :
-    await Date.now();
+      fs.readFileSync(tsPath, 'utf8') :
+      await Date.now();
 
     global.TIMEOUT = 120000;
 
