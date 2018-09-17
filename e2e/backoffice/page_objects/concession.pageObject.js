@@ -17,20 +17,21 @@ module.exports = function() {
   this.pointOfSaleCityResults = element.all(by.repeater('city in cposAdminCtrl.cities'));
   this.pointOfSaleGroup = element(by.model('cposAdminCtrl.pointOfSales.concessionGroupId'));
   this.pointOfSaleGroupInput = this.pointOfSaleGroup.element(by.model('$select.search'));
-  this.pointOfSaleGroupResults = element.all(by.repeater('concessionGroup in $select.items'));
+  this.pointOfSaleGroupResults = this.pointOfSaleGroup.all(by.repeater('concessionGroup in $select.items'));
   this.pointOfSaleMessageInput = element(by.model('cposAdminCtrl.pointOfSales.standardMessageForDriver'));
   this.pointOfSaleDay = element.all(by.model('day.name'));
-  this.pointOfSaleDayResults = this.pointOfSaleDay.all(by.repeater('day in $select.items'));
+  this.pointOfSaleDayResults = element.all(by.repeater('day in $select.items'));
   this.pointOfSaleDayStartInput = element.all(by.model('day.start'));
   this.pointOfSaleDayEndInput = element.all(by.model('day.stop'));
   this.pointOfSaleDayPauseCheckbox = element.all(by.model('day.pauseFlag'));
   this.pointOfSaleDayPauseStartInput = element.all(by.model('day.pauseStart'));
   this.pointOfSaleDayPauseEndInput = element.all(by.model('day.pauseStop'));
-  this.pointOfSaleAddDayButton = element(by.id('addDayButton'));
   this.pointOfSaleAnnualPudInput = element(by.model('cposAdminCtrl.pointOfSales.annualPudEstimate'));
   this.pointOfSaleAnnualVnInput = element(by.model('cposAdminCtrl.pointOfSales.annualVnEstimate'));
   this.pointOfSaleAnnualVoInput = element(by.model('cposAdminCtrl.pointOfSales.annualVoEstimate'));
   this.pointOfSaleAnnualCommentInput = element(by.model('cposAdminCtrl.pointOfSales.commentEstimate'));
+  this.pointOfSaleAddDayButton = element(by.id('addDayButton'));
+
   this.pointOfSaleSubmitButton = element(by.id('submitButton'));
 
   this.createPointOfSaleGroupButton = $('button[ng-click="poslCtrl.createConcessionGroup()"]');
@@ -45,23 +46,5 @@ module.exports = function() {
 
   this.get = async function() {
     return browser.driver.get(browser.baseUrl + this.url);
-  };
-
-  this.addDay = async function(day, idx) {
-    if (idx < 7) {
-      await this.pointOfSaleAddDayButton.click();
-    };
-
-    await this.pointOfSaleDay.get(idx).click();
-    await this.pointOfSaleDayResults.first().click();
-
-    if (day.length > 2) {
-      await this.pointOfSaleDayPauseCheckbox.get(idx).click();
-      await this.pointOfSaleStartInput.get(idx).sendKeys(day[2]);
-      await this.pointOfSaleEndInput.get(idx).sendKeys(day[3]);
-    };
-
-    await this.pointOfSaleDayStartInput.get(idx).sendKeys(day[0]);
-    return this.pointOfSaleDayEndInput.get(idx).sendKeys(day[1]);
   };
 };

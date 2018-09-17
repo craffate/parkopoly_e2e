@@ -47,13 +47,36 @@ describe('Concessions', function() {
         await concessionPage.pointOfSaleGroup.click();
         el = await helpers.getFromBindHtmlDropdown(`${data.group} ${TIMESTAMP}`,
           'concessionGroup.name', concessionPage.pointOfSaleGroupResults);
+        await helpers.scrollIntoView(el[0]);
         await el[0].click();
 
-        /* Temporary removal
-        await helpers.asyncForEach(data.openHours, async (day, idx) => {
-          return concessionPage.addDay(day, idx);
+        await helpers.asyncForEach(data.openHours, async (day, idx, days) => {
+          let el = await {
+            pointOfSaleDay: concessionPage.pointOfSaleDay.get(idx),
+            pointOfSaleDayResults: concessionPage.pointOfSaleDayResults,
+            pointOfSaleDayStartInput: concessionPage.pointOfSaleDayStartInput.get(idx),
+            pointOfSaleDayEndInput: concessionPage.pointOfSaleDayEndInput.get(idx),
+            pointOfSaleDayPauseCheckbox: concessionPage.pointOfSaleDayPauseCheckbox.get(idx),
+            pointOfSaleDayPauseStartInput: concessionPage.pointOfSaleDayPauseStartInput.get(idx),
+            pointOfSaleDayPauseEndInput: concessionPage.pointOfSaleDayPauseEndInput.get(idx)
+          };
+
+          if (days[idx + 1] !== undefined) {
+            await concessionPage.pointOfSaleAddDayButton.click();
+          };
+
+          await el.pointOfSaleDay.click();
+          await el.pointOfSaleDayResults.first().click();
+
+          if (day.length > 2) {
+            await el.pointOfSaleDayPauseCheckbox.click();
+            await el.pointOfSaleDayPauseStartInput.sendKeys(day[2]);
+            await el.pointOfSaleDayPauseEndInput.sendKeys(day[3]);
+          };
+
+          await el.pointOfSaleDayStartInput.sendKeys(day[0]);
+          return el.pointOfSaleDayEndInput.sendKeys(day[1]);
         });
-        */
 
         await concessionPage.pointOfSaleAnnualPudInput.sendKeys(data.volAfterSales);
         await concessionPage.pointOfSaleAnnualVnInput.sendKeys(data.volVN);
