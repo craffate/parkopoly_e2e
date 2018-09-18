@@ -8,7 +8,7 @@ module.exports = function() {
   this.removeButton = $('button[ng-click="prescripteursCtrl.deleteElements()"]');
   this.displayButton = $('button[ng-click="prescripteursCtrl.switchDisplayEmptyRow()"]');
 
-  this.editRows = element(by.id('editRows'));
+  this.editTable = element(by.id('editRows'));
 
   this.creationRow = this.editRows.$$('tr').first();
   this.newMissionLinkBrand = element(by.model('prescripteursCtrl.newMissionLink.brand'));
@@ -46,7 +46,8 @@ module.exports = function() {
   this.selectedInAllLookButton = element(by.model('button[ng-click="prescripteursCtrl.lookForMissionLinks();"]'));
   this.selectedInAllDupButton = element(by.model('button[ng-click="prescripteursCtrl.showDuplicates()"]'));
 
-  this.resultRows = element(by.id('resultRows'));
+  this.resultsTable = element(by.id('resultRows'));
+  this.resultsRows = this.resultsTable.element(by.repeater('rowContent in prescripteursCtrl.rows'));
 
   this.get = async function() {
     return browser.driver.get(browser.baseUrl + this.url);
