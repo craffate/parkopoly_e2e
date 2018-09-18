@@ -8,6 +8,7 @@
   "extends": "plugin:protractor/recommended",
   "rules": {
     "protractor/no-repetitive-locators": 0,
-    "protractor/no-repetitive-selectors": 0
+    "protractor/no-repetitive-selectors": 0,
+    "protractor/no-angular-attributes": 0
   }
 }
