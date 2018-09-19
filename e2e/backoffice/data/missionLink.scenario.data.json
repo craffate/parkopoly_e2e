@@ -1,6 +1,6 @@
 [
   {
-    "prescriber": "renaultPUD",
+    "prescriber": "Renault PUD",
     "types": ["PU", "D"],
     "bookingCode": "default",
     "concessions": ["Renault Courcelles"],
@@ -8,7 +8,7 @@
     "costZone": "costParisCustomerFree"
   },
   {
-    "prescriber": "renaultVN",
+    "prescriber": "Renault VN",
     "types": ["VN"],
     "bookingCode": "f100",
     "concessions": ["Renault Courcelles"],
@@ -16,7 +16,7 @@
     "costZone": "costParisCustomerFree"
   },
   {
-    "prescriber": "PSA_IS",
+    "prescriber": "PSA IS",
     "types": ["IS"],
     "bookingCode": "equal1000",
     "concessions": ["PSA Retail Paris"],
