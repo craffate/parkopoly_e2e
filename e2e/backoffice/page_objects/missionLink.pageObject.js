@@ -47,7 +47,10 @@ module.exports = function() {
   this.selectedInAllDupButton = element(by.model('button[ng-click="prescripteursCtrl.showDuplicates()"]'));
 
   this.resultsTable = element(by.id('resultRows'));
-  this.resultsRows = this.resultsTable.element(by.repeater('rowContent in prescripteursCtrl.rows'));
+  this.resultsRows = this.resultsTable.all(by.repeater('rowContent in prescripteursCtrl.rows'));
+  this.resultsCheckbox = element(by.model('$index'));
+  this.resultsModifyButton = $('button[ng-click="prescripteursCtrl.modifyMissionLink(rowContent);"]');
+  this.resultsDeleteButton = $('button[ng-click="prescripteursCtrl.deleteMissionLink(rowContent.id, $index)"]');
 
   this.get = async function() {
     return browser.driver.get(browser.baseUrl + this.url);
