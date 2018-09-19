@@ -10,7 +10,7 @@ module.exports = function() {
 
   this.editTable = element(by.id('editRows'));
 
-  this.creationRow = this.editRows.$$('tr').first();
+  this.creationRow = this.editTable.$$('tr').first();
   this.newMissionLinkBrand = element(by.model('prescripteursCtrl.newMissionLink.brand'));
   this.newMissionLinkInput = element(by.model('newLinkBrandSearch'));
   this.newMissionLinkResults = element.all(by.repeater('brand in prescripteursCtrl.all.brand'));
@@ -27,7 +27,24 @@ module.exports = function() {
   this.newMissionLinkCostResults = element.all(by.repeater('cost in prescripteursCtrl.all.cost'));
   this.newMissionLinkSaveButton = $('button[ng-click="prescripteursCtrl.createMissionLink()"]');
 
-  this.editionRow = this.editRows.$$('tr').last();
+  this.createMissionLink = async function(data) {
+    let el;
+
+    await mlPage.newMissionLinkBrand.click();
+    el = await helpers.getFromTickDropdown(data.prescriber + TIMESTAMP, mlPage.newMissionLinkResults);
+    await el[0].click();
+    await el[0].sendKeys(protractor.Key.ESCAPE);
+
+    await helpers.asyncForEach(data.types, async (s) => {
+      let el;
+
+      el = await helpers.getFromTickDropdown(s, mlPage.newMissionLinkTypesResults);
+      await helpers.scrollIntoView(el[0]);
+      return el[0].click();
+    });
+  };
+
+  this.editionRow = this.editTable.$$('tr').last();
   this.selectedInAllCheckbox = element(by.model('prescripteursCtrl.findAndUpdateAllFlag'));
   this.selectedInAllBrand = element(by.model('prescripteursCtrl.selectedInAll.brand'));
   this.selectedInAllInput = element(by.model('searchBrand'));
@@ -55,4 +72,5 @@ module.exports = function() {
   this.get = async function() {
     return browser.driver.get(browser.baseUrl + this.url);
   };
+
 };
