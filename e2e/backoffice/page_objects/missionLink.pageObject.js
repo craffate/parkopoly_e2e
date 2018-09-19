@@ -72,5 +72,4 @@ module.exports = function() {
   this.get = async function() {
     return browser.driver.get(browser.baseUrl + this.url);
   };
-
 };

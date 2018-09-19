@@ -1,9 +1,3 @@
-/*
- ** testType values
- ** 0: From scratch
- ** 1: Update
- */
-
 const helpers = require('../../helpers');
 const MissionLinkPageObject = require('../page_objects/missionLink.pageObject');
 const specData = require('../data/missionLink.scenario.data.json');
