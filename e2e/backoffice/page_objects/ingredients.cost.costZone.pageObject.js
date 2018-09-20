@@ -1,5 +1,5 @@
 const costZone = function(Parent, zone) {
-  this.title = zone.$('div[ng-click="toggleCollapsibleItem()"]');
+  this.title = zone.$('md-collapsible-header');
   this.nameInput = zone.element(by.model('costType.name'));
   this.dropdown = zone.element(by.model('costType.zoneCustomerDtoSet'));
   this.dropdownInput = zone.element(by.model('costType.search'));
