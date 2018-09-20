@@ -12,10 +12,10 @@ module.exports = function() {
 
   this.creationRow = this.editTable.$$('tr').first();
   this.newMissionLinkBrand = element(by.model('prescripteursCtrl.newMissionLink.brand'));
-  this.newMissionLinkInput = element(by.model('newLinkBrandSearch'));
-  this.newMissionLinkResults = element.all(by.repeater('brand in prescripteursCtrl.all.brand'));
+  this.newMissionLinkBrandInput = element(by.model('newLinkBrandSearch'));
+  this.newMissionLinkBrandResults = element.all(by.repeater('brand in prescripteursCtrl.all.brand'));
   this.newMissionLinkTypes = element(by.model('prescripteursCtrl.newMissionLink.missionTypeEnumSet'));
-  this.newMissionLinkTypesResults = element.all(by.model('type in prescripteursCtrl.all.type'));
+  this.newMissionLinkTypesResults = element.all(by.repeater('type in prescripteursCtrl.all.type'));
   this.newMissionLinkBookingCode = element(by.model('prescripteursCtrl.newMissionLink.bookingCode'));
   this.newMissionLinkBookingCodeInput = element(by.model('newLinkCodeSearch'));
   this.newMissionLinkBookingCodeResults = element.all(by.repeater('bookingCode in prescripteursCtrl.all.bookingCode'));

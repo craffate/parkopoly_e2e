@@ -11,7 +11,7 @@ describe('Mission links', function() {
   });
 
   dataSpec(specData, (data, iteration) => {
-    describe(`${data.prescriber} (test type: ${data.testType})`, function() {
+    describe(`Create ${data.prescriber} mission link`, function() {
       it('should display the mission link creation row', async function() {
         await mlPage.displayButton.click();
       });
@@ -21,48 +21,57 @@ describe('Mission links', function() {
 
         /* Select prescriber */
         await mlPage.newMissionLinkBrand.click();
-        el = await helpers.getFromTickDropdown(data.prescriber + TIMESTAMP, mlPage.newMissionLinkResults);
+        el = await helpers.getFromTickDropdown(`${data.prescriber}${TIMESTAMP}`, mlPage.newMissionLinkBrandResults);
         await el[0].click();
         await el[0].sendKeys(protractor.Key.ESCAPE);
 
         /* Select mission types */
         await mlPage.newMissionLinkTypes.click();
-        await helpers.asyncForEach(data.types, async (s) => {
+        await helpers.asyncForEach(data.types, async (s, idx, arr) => {
           let el;
 
           el = await helpers.getFromTickDropdown(s, mlPage.newMissionLinkTypesResults);
-          await helpers.scrollIntoView(el[0]);
-          return el[0].click();
+          if (idx + 1 < arr.length) {
+            return el[0].click();
+          } else {
+            await el[0].click();
+            return el[0].sendKeys(protractor.Key.ESCAPE);
+          };
         });
-        await mlPage.newMissionLinkTypesResults.first().sendKeys(protractor.Key.ESCAPE);
 
         /* Select booking code */
         await mlPage.newMissionLinkBookingCode.click();
-        el = await helpers.getFromDropdown(data.bookingCode, mlPage.newMissionLinkBookingCodeResults);
+        el = await helpers.getFromTickDropdown(`${data.bookingCode}${TIMESTAMP}`, mlPage.newMissionLinkBookingCodeResults);
         await el[0].click();
         await el[0].sendKeys(protractor.Key.ESCAPE);
 
         /* Select concession groups */
-        await mlPage.newMissionConcessionGroup.click();
-        await helpers.asyncForEach(data.concessionGroups, async (s) => {
+        await mlPage.newMissionLinkConcessionGroup.click();
+        await helpers.asyncForEach(data.concessionGroups, async (s, idx, arr) => {
           let el;
 
-          el = await helpers.getFromTickDropdown(s, mlPage.newMissionConcessionGroupsResults);
-          await helpers.scrollIntoView(el[0]);
-          return el[0].click();
+          el = await helpers.getFromTickDropdown(`${s} ${TIMESTAMP}`, mlPage.newMissionLinkConcessionGroupResults);
+          if (idx + 1 < arr.length) {
+            return el[0].click();
+          } else {
+            await el[0].click();
+            return el[0].sendKeys(protractor.Key.ESCAPE);
+          };
         });
-        await mlPage.newMissionLinkConcessionGroupsResults.first().sendKeys(protractor.Key.ESCAPE);
 
         /* Select cost zones */
-        await mlPage.newMissionCost.click();
-        await helpers.asyncForEach(data.costZones, async (s) => {
+        await mlPage.newMissionLinkCost.click();
+        await helpers.asyncForEach(data.costZones, async (s, idx, arr) => {
           let el;
 
-          el = await helpers.getFromTickDropdown(s, mlPage.newMissionLinkCostResults);
-          await el[0].click();
-          await el[0].sendKeys(protractor.Key.ESCAPE);
+          el = await helpers.getFromTickDropdown(`${s}${TIMESTAMP}`, mlPage.newMissionLinkCostResults);
+          if (idx + 1 < arr.length) {
+            return el[0].click();
+          } else {
+            await el[0].click();
+            return el[0].sendKeys(protractor.Key.ESCAPE);
+          };
         });
-        await mlPage.newMissionLinkCostResults.first().click();
       });
 
       it('should click the save button', async function() {
