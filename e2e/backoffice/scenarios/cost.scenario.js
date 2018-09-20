@@ -21,6 +21,9 @@ describe('Cost zones', function() {
 
       it('should fill the form', async function() {
         await costPage.nameInput.sendKeys(data.name + TIMESTAMP);
+      });
+
+      it('should fill the cost zones forms', async function () {
         await helpers.asyncForEach(data.costZones, async function(zoneData, idx, zoneDataAll) {
           if (idx > 0) {
             await costPage.zoneLast.title.click();
@@ -33,11 +36,9 @@ describe('Cost zones', function() {
           await costPage.zoneLast.concessionEffectInput.sendKeys(zoneData.concessionEffect);
           await costPage.zoneLast.concessionMaxInput.sendKeys(zoneData.concessionMax);
 
-          /*
           if (zoneData.concessionVAT === true) {
             costPage.zoneLast.concessionPriceTypeSwitch.click();
           };
-          */
 
           await costPage.zoneLast.concessionVRInput.sendKeys(zoneData.concessionVR);
           await costPage.zoneLast.concessionMeMInput.sendKeys(zoneData.concessionMeM);
@@ -50,20 +51,19 @@ describe('Cost zones', function() {
           await costPage.zoneLast.clientEffectInput.sendKeys(zoneData.clientEffect);
           await costPage.zoneLast.clientMaxInput.sendKeys(zoneData.clientMax);
 
-          /*
           if (zoneData.clientVAT === false) {
             costPage.zoneLast.clientPriceTypeSwitch.click();
           };
-          */
 
           await costPage.zoneLast.clientVRInput.sendKeys(zoneData.clientVR);
           await costPage.zoneLast.clientMeMInput.sendKeys(zoneData.clientMeM);
           await costPage.zoneLast.clientPUDInput.sendKeys(zoneData.clientPUD);
 
-          if (idx < (zoneDataAll.length - 1)) {
+          if (idx + 1 < zoneDataAll.length) {
             return costPage.addzoneButton.click();
           } else {
-            return costPage.submitButton.click();
+            await costPage.submitButton.click();
+            return helpers.waitForToast();
           };
         });
       });
