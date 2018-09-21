@@ -25,7 +25,7 @@ module.exports = function() {
   this.newMissionLinkCost = element(by.model('prescripteursCtrl.newMissionLink.cost'));
   this.newMissionLinkCostInput = element(by.model('newLinkCostSearch'));
   this.newMissionLinkCostResults = element.all(by.repeater('cost in prescripteursCtrl.all.cost'));
-  this.newMissionLinkSaveButton = $('button[ng-click="prescripteursCtrl.createMissionLink()"]');
+  this.newMissionLinkSaveButton = element(by.buttonText('Save'));
 
   this.createMissionLink = async function(data) {
     let el;

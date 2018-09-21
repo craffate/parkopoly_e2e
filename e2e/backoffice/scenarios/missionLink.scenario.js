@@ -9,7 +9,6 @@ describe('Mission links', function() {
     await mlPage.get();
     await helpers.waitForSpinner();
   });
-
   dataSpec(specData, (data, iteration) => {
     describe(`Create ${data.prescriber} mission link`, function() {
       it('should display the mission link creation row', async function() {
@@ -61,21 +60,16 @@ describe('Mission links', function() {
 
         /* Select cost zones */
         await mlPage.newMissionLinkCost.click();
-        await helpers.asyncForEach(data.costZones, async (s, idx, arr) => {
-          let el;
-
-          el = await helpers.getFromTickDropdown(`${s}${TIMESTAMP}`, mlPage.newMissionLinkCostResults);
-          if (idx + 1 < arr.length) {
-            return el[0].click();
-          } else {
-            await el[0].click();
-            return el[0].sendKeys(protractor.Key.ESCAPE);
-          };
-        });
+        el = await helpers.getFromTickDropdown(`${data.costZone}${TIMESTAMP}`, mlPage.newMissionLinkCostResults);
+        await el[0].click();
+        await el[0].sendKeys(protractor.Key.ESCAPE);
       });
 
       it('should click the save button', async function() {
-        await mlPage.newMissionSaveButton.click();
+        await mlPage.newMissionLinkSaveButton.click();
+        await helpers.waitForVisibility($('button[ng-click="dialog.hide()"]'));
+        await $('button[ng-click="dialog.hide()"]').click();
+        await browser.refresh();
       });
     });
   });
