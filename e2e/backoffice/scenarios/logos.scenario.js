@@ -12,7 +12,8 @@ describe('Logos', function() {
     await DashboardIngredients.get();
     await helpers.waitForSpinner();
     await DashboardIngredients.searchbar.click();
-    await DashboardIngredients.searchbarDropdownLogo.click();
+    const el = await helpers.getFromDropdown('Logo', DashboardIngredients.searchbarDropdownResults);
+    await el[0].click();
   });
 
   dataSpec(specData, (data, iteration) => {

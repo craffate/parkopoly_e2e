@@ -16,7 +16,8 @@ describe('Cost zones', function() {
     describe(`Create ${data.name} cost zone`, function() {
       it('should select the booking codes option from the searchbar', async function() {
         await DashboardIngredients.searchbar.click();
-        await DashboardIngredients.searchbarDropdownCost.click();
+        const el = await helpers.getFromDropdown('Cost', DashboardIngredients.searchbarDropdownResults);
+        await el[0].click();
       });
 
       it('should fill the form', async function() {

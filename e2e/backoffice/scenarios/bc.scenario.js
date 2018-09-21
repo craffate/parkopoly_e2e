@@ -16,7 +16,8 @@ describe('Booking codes', function() {
     describe(`Create ${data.name} booking code`, function() {
       it('should select the booking codes option from the searchbar', async function() {
         await DashboardIngredients.searchbar.click();
-        await DashboardIngredients.searchbarDropdownBookingcode.click();
+        const el = await helpers.getFromDropdown('Booking code', DashboardIngredients.searchbarDropdownResults);
+        await el[0].click();
       });
 
       it('should fill the booking code form', async function() {

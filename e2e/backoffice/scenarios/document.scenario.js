@@ -12,7 +12,8 @@ describe('Documents', function() {
     await DashboardIngredients.get();
     await helpers.waitForSpinner();
     await DashboardIngredients.searchbar.click();
-    await DashboardIngredients.searchbarDropdownDocument.click();
+    const el = await helpers.getFromDropdown('Document', DashboardIngredients.searchbarDropdownResults);
+    await el[0].click();
   });
 
   dataSpec(specData, (data, iteration) => {
@@ -79,7 +80,6 @@ describe('Documents', function() {
             await helpers.scrollIntoView(el[0]);
             return el[0].click();
           });
-
           await documentsPage.bookingcodesDropdown.sendKeys(protractor.Key.ESCAPE);
         };
       });

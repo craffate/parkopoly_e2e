@@ -27,8 +27,7 @@ describe('Drivers', function() {
         await driversPage.addressInput.sendKeys(protractor.Key.ENTER);
         await driversPage.telInput.sendKeys(data.phone);
         await driversPage.status.click();
-        el = await helpers.getFromNonMaterialDropdown(
-          data.status, 'status', driversPage.statusDropdownAll);
+        el = await helpers.getFromDropdown(data.status, driversPage.statusDropdownAll);
         await el[0].click();
 
         if (data.badges !== null) {
@@ -44,8 +43,7 @@ describe('Drivers', function() {
 
         await driversPage.pointsInput.sendKeys(data.points);
         await driversPage.occupation.click();
-        el = await helpers.getFromNonMaterialDropdown(
-          data.occupation, 'p', driversPage.occupationDropdownAll);
+        el = await helpers.getFromDropdown(data.occupation, driversPage.occupationDropdownAll);
         await el[0].click();
         await driversPage.equipmentInput.sendKeys(data.uniform);
         await driversPage.commentInput.sendKeys(data.comment);

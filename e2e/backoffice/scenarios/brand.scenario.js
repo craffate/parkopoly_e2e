@@ -11,7 +11,8 @@ describe('Brands', function() {
     await DashboardIngredients.get();
     await helpers.waitForSpinner();
     await DashboardIngredients.searchbar.click();
-    await DashboardIngredients.searchbarDropdownBrand.click();
+    const el = await helpers.getFromDropdown('Brand', DashboardIngredients.searchbarDropdownResults);
+    await el[0].click();
   });
 
   dataSpec(specData, (data, iteration) => {

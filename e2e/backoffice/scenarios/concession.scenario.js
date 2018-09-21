@@ -36,7 +36,7 @@ describe('Concessions', function() {
         await concessionPage.pointOfSaleBonusInput.sendKeys(data.bonus);
         await concessionPage.pointOfSaleCity.click();
         await helpers.waitForVisibility(concessionPage.pointOfSaleCityResults.first());
-        el = await helpers.getFromDynamicDropdown(data.city, concessionPage.pointOfSaleCityResults);
+        el = await helpers.getFromDropdown(data.city, concessionPage.pointOfSaleCityResults);
         await helpers.scrollIntoView(el[0]);
         await el[0].click();
 
@@ -45,7 +45,7 @@ describe('Concessions', function() {
         };
 
         await concessionPage.pointOfSaleGroup.click();
-        el = await helpers.getFromBindHtmlDropdown(`${data.group} ${TIMESTAMP}`,
+        el = await helpers.getFromBindHtmlDropdow(`${data.group} ${TIMESTAMP}`,
           'concessionGroup.name', concessionPage.pointOfSaleGroupResults);
         await helpers.scrollIntoView(el[0]);
         await el[0].click();

@@ -11,7 +11,8 @@ describe('Penalties', function() {
     await DashboardIngredients.get();
     await helpers.waitForSpinner();
     await DashboardIngredients.searchbar.click();
-    await DashboardIngredients.searchbarDropdownPenalty.click();
+    const el = await helpers.getFromDropdown('Penalty', DashboardIngredients.searchbarDropdownResults);
+    await el[0].click();
   });
 
   dataSpec(specData, (data, iteration) => {
