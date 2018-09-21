@@ -9,6 +9,7 @@ describe('Mission links', function() {
     await mlPage.get();
     await helpers.waitForSpinner();
   });
+
   dataSpec(specData, (data, iteration) => {
     describe(`Create ${data.prescriber} mission link`, function() {
       it('should display the mission link creation row', async function() {
@@ -20,9 +21,17 @@ describe('Mission links', function() {
 
         /* Select prescriber */
         await mlPage.newMissionLinkBrand.click();
-        el = await helpers.getFromTickDropdown(`${data.prescriber}${TIMESTAMP}`, mlPage.newMissionLinkBrandResults);
-        await el[0].click();
-        await el[0].sendKeys(protractor.Key.ESCAPE);
+        await helper.asyncForEach(data.types, async(s, idx, arr) => {
+          let el;
+
+          el = await helpers.getFromTickDropdown(`${s}${TIMESTAMP}`, mlPage.newMissionLinkBrandResults);
+          if (idx + 1 < arr.length) {
+            return el[0].click();
+          } else {
+            await el[0].click();
+            return el[0].sendKeys(protractor.Key.ESCAPE);
+          };
+        });
 
         /* Select mission types */
         await mlPage.newMissionLinkTypes.click();

@@ -21,6 +21,30 @@
     "bookingCode": "equal1000",
     "concessions": ["PSA Retail Paris"],
     "concessionGroups": ["Renault Paris"],
-    "costZone": "costParisCustomerFree"
+    "costZone": "costParisCustomerPays"
+  },
+  {
+    "prescriber": ["DS PUDE", "Peugeot PUDE"],
+    "types": ["PICKUP", "DELIVERY", "EXPRESS"],
+    "bookingCode": "obsolete",
+    "concessions": ["PSA Retail Paris", "DS Retail"],
+    "concessionGroups": ["Renault Paris"],
+    "costZone": "costParisCustomerPays"
+  },
+  {
+    "prescriber": ["DS PUDE", "Peugeot PUDE"],
+    "types": ["PICKUP", "DELIVERY", "EXPRESS"],
+    "bookingCode": "equal1000",
+    "concessions": ["PSA Retail Paris"],
+    "concessionGroups": ["Renault Paris"],
+    "costZone": "costParisCustomerPays"
+  },
+  {
+    "prescriber": ["DS PUDE", "Peugeot PUDE"],
+    "types": ["PICKUP", "DELIVERY", "EXPRESS"],
+    "bookingCode": "dfl",
+    "concessions": ["PSA Retail Paris"],
+    "concessionGroups": ["Renault Paris"],
+    "costZone": "costParisCustomerPays"
   }
 ]
