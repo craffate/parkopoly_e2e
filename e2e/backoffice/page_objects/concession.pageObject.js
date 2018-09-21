@@ -43,7 +43,7 @@ module.exports = function() {
   this.pointOfSaleGroupListSelectAllButton = this.pointOfSaleGroupList.element(by.id('toggleFilteredItems()'));
   this.pointOfSaleGroupUsers = element(by.model('ccgCtrl.concessionGroup.userSet'));
   this.pointOfSaleGroupUsersInput = this.pointOfSaleGroupUsers.$('input');
-  this.pointOfSaleGroupSubmitButton = element(by.id('submitButton'));
+  this.pointOfSaleGroupSubmitButton = this.createPointOfSaleGroupDialog.element(by.id('submitButton'));
 
   this.get = async function() {
     return browser.driver.get(browser.baseUrl + this.url);

@@ -34,7 +34,9 @@ describe('Cost zones', function() {
           await costPage.zoneLast.concessionMinInput.sendKeys(zoneData.concessionMin);
           await costPage.zoneLast.concessionRoundInput.sendKeys(zoneData.concessionRound);
           await costPage.zoneLast.concessionEffectInput.sendKeys(zoneData.concessionEffect);
-          await costPage.zoneLast.concessionMaxInput.sendKeys(zoneData.concessionMax);
+          if (zoneData.concessionMax > 0) {
+            await costPage.zoneLast.concessionMaxInput.sendKeys(zoneData.concessionMax);
+          };
 
           if (zoneData.concessionVAT === true) {
             costPage.zoneLast.concessionPriceTypeSwitch.click();
@@ -49,7 +51,9 @@ describe('Cost zones', function() {
           await costPage.zoneLast.clientMinInput.sendKeys(zoneData.clientMin);
           await costPage.zoneLast.clientRoundInput.sendKeys(zoneData.clientRound);
           await costPage.zoneLast.clientEffectInput.sendKeys(zoneData.clientEffect);
-          await costPage.zoneLast.clientMaxInput.sendKeys(zoneData.clientMax);
+          if (zoneData.clientMax > 0) {
+            await costPage.zoneLast.clientMaxInput.sendKeys(zoneData.clientMax);
+          }
 
           if (zoneData.clientVAT === false) {
             costPage.zoneLast.clientPriceTypeSwitch.click();
