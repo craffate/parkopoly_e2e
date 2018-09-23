@@ -18,6 +18,8 @@ describe('Penalties', function() {
   dataSpec(specData, (data, iteration) => {
     describe(`Create ${data.name} penalty`, function() {
       it('should fill the penalty form', async function() {
+        let el;
+
         await penaltyPage.nameInput.clear().sendKeys(data.name + TIMESTAMP);
         await helpers.switchCheckbox(penaltyPage.priceFactorCheckbox, (data.factor !== null));
 
@@ -30,11 +32,10 @@ describe('Penalties', function() {
         }
 
         await penaltyPage.type.click();
-        const el = await helpers.getFromDropdown(data.type,
-          penaltyPage.typeDropdownAll);
+        el = await helpers.getFromDropdown(data.type,
+          penaltyPage.typeDropdownResults);
+        await helpers.scrollIntoView(el[0]);
         await el[0].click();
-        await helpers.waitForNoVisibility(el[0],
-          3000, 'Couldn\'t close the penalty type dropdown');
       });
 
       it('should submit the form', async function() {

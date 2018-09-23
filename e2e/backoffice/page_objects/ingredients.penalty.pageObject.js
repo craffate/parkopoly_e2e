@@ -9,6 +9,5 @@ module.exports = function() {
   this.priceInput = element(by.model('penaltyFormCtrl.newObject.cost'));
   this.delayInput = element(by.model('penaltyFormCtrl.newObject.delay'));
   this.type = element(by.model('penaltyFormCtrl.newObject.penaltyTypeEnum'));
-  this.typeDropdown = element(by.repeater('type in penaltyFormCtrl.all.penaltyTypes'));
-  this.typeDropdownAll = element.all(by.repeater('type in penaltyFormCtrl.all.penaltyTypes'));
+  this.typeDropdownResults = element.all(by.repeater('type in penaltyFormCtrl.all.penaltyTypes'));
 };
