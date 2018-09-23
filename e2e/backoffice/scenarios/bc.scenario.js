@@ -15,8 +15,11 @@ describe('Booking codes', function() {
   dataSpec(specData, (data, iteration) => {
     describe(`Create ${data.name} booking code`, function() {
       it('should select the booking codes option from the searchbar', async function() {
+        let el;
+
         await DashboardIngredients.searchbar.click();
-        const el = await helpers.getFromDropdown('Booking code', DashboardIngredients.searchbarDropdownResults);
+        el = await helpers.getFromDropdown('Booking code', DashboardIngredients.searchbarDropdownResults);
+        await helpers.scrollIntoView(el[0]);
         await el[0].click();
       });
 
