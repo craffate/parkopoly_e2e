@@ -8,21 +8,16 @@ describe('Booking codes', function() {
   const bcPage = new BcPageObject();
 
   beforeAll(async function() {
+    let el;
     await DashboardIngredients.get();
     await helpers.waitForSpinner();
+    await DashboardIngredients.searchbar.click();
+    el = await helpers.getFromDropdown('Booking code', DashboardIngredients.searchbarDropdownResults);
+    await el[0].click();
   });
 
   dataSpec(specData, (data, iteration) => {
     describe(`Create ${data.name} booking code`, function() {
-      it('should select the booking codes option from the searchbar', async function() {
-        let el;
-
-        await DashboardIngredients.searchbar.click();
-        el = await helpers.getFromDropdown('Booking code', DashboardIngredients.searchbarDropdownResults);
-        await helpers.scrollIntoView(el[0]);
-        await el[0].click();
-      });
-
       it('should fill the booking code form', async function() {
         await bcPage.nameInput.sendKeys(data.name + TIMESTAMP);
         await bcPage.expirationDatepickerInput.sendKeys(data.expiry);
