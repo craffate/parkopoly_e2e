@@ -14,9 +14,11 @@ describe('Cost zones', function() {
 
   dataSpec(specData, (data) => {
     describe(`Create ${data.name} cost zone`, function() {
-      it('should select the booking codes option from the searchbar', async function() {
+      it('should get to the cost page', async function() {
+        let el;
+
         await DashboardIngredients.searchbar.click();
-        const el = await helpers.getFromDropdown('Cost', DashboardIngredients.searchbarDropdownResults);
+        el = await helpers.getFromDropdown('Cost', DashboardIngredients.searchbarDropdownResults);
         await el[0].click();
       });
 
@@ -71,6 +73,10 @@ describe('Cost zones', function() {
             return helpers.waitForToast();
           };
         });
+      });
+
+      it('should refresh the browser', async function() {
+        await browser.refresh();
       });
     });
   });

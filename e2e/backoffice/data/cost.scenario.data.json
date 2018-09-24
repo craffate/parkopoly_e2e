@@ -122,7 +122,7 @@
     "clientMin": 100,
     "clientRound": 5,
     "clientEffect": 0,
-    "clientMax": 30,
+    "clientMax": 300,
     "clientVAT": true,
     "clientVR": 5,
     "clientMeM": 2,
