@@ -1,41 +1,51 @@
 [
   {
     "name": "Renault PUD",
+    "account": "Renault",
     "color": "#ff8000",
     "min": "1",
     "logo": "renault",
+    "penalties": ["cancel48hMissionPrice", "waiting20m5e"],
     "alias": "RRG Paris",
     "missionType": ["PICKUP", "DELIVERY"]
   },
   {
     "name": "Renault VN",
+    "account": "Renault",
     "color": "#ff8000",
     "min": "1",
     "logo": "renault",
+    "penalties": ["cancel48hMissionPrice", "waiting20m5e"],
     "alias": "RRG Paris",
     "missionType": ["VN_DELIVERY"]
   },
   {
     "name": "PSA IS",
+    "account": "DS",
     "color": "#0080ff",
     "min": "1",
     "logo": "peugeot",
+    "penalties": ["cancel48hMissionPrice", "waiting20m5e"],
     "alias": "PSA",
     "missionType": ["INTER_SITE"]
   },
   {
     "name": "DS PUDE",
+    "account": "DS",
     "color": "#b2b2b2",
     "min": "24",
     "logo": "ds",
+    "penalties": ["cancel48hMissionPrice", "waiting20m5e"],
     "alias": "RRG Paris",
     "missionType": ["PICKUP", "DELIVERY", "EXPRESS"]
   },
   {
     "name": "Peugeot PUDE",
+    "account": "DS",
     "color": "#0080ff",
     "min": "24",
     "logo": "peugeot",
+    "penalties": ["cancel48hMissionPrice", "waiting20m5e"],
     "alias": "Peugeot",
     "missionType": ["PICKUP", "DELIVERY", "EXPRESS"]
   }

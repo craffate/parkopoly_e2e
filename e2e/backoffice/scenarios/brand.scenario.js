@@ -24,31 +24,43 @@ describe('Brands', function() {
         await brandPage.colorpickerInput.sendKeys(data.color);
         await brandPage.anticipationInput.sendKeys(data.min);
         await brandPage.logoSearchbar.click();
-        el = await helpers.deleteMe(data.logo + TIMESTAMP, brandPage.logoSearchbarDropdownAll);
+        el = await helpers.getFromDynamicDropdown(`${data.logo}${TIMESTAMP}`, brandPage.logoSearchbarDropdownResults);
         await el[0].click();
 
         if (data.missionType !== null) {
           await brandPage.missiontypeDropdown.click();
-          await helpers.waitForVisibility(brandPage.missiontypeDropdownTypes);
-          await helpers.asyncForEach(data.missionType, async (s) => {
+          await helpers.asyncForEach(data.missionType, async (s, idx, arr) => {
             let el;
 
             el = await helpers.getFromDropdown(s,
-              brandPage.missiontypeDropdownTypesAll);
-            await helpers.scrollIntoView(el[0]);
-            return el[0].click();
+              brandPage.missiontypeDropdownTypeResults);
+            if (idx + 1 < arr.length) {
+              return el[0].click();
+            } else {
+              await el[0].click();
+              return el[0].sendKeys(protractor.Key.ESCAPE);
+            };
           });
-
-          await brandPage.missiontypeDropdownTypesAll.first().sendKeys(protractor.Key.ESCAPE);
         };
 
         await brandPage.accountDropdown.click();
-        await helpers.waitForVisibility(brandPage.accountDropdownInput);
-        await brandPage.accountDropdownInput.sendKeys(TIMESTAMP);
-        await brandPage.accountDropdownAccountsAll.first().click();
+        el = await helpers.getFromTickDropdown(`${data.account}${TIMESTAMP}`, brandPage.accountDropdownAccountsResults);
+        await el[0].click();
+
         await brandPage.penaltySearchbar.click();
-        await brandPage.penaltySearchbarInput.sendKeys(TIMESTAMP);
-        await brandPage.penaltySearchbarDropdownAll.first().click();
+        await helpers.asyncForEach(data.penalties, async (s, idx, arr) => {
+          let el;
+
+          el = await helpers.getFromTickDropdown(`${s}${TIMESTAMP}`,
+            brandPage.penaltySearchbarDropdownResults);
+          if (idx + 1 < arr.length) {
+            return el[0].click();
+          } else {
+            await el[0].click();
+            return el[0].sendKeys(protractor.Key.ESCAPE);
+          };
+        });
+
         await brandPage.aliasInput.sendKeys(data.alias);
         await brandPage.mailOnBookingCheckbox.click();
       });
