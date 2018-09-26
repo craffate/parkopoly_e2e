@@ -33,15 +33,18 @@ describe('Documents', function() {
 
         if (data.missionFilter !== null) {
           await documentsPage.missionType.click();
-          await helpers.asyncForEach(data.missionFilter, async (s) => {
+          await helpers.asyncForEach(data.missionFilter, async (s, idx, arr) => {
             let el;
 
-            el = await helpers.getFromDropdown(s, documentsPage.missionTypeDropdownAll);
-            await helpers.scrollIntoView(el[0]);
-            return el[0].click();
+            el = await helpers.getFromTickDropdown(s,
+              documentsPage.missionTypeDropdownAll);
+            if (idx + 1 < arr.length) {
+              return el[0].click();
+            } else {
+              await el[0].click();
+              return el[0].sendKeys(protractor.Key.ESCAPE);
+            };
           });
-
-          await documentsPage.missionTypeDropdown.sendKeys(protractor.Key.ESCAPE);
         };
 
         /*
@@ -72,7 +75,6 @@ describe('Documents', function() {
 
         if (data.bc !== null) {
           await documentsPage.bookingcodes.click();
-          await helpers.waitForVisibility(documentsPage.bookingcodesDropdown);
           await helpers.asyncForEach(data.bc, async (s, idx, arr) => {
             let el;
 
