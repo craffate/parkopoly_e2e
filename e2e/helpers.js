@@ -89,15 +89,6 @@ module.exports = {
     });
   },
 
-  deleteMe: async function(s, arr) {
-    s = s.trim();
-    return arr.filter(function(el, idx) {
-      return el.$('span').getText().then(function(val) {
-        return val.includes(s);
-      });
-    });
-  },
-
   displayUpload: async function(fileInput) {
     return browser.executeScript('arguments[0].style.visibility = "visible"; arguments[0].style.display = "block";', fileInput);
   },
@@ -145,6 +136,12 @@ module.exports = {
     msg = "Element was still visible after " + TIMEOUT + " milliseconds") {
     const EC = protractor.ExpectedConditions;
     return browser.wait(EC.not(EC.visibilityOf(el)), t, msg);
+  },
+
+  getVisible: async function(arr) {
+    return ret = await arr.filter(function(el) {
+      return el.isDisplayed();
+    });
   },
 
   loginClient: async function(email, password) {
