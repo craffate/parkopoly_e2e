@@ -1,6 +1,9 @@
+const fs = require('fs');
 const reporters = require('jasmine-reporters');
 const htmlReporter = require('protractor-beautiful-reporter');
 const helpers = require('./e2e/helpers');
+
+const tsPath = './TIMESTAMP';
 
 exports.config = {
   SELENIUM_PROMISE_MANAGER: false,
