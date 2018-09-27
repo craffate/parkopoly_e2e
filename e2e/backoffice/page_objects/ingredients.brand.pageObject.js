@@ -1,3 +1,5 @@
+const helpers = require('../../helpers');
+
 module.exports = function() {
   this.searchbar = element(by.model('brandFormCtrl.selectedObject'));
   this.searchbarInput = this.searchbar.element(by.model('$select.search'));
@@ -15,9 +17,10 @@ module.exports = function() {
   this.accountDropdownInput = element(by.model('brandFormCtrl.searchAccount'));
   this.accountDropdownAccounts = element(by.repeater('account in brandFormCtrl.all.accounts'));
   this.accountDropdownAccountsResults = element.all(by.repeater('account in brandFormCtrl.all.accounts'));
-  this.penaltySearchbar = element(by.id('brandPenalties'));
-  this.penaltySearchbarDropdown = element(by.repeater('item in (sm.filteredSource = (sm.source | filter: (sm.fieldName ? {[sm.fieldName]: sm.searchQuery} : sm.searchQuery)))'));
-  this.penaltySearchbarDropdownResults = element.all(by.repeater('item in (sm.filteredSource = (sm.source | filter: (sm.fieldName ? {[sm.fieldName]: sm.searchQuery} : sm.searchQuery)))'));
+  this.penalties = element(by.id('brandPenalties'));
+  this.penaltiesInput = element(by.model('sm.searchQuery'));
+  this.penaltiesSelectAllButton = $('button[ng-click="sm.selectAll()"]');
+  this.penaltiesRemoveAllButton = $('button[ng-click="sm.removeAll()"]');
   this.aliasInput = element(by.model('brandFormCtrl.newObject.brandNameForEmailSMS'));
   this.smsOnBookingCheckbox = element(by.model('brandFormCtrl.newObject.notificationOptionDto.sendSmsMissionBooking'));
   this.mailOnBookingCheckbox = element(by.model('brandFormCtrl.newObject.notificationOptionDto.sendEmailAtCommand'));

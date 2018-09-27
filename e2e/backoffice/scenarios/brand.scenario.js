@@ -47,19 +47,11 @@ describe('Brands', function() {
         el = await helpers.getFromTickDropdown(`${data.account}${TIMESTAMP}`, brandPage.accountDropdownAccountsResults);
         await el[0].click();
 
-        await brandPage.penaltySearchbar.click();
-        await helpers.asyncForEach(data.penalties, async (s, idx, arr) => {
-          let el;
-
-          el = await helpers.getFromTickDropdown(`${s}${TIMESTAMP}`,
-            brandPage.penaltySearchbarDropdownResults);
-          if (idx + 1 < arr.length) {
-            return el[0].click();
-          } else {
-            await el[0].click();
-            return el[0].sendKeys(protractor.Key.ESCAPE);
-          };
-        });
+        await brandPage.penalties.click();
+        await brandPage.penaltiesInput.sendKeys(TIMESTAMP);
+        await brandPage.penaltiesSelectAllButton.click();
+        el = await helpers.getVisible($$('md-option'));
+        el[0].sendKeys(protractor.Key.ESCAPE);
 
         await brandPage.aliasInput.sendKeys(data.alias);
         await brandPage.mailOnBookingCheckbox.click();
