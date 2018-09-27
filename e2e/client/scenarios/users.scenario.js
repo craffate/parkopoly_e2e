@@ -1,5 +1,5 @@
 const helpers = require('../../helpers');
-const UsersPageObject = require('../page_objects/users.pageObject');
+const UsersPageObject = require('../page_objects/users/main.pageObject');
 const specData = require('../data/users.scenario.data.json');
 
 describe('Users', function() {
