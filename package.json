@@ -12,7 +12,7 @@
     "wd_update_old": "webdriver-manager update --versions.standalone 3.0.1",
     "pt_start": "protractor conf.js",
     "pt_cft": "protractor conf.js --suite cft",
-    "pt_scenarios": "protractor conf.js --suite scenarios"
+    "pt_scenarios": "protractor conf.js --suite 1-6 && protractor conf.js --suite 7-8 && protractor conf.js --suite 9-9"
   },
   "repository": {
     "type": "git",
