@@ -1,5 +1,3 @@
-const helpers = require('../../helpers');
-
 module.exports = function() {
   this.url = '#/accounts';
   this.searchBar = element(by.model('$select.search'));
