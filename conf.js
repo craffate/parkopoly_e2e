@@ -1,6 +1,7 @@
 const fs = require('fs');
 const reporters = require('jasmine-reporters');
 const htmlReporter = require('protractor-beautiful-reporter');
+const failFast = require('jasmine-fail-fast');
 const helpers = require('./e2e/helpers');
 
 const tsPath = './TIMESTAMP';
@@ -99,6 +100,8 @@ exports.config = {
       preserveDirectory: false,
       gatherBrowserLogs: true
     }).getJasmine2Reporter());
+
+    await jasmine.getEnv().addReporter(failFast.init());
 
     await browser.driver.get(browser.baseUrl + '#/login');
     await helpers.waitForVisibility(browser.element(by.css('form[name="userForm"]')));
