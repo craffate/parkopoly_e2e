@@ -1,5 +1,3 @@
-const path = require('path');
-
 module.exports = {
   testUrl: async function(url, t) {
     return browser.driver.wait(async function() {
