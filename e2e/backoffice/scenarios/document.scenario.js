@@ -17,37 +17,36 @@ describe('Documents', function() {
   });
 
   dataSpec(specData, (data, iteration) => {
-    describe(`Create ${data.name} document`, function() {
-      it('should fill the form', async function() {
-        if (data.path !== null) {
-          await helpers.displayUpload(documentsPage.fileInput);
-          await helpers.uploadFile(path.resolve(data.path), documentsPage.fileInput);
-        };
+    it(`Create ${data.name} document`, async function() {
+      if (data.path !== null) {
+        await helpers.displayUpload(documentsPage.fileInput);
+        await helpers.uploadFile(path.resolve(data.path), documentsPage.fileInput);
+      };
 
-        await documentsPage.nameInput.sendKeys(data.name + TIMESTAMP);
-        await helpers.switchCheckbox(documentsPage.alertNoUploadSwitch, data.alertNoUpload);
-        await helpers.switchCheckbox(documentsPage.encryptSwitch, data.encrypt);
-        await helpers.switchCheckbox(documentsPage.displayWebAppAfterSwitch, data.dispWebAppAfter);
-        await helpers.switchCheckbox(documentsPage.displayWebAppSwitch, data.dispWebApp);
-        await helpers.switchCheckbox(documentsPage.qualitySwitch, data.quality);
+      await documentsPage.nameInput.sendKeys(data.name + TIMESTAMP);
+      await helpers.switchCheckbox(documentsPage.alertNoUploadSwitch, data.alertNoUpload);
+      await helpers.switchCheckbox(documentsPage.encryptSwitch, data.encrypt);
+      await helpers.switchCheckbox(documentsPage.displayWebAppAfterSwitch, data.dispWebAppAfter);
+      await helpers.switchCheckbox(documentsPage.displayWebAppSwitch, data.dispWebApp);
+      await helpers.switchCheckbox(documentsPage.qualitySwitch, data.quality);
 
-        if (data.missionFilter !== null) {
-          await documentsPage.missionType.click();
-          await helpers.asyncForEach(data.missionFilter, async (s, idx, arr) => {
-            let el;
+      if (data.missionFilter !== null) {
+        await documentsPage.missionType.click();
+        await helpers.asyncForEach(data.missionFilter, async (s, idx, arr) => {
+          let el;
 
-            el = await helpers.getFromTickDropdown(s,
-              documentsPage.missionTypeDropdownAll);
-            if (idx + 1 < arr.length) {
-              return el[0].click();
-            } else {
-              await el[0].click();
-              return el[0].sendKeys(protractor.Key.ESCAPE);
-            };
-          });
-        };
+          el = await helpers.getFromTickDropdown(s,
+            documentsPage.missionTypeDropdownAll);
+          if (idx + 1 < arr.length) {
+            return el[0].click();
+          } else {
+            await el[0].click();
+            return el[0].sendKeys(protractor.Key.ESCAPE);
+          };
+        });
+      };
 
-        /*
+      /*
         if (data.optionFilter !== null) {
           await documentsPage.options.click();
           await helpers.asyncForEach(data.optionFilter, async (s) => {
@@ -73,27 +72,23 @@ describe('Documents', function() {
         };
         */
 
-        if (data.bc !== null) {
-          await documentsPage.bookingcodes.click();
-          await helpers.asyncForEach(data.bc, async (s, idx, arr) => {
-            let el;
+      if (data.bc !== null) {
+        await documentsPage.bookingcodes.click();
+        await helpers.asyncForEach(data.bc, async (s, idx, arr) => {
+          let el;
 
-            el = await helpers.getFromTickDropdown(`${s}${TIMESTAMP}`,
-              documentsPage.bookingcodesDropdownAll);
-            if (idx + 1 < arr.length) {
-              return el[0].click();
-            } else {
-              await el[0].click();
-              return el[0].sendKeys(protractor.Key.ESCAPE);
-            };
-          });
-        };
-      });
-
-      it('should submit the form', async function() {
-        await DashboardIngredients.submitButton.click();
-        await helpers.waitForToast();
-      });
+          el = await helpers.getFromTickDropdown(`${s}${TIMESTAMP}`,
+            documentsPage.bookingcodesDropdownAll);
+          if (idx + 1 < arr.length) {
+            return el[0].click();
+          } else {
+            await el[0].click();
+            return el[0].sendKeys(protractor.Key.ESCAPE);
+          };
+        });
+      };
+      await DashboardIngredients.submitButton.click();
+      await helpers.waitForToast();
     });
   });
 });

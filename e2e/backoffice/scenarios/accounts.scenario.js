@@ -11,22 +11,17 @@ describe('Accounts', function() {
   });
 
   dataSpec(specData, (data, iteration) => {
-    describe(`Create ${data.name} account`, function() {
-      it('should fill the account form', async function() {
-        await accountsPage.createAccountButton.click();
-        await accountsPage.createAccountDialogNameInput.sendKeys(data.name + TIMESTAMP);
-        await accountsPage.createAccountDialogChargeInput.sendKeys(data.charge);
-        await accountsPage.createAccountDialogContractNumberInput.sendKeys(data.contractNumber);
-        await accountsPage.createAccountDialogInvoiceRadioGroup.$$('md-radio-button').first().click();
-        await accountsPage.createAccountDialogSubscriptionRadioGroup.$$('md-radio-button').first().click();
-        await accountsPage.createAccountDialogContractStartDateDatepicker.$('div > input').sendKeys(data.startDate);
-        await accountsPage.createAccountDialogContractEndDateDatepicker.$('div > input').sendKeys(data.endDate);
-      });
-
-      it('should submit the form', async function() {
-        await accountsPage.createAccountDialogSubmitButton.click();
-        await helpers.waitForToast();
-      });
+    it(`should create ${data.name} account`, async function() {
+      await accountsPage.createAccountButton.click();
+      await accountsPage.createAccountDialogNameInput.sendKeys(data.name + TIMESTAMP);
+      await accountsPage.createAccountDialogChargeInput.sendKeys(data.charge);
+      await accountsPage.createAccountDialogContractNumberInput.sendKeys(data.contractNumber);
+      await accountsPage.createAccountDialogInvoiceRadioGroup.$$('md-radio-button').first().click();
+      await accountsPage.createAccountDialogSubscriptionRadioGroup.$$('md-radio-button').first().click();
+      await accountsPage.createAccountDialogContractStartDateDatepicker.$('div > input').sendKeys(data.startDate);
+      await accountsPage.createAccountDialogContractEndDateDatepicker.$('div > input').sendKeys(data.endDate);
+      await accountsPage.createAccountDialogSubmitButton.click();
+      await helpers.waitForToast();
     });
   });
 });

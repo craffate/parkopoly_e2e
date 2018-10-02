@@ -17,17 +17,12 @@ describe('Logos', function() {
   });
 
   dataSpec(specData, (data, iteration) => {
-    describe(`Create ${data.name} logo`, function() {
-      it('should fill the logo form', async function() {
-        await helpers.displayUpload(logosPage.uploadButtonInput);
-        await helpers.uploadFile(path.resolve(data.path), logosPage.uploadButtonInput);
-        await logosPage.nameInput.sendKeys(TIMESTAMP);
-      });
-
-      it('should submit the form', async function() {
-        await DashboardIngredients.createButton.click();
-        await helpers.waitForToast();
-      });
+    it(`Create ${data.name} logo`, async function() {
+      await helpers.displayUpload(logosPage.uploadButtonInput);
+      await helpers.uploadFile(path.resolve(data.path), logosPage.uploadButtonInput);
+      await logosPage.nameInput.sendKeys(TIMESTAMP);
+      await DashboardIngredients.createButton.click();
+      await helpers.waitForToast();
     });
   });
 });

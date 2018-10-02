@@ -16,32 +16,27 @@ describe('Penalties', function() {
   });
 
   dataSpec(specData, (data, iteration) => {
-    describe(`Create ${data.name} penalty`, function() {
-      it('should fill the penalty form', async function() {
-        let el;
+    it(`Create ${data.name} penalty`, async function() {
+      let el;
 
-        await penaltyPage.nameInput.clear().sendKeys(data.name + TIMESTAMP);
-        await helpers.switchCheckbox(penaltyPage.priceFactorCheckbox, (data.factor !== null));
+      await penaltyPage.nameInput.clear().sendKeys(data.name + TIMESTAMP);
+      await helpers.switchCheckbox(penaltyPage.priceFactorCheckbox, (data.factor !== null));
 
-        if (data.factor !== null) {
-          await penaltyPage.priceFactorInput.clear().sendKeys(data.factor);
-        }
+      if (data.factor !== null) {
+        await penaltyPage.priceFactorInput.clear().sendKeys(data.factor);
+      }
 
-        if (data.price !== null) {
-          await penaltyPage.priceInput.clear().sendKeys(data.price);
-        }
+      if (data.price !== null) {
+        await penaltyPage.priceInput.clear().sendKeys(data.price);
+      }
 
-        await penaltyPage.type.click();
-        el = await helpers.getFromDropdown(data.type,
-          penaltyPage.typeDropdownResults);
-        await helpers.scrollIntoView(el[0]);
-        await el[0].click();
-      });
-
-      it('should submit the form', async function() {
-        await DashboardIngredients.submitButton.click();
-        await helpers.waitForToast();
-      });
+      await penaltyPage.type.click();
+      el = await helpers.getFromDropdown(data.type,
+        penaltyPage.typeDropdownResults);
+      await helpers.scrollIntoView(el[0]);
+      await el[0].click();
+      await DashboardIngredients.submitButton.click();
+      await helpers.waitForToast();
     });
   });
 });

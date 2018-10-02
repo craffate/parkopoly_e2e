@@ -17,18 +17,13 @@ describe('Booking codes', function() {
   });
 
   dataSpec(specData, (data, iteration) => {
-    describe(`Create ${data.name} booking code`, function() {
-      it('should fill the booking code form', async function() {
-        await bcPage.nameInput.sendKeys(data.name + TIMESTAMP);
-        await bcPage.expirationDatepickerInput.sendKeys(data.expiry);
-        await bcPage.driverSalaryFactorInput.sendKeys(data.salary);
-        await bcPage.driverSalaryAddonInput.sendKeys(data.salaryAdd);
-      });
-
-      it('should submit the form', async function() {
-        await DashboardIngredients.submitButton.click();
-        await helpers.waitForToast();
-      });
+    it(`Create ${data.name} booking code`, async function() {
+      await bcPage.nameInput.sendKeys(data.name + TIMESTAMP);
+      await bcPage.expirationDatepickerInput.sendKeys(data.expiry);
+      await bcPage.driverSalaryFactorInput.sendKeys(data.salary);
+      await bcPage.driverSalaryAddonInput.sendKeys(data.salaryAdd);
+      await DashboardIngredients.submitButton.click();
+      await helpers.waitForToast();
     });
   });
 });
