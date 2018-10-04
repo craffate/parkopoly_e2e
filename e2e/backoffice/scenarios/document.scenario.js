@@ -35,8 +35,7 @@ describe('Documents', function() {
         await helpers.asyncForEach(data.missionFilter, async (s, idx, arr) => {
           let el;
 
-          el = await helpers.getFromTickDropdown(s,
-            documentsPage.missionTypeDropdownAll);
+          el = await helpers.getFromDropdown(s, documentsPage.missionTypeDropdownAll);
           if (idx + 1 < arr.length) {
             return el[0].click();
           } else {
@@ -76,9 +75,9 @@ describe('Documents', function() {
         await documentsPage.bookingcodes.click();
         await helpers.asyncForEach(data.bc, async (s, idx, arr) => {
           let el;
+          const own = await documentsPage.bookingcodes.getAttribute('aria-owns');
 
-          el = await helpers.getFromTickDropdown(`${s}${TIMESTAMP}`,
-            documentsPage.bookingcodesDropdownAll);
+          el = await helpers.getFromDropdownAriaOwns(`${s}${TIMESTAMP}`, own);
           if (idx + 1 < arr.length) {
             return el[0].click();
           } else {

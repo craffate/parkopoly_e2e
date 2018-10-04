@@ -87,6 +87,17 @@ module.exports = {
     });
   },
 
+  getFromDropdownAriaOwns: async function(s, own) {
+    const opts = $$(`div#${own} > md-select-menu > md-content > md-option`);
+
+    s = s.trim();
+    return opts.filter(function(el) {
+      return el.$('div.md-text').getText().then(function(val) {
+        return val.includes(s);
+      });
+    });
+  },
+
   displayUpload: async function(fileInput) {
     return browser.executeScript('arguments[0].style.visibility = "visible"; arguments[0].style.display = "block";', fileInput);
   },
