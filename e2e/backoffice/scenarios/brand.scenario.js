@@ -47,6 +47,7 @@ describe('Brands', function() {
       await el[0].click();
 
       await brandPage.penalties.click();
+      await brandPage.penaltiesInput.clear();
       await brandPage.penaltiesInput.sendKeys(TIMESTAMP);
       await brandPage.penaltiesSelectAllButton.click();
       el = await helpers.getVisible($$('md-option'));
