@@ -88,7 +88,7 @@ module.exports = {
   },
 
   getFromDropdownAriaOwns: async function(s, own) {
-    const opts = $$(`div#${own} > md-select-menu > md-content > md-option`);
+    const opts = await $$(`div#${own} > md-select-menu > md-content > md-option`);
 
     s = s.trim();
     return opts.filter(function(el) {
