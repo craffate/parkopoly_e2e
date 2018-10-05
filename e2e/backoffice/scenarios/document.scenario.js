@@ -18,6 +18,8 @@ describe('Documents', function() {
 
   dataSpec(specData, (data, iteration) => {
     it(`Create ${data.name} document`, async function() {
+      let el;
+
       if (data.path !== null) {
         await helpers.displayUpload(documentsPage.fileInput);
         await helpers.uploadFile(path.resolve(data.path), documentsPage.fileInput);
@@ -71,21 +73,13 @@ describe('Documents', function() {
         };
         */
 
-      if (data.bc !== null) {
-        await documentsPage.bookingcodes.click();
-        await helpers.asyncForEach(data.bc, async (s, idx, arr) => {
-          let el;
-          const own = await documentsPage.bookingcodes.getAttribute('aria-owns');
-
-          el = await helpers.getFromDropdownAriaOwns(`${s}${TIMESTAMP}`, own);
-          if (idx + 1 < arr.length) {
-            return el[0].click();
-          } else {
-            await el[0].click();
-            return el[0].sendKeys(protractor.Key.ESCAPE);
-          };
-        });
-      };
+      await documentsPage.bookingcodes.click();
+      el = await helpers.getVisible(documentsPage.bookingcodesInput);
+      el[0].sendKeys(TIMESTAMP);
+      el = await helpers.getVisible(documentsPage.selectAllCheckbox);
+      el[0].click();
+      el = await helpers.getVisible($$('md-option'));
+      el[0].sendKeys(protractor.Key.ESCAPE);
       await DashboardIngredients.submitButton.click();
       await helpers.waitForToast();
     });
