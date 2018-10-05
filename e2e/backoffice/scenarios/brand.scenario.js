@@ -49,7 +49,8 @@ describe('Brands', function() {
       await brandPage.penalties.click();
       await brandPage.penaltiesInput.clear();
       await brandPage.penaltiesInput.sendKeys(TIMESTAMP);
-      await brandPage.penaltiesSelectAllButton.click();
+      el = await helpers.getVisible(brandPage.selectAllCheckbox);
+      el[0].click();
       el = await helpers.getVisible($$('md-option'));
       el[0].sendKeys(protractor.Key.ESCAPE);
 

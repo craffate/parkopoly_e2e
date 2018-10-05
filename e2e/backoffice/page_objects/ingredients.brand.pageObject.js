@@ -19,11 +19,11 @@ module.exports = function() {
   this.accountDropdownAccountsResults = element.all(by.repeater('account in brandFormCtrl.all.accounts'));
   this.penalties = element(by.id('brandPenalties'));
   this.penaltiesInput = element(by.model('sm.searchQuery'));
-  this.penaltiesSelectAllButton = $('md-checkbox[ng-click="sm.handleCheckboxClick()"]');
   this.aliasInput = element(by.model('brandFormCtrl.newObject.brandNameForEmailSMS'));
   this.smsOnBookingCheckbox = element(by.model('brandFormCtrl.newObject.notificationOptionDto.sendSmsMissionBooking'));
   this.mailOnBookingCheckbox = element(by.model('brandFormCtrl.newObject.notificationOptionDto.sendEmailAtCommand'));
   this.mailReminderCheckbox = element(by.model('brandFormCtrl.newObject.notificationOptionDto.sendEmailReminder'));
   this.smsReminderCheckbox = element(by.model('brandFormCtrl.newObject.notificationOptionDto.sendSmsReminder'));
   this.smsRatingCheckbox = element(by.model('brandFormCtrl.newObject.ratingSMS'));
+  this.selectAllCheckbox = $$('md-checkbox[ng-click="sm.handleCheckboxClick()"]');
 };
