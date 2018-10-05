@@ -11,6 +11,7 @@ module.exports = function(Parent) {
   this.replacementConcession = $('par-select#concessions-to-the-same-select');
   this.replacementConcessionInput = this.replacementConcession.$('input');
   this.replacementConcessionResults = this.replacementConcession.$$('a');
+  this.submitButton = $('button[type="submit"]');
 };
 
 module.exports = step1;
