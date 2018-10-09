@@ -48,6 +48,7 @@ describe('Drivers', function() {
       await driversPage.depositCommentInput.sendKeys(data.depositComment);
       await driversPage.submitButton.click();
       await helpers.waitForNo(driversPage.createDriverDialog);
+      await browser.refresh();
     });
   });
 });

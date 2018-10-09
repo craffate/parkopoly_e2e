@@ -11,18 +11,21 @@ describe('Logos', function() {
   beforeAll(async function() {
     await DashboardIngredients.get();
     await helpers.waitForSpinner();
-    await DashboardIngredients.searchbar.click();
-    const el = await helpers.getFromDropdownValue('Logo', DashboardIngredients.searchbarDropdownResults);
-    await el[0].click();
   });
 
   dataSpec(specData, (data, iteration) => {
     it(`Create ${data.name} logo`, async function() {
+      let el;
+
+      await DashboardIngredients.searchbar.click();
+      el = await helpers.getFromDropdownValue('Logo', DashboardIngredients.searchbarDropdownResults);
+      await el[0].click();
       await helpers.displayUpload(logosPage.uploadButtonInput);
       await helpers.uploadFile(path.resolve(data.path), logosPage.uploadButtonInput);
       await logosPage.nameInput.sendKeys(TIMESTAMP);
       await DashboardIngredients.createButton.click();
       await helpers.waitForToast();
+      await browser.refresh();
     });
   });
 });

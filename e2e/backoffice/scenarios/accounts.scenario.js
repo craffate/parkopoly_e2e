@@ -5,13 +5,10 @@ const specData = require('../data/accounts.scenario.data.json');
 describe('Accounts', function() {
   const accountsPage = new AccountsPageObject();
 
-  beforeAll(async function() {
-    await accountsPage.get();
-    await helpers.waitForSpinner();
-  });
-
   dataSpec(specData, (data, iteration) => {
     it(`should create ${data.name} account`, async function() {
+      await accountsPage.get();
+      await helpers.waitForSpinner();
       await accountsPage.createAccountButton.click();
       await accountsPage.createAccountDialogNameInput.sendKeys(data.name + TIMESTAMP);
       await accountsPage.createAccountDialogChargeInput.sendKeys(data.charge);
@@ -22,6 +19,7 @@ describe('Accounts', function() {
       await accountsPage.createAccountDialogContractEndDateDatepicker.$('div > input').sendKeys(data.endDate);
       await accountsPage.createAccountDialogSubmitButton.click();
       await helpers.waitForToast();
+      await browser.refresh();
     });
   });
 });

@@ -8,22 +8,24 @@ describe('Booking codes', function() {
   const bcPage = new BcPageObject();
 
   beforeAll(async function() {
-    let el;
     await DashboardIngredients.get();
     await helpers.waitForSpinner();
-    await DashboardIngredients.searchbar.click();
-    el = await helpers.getFromDropdownValue('Booking code', DashboardIngredients.searchbarDropdownResults);
-    await el[0].click();
   });
 
   dataSpec(specData, (data, iteration) => {
     it(`Create ${data.name} booking code`, async function() {
+      let el;
+
+      await DashboardIngredients.searchbar.click();
+      el = await helpers.getFromDropdownValue('Booking code', DashboardIngredients.searchbarDropdownResults);
+      await el[0].click();
       await bcPage.nameInput.sendKeys(data.name + TIMESTAMP);
       await bcPage.expirationDatepickerInput.sendKeys(data.expiry);
       await bcPage.driverSalaryFactorInput.sendKeys(data.salary);
       await bcPage.driverSalaryAddonInput.sendKeys(data.salaryAdd);
       await DashboardIngredients.submitButton.click();
       await helpers.waitForToast();
+      await browser.refresh();
     });
   });
 });

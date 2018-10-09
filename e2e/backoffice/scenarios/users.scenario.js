@@ -48,6 +48,7 @@ describe('Users', function() {
       await helpers.waitForNo(usersPage.createUserDialog, 5000,
         'Couldn\'t close the creation form dialog');
       await helpers.waitForToast();
+      await browser.refresh();
     });
   });
 });

@@ -72,6 +72,7 @@ describe('Concessions', function() {
       await concessionPage.pointOfSaleSubmitButton.click();
       await helpers.waitForVisibility(concessionPage.pointOfSaleConfirmationSubmitButton);
       await concessionPage.pointOfSaleConfirmationSubmitButton.click();
+      await browser.refresh();
     });
   });
 });

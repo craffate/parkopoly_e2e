@@ -11,15 +11,15 @@ describe('Documents', function() {
   beforeAll(async function() {
     await DashboardIngredients.get();
     await helpers.waitForSpinner();
-    await DashboardIngredients.searchbar.click();
-    const el = await helpers.getFromDropdownValue('Document', DashboardIngredients.searchbarDropdownResults);
-    await el[0].click();
   });
 
   dataSpec(specData, (data, iteration) => {
     it(`Create ${data.name} document`, async function() {
       let el;
 
+      await DashboardIngredients.searchbar.click();
+      el = await helpers.getFromDropdownValue('Document', DashboardIngredients.searchbarDropdownResults);
+      await el[0].click();
       if (data.path !== null) {
         await helpers.displayUpload(documentsPage.fileInput);
         await helpers.uploadFile(path.resolve(data.path), documentsPage.fileInput);
@@ -82,6 +82,7 @@ describe('Documents', function() {
       el[0].sendKeys(protractor.Key.ESCAPE);
       await DashboardIngredients.submitButton.click();
       await helpers.waitForToast();
+      await browser.refresh();
     });
   });
 });

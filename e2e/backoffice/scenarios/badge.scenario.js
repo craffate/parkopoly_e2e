@@ -10,13 +10,15 @@ describe('Badge', function() {
   beforeAll(async function() {
     await DashboardIngredients.get();
     await helpers.waitForSpinner();
-    await DashboardIngredients.searchbar.click();
-    const el = await helpers.getFromDropdownValue('Badge', DashboardIngredients.searchbarDropdownResults);
-    await el[0].click();
   });
 
   dataSpec(specData, (data, iteration) => {
     it(`Create ${data.name} badge`, async function() {
+      let el;
+
+      await DashboardIngredients.searchbar.click();
+      el = await helpers.getFromDropdownValue('Badge', DashboardIngredients.searchbarDropdownResults);
+      await el[0].click();
       await badgePage.nameInput.sendKeys(data.name + TIMESTAMP);
       await badgePage.model.click();
       await badgePage.modelInput.sendKeys(data.modelFilter);
@@ -30,6 +32,7 @@ describe('Badge', function() {
       };
       await DashboardIngredients.submitButton.click();
       await helpers.waitForToast();
+      await browser.refresh();
     });
   });
 });

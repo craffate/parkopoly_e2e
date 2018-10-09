@@ -10,15 +10,15 @@ describe('Brands', function() {
   beforeAll(async function() {
     await DashboardIngredients.get();
     await helpers.waitForSpinner();
-    await DashboardIngredients.searchbar.click();
-    const el = await helpers.getFromDropdownValue('Brand', DashboardIngredients.searchbarDropdownResults);
-    await el[0].click();
   });
 
   dataSpec(specData, (data, iteration) => {
     it(`Create ${data.name} brand`, async function() {
       let el;
 
+      await DashboardIngredients.searchbar.click();
+      el = await helpers.getFromDropdownValue('Brand', DashboardIngredients.searchbarDropdownResults);
+      await el[0].click();
       await brandPage.nameInput.sendKeys(data.name + TIMESTAMP);
       await brandPage.colorpickerInput.sendKeys(data.color);
       await brandPage.anticipationInput.sendKeys(data.min);
@@ -58,6 +58,7 @@ describe('Brands', function() {
       await brandPage.mailOnBookingCheckbox.click();
       await DashboardIngredients.submitButton.click();
       await helpers.waitForToast();
+      await browser.refresh();
     });
   });
 });
