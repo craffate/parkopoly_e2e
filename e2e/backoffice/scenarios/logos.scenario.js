@@ -12,7 +12,7 @@ describe('Logos', function() {
     await DashboardIngredients.get();
     await helpers.waitForSpinner();
     await DashboardIngredients.searchbar.click();
-    const el = await helpers.getFromDropdown('Logo', DashboardIngredients.searchbarDropdownResults);
+    const el = await helpers.getFromDropdownValue('Logo', DashboardIngredients.searchbarDropdownResults);
     await el[0].click();
   });
 

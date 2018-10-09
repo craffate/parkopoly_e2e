@@ -11,7 +11,7 @@ describe('Brands', function() {
     await DashboardIngredients.get();
     await helpers.waitForSpinner();
     await DashboardIngredients.searchbar.click();
-    const el = await helpers.getFromDropdown('Brand', DashboardIngredients.searchbarDropdownResults);
+    const el = await helpers.getFromDropdownValue('Brand', DashboardIngredients.searchbarDropdownResults);
     await el[0].click();
   });
 
@@ -31,7 +31,7 @@ describe('Brands', function() {
         await helpers.asyncForEach(data.missionType, async (s, idx, arr) => {
           let el;
 
-          el = await helpers.getFromDropdown(s,
+          el = await helpers.getFromDropdownValue(s,
             brandPage.missiontypeDropdownTypeResults);
           if (idx + 1 < arr.length) {
             return el[0].click();
@@ -43,7 +43,7 @@ describe('Brands', function() {
       };
 
       await brandPage.accountDropdown.click();
-      el = await helpers.getFromTickDropdown(`${data.account}${TIMESTAMP}`, brandPage.accountDropdownAccountsResults);
+      el = await helpers.getFromDropdownText(`${data.account}${TIMESTAMP}`, brandPage.accountDropdownAccountsResults);
       await el[0].click();
 
       await brandPage.penalties.click();

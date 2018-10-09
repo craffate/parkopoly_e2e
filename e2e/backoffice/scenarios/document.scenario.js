@@ -12,7 +12,7 @@ describe('Documents', function() {
     await DashboardIngredients.get();
     await helpers.waitForSpinner();
     await DashboardIngredients.searchbar.click();
-    const el = await helpers.getFromDropdown('Document', DashboardIngredients.searchbarDropdownResults);
+    const el = await helpers.getFromDropdownValue('Document', DashboardIngredients.searchbarDropdownResults);
     await el[0].click();
   });
 
@@ -37,7 +37,7 @@ describe('Documents', function() {
         await helpers.asyncForEach(data.missionFilter, async (s, idx, arr) => {
           let el;
 
-          el = await helpers.getFromDropdown(s, documentsPage.missionTypeDropdownAll);
+          el = await helpers.getFromDropdownValue(s, documentsPage.missionTypeDropdownAll);
           if (idx + 1 < arr.length) {
             return el[0].click();
           } else {
@@ -59,7 +59,7 @@ describe('Documents', function() {
             await helpers.asyncForEach(menus, async (opt) => {
               let el;
 
-              el = await helpers.getFromTickDropdownExact(s, opt);
+              el = await helpers.getFromDropdownTextExact(s, opt);
               if (el.length > 0) {
                 await helpers.scrollIntoView(el[0]);
                 return el[0].click();

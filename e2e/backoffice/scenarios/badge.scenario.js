@@ -11,7 +11,7 @@ describe('Badge', function() {
     await DashboardIngredients.get();
     await helpers.waitForSpinner();
     await DashboardIngredients.searchbar.click();
-    const el = await helpers.getFromDropdown('Badge', DashboardIngredients.searchbarDropdownResults);
+    const el = await helpers.getFromDropdownValue('Badge', DashboardIngredients.searchbarDropdownResults);
     await el[0].click();
   });
 

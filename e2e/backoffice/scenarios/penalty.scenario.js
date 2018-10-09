@@ -11,7 +11,7 @@ describe('Penalties', function() {
     await DashboardIngredients.get();
     await helpers.waitForSpinner();
     await DashboardIngredients.searchbar.click();
-    const el = await helpers.getFromDropdown('Penalty', DashboardIngredients.searchbarDropdownResults);
+    const el = await helpers.getFromDropdownValue('Penalty', DashboardIngredients.searchbarDropdownResults);
     await el[0].click();
   });
 
@@ -31,7 +31,7 @@ describe('Penalties', function() {
       }
 
       await penaltyPage.type.click();
-      el = await helpers.getFromDropdown(data.type,
+      el = await helpers.getFromDropdownValue(data.type,
         penaltyPage.typeDropdownResults);
       await helpers.scrollIntoView(el[0]);
       await el[0].click();

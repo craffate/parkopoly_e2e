@@ -17,7 +17,7 @@ describe('Cost zones', function() {
       let el;
 
       await DashboardIngredients.searchbar.click();
-      el = await helpers.getFromDropdown('Cost', DashboardIngredients.searchbarDropdownResults);
+      el = await helpers.getFromDropdownValue('Cost', DashboardIngredients.searchbarDropdownResults);
       await el[0].click();
       await costPage.nameInput.sendKeys(data.name + TIMESTAMP);
       await helpers.asyncForEach(data.costZones, async function(zoneData, idx, zoneDataAll) {

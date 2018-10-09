@@ -21,7 +21,7 @@ describe('Mission links', function() {
       await helper.asyncForEach(data.types, async(s, idx, arr) => {
         let el;
 
-        el = await helpers.getFromTickDropdown(`${s}${TIMESTAMP}`, mlPage.newMissionLinkBrandResults);
+        el = await helpers.getFromDropdownText(`${s}${TIMESTAMP}`, mlPage.newMissionLinkBrandResults);
         if (idx + 1 < arr.length) {
           return el[0].click();
         } else {
@@ -35,7 +35,7 @@ describe('Mission links', function() {
       await helpers.asyncForEach(data.types, async (s, idx, arr) => {
         let el;
 
-        el = await helpers.getFromTickDropdown(s, mlPage.newMissionLinkTypesResults);
+        el = await helpers.getFromDropdownText(s, mlPage.newMissionLinkTypesResults);
         if (idx + 1 < arr.length) {
           return el[0].click();
         } else {
@@ -46,7 +46,7 @@ describe('Mission links', function() {
 
       /* Select booking code */
       await mlPage.newMissionLinkBookingCode.click();
-      el = await helpers.getFromTickDropdown(`${data.bookingCode}${TIMESTAMP}`, mlPage.newMissionLinkBookingCodeResults);
+      el = await helpers.getFromDropdownText(`${data.bookingCode}${TIMESTAMP}`, mlPage.newMissionLinkBookingCodeResults);
       await el[0].click();
       await el[0].sendKeys(protractor.Key.ESCAPE);
 
@@ -55,7 +55,7 @@ describe('Mission links', function() {
       await helpers.asyncForEach(data.concessionGroups, async (s, idx, arr) => {
         let el;
 
-        el = await helpers.getFromTickDropdown(`${s} ${TIMESTAMP}`, mlPage.newMissionLinkConcessionGroupResults);
+        el = await helpers.getFromDropdownText(`${s} ${TIMESTAMP}`, mlPage.newMissionLinkConcessionGroupResults);
         if (idx + 1 < arr.length) {
           return el[0].click();
         } else {
@@ -66,7 +66,7 @@ describe('Mission links', function() {
 
       /* Select cost zones */
       await mlPage.newMissionLinkCost.click();
-      el = await helpers.getFromTickDropdown(`${data.costZone}${TIMESTAMP}`, mlPage.newMissionLinkCostResults);
+      el = await helpers.getFromDropdownText(`${data.costZone}${TIMESTAMP}`, mlPage.newMissionLinkCostResults);
       await el[0].click();
       await el[0].sendKeys(protractor.Key.ESCAPE);
       await mlPage.newMissionLinkSaveButton.click();

@@ -12,7 +12,7 @@ describe('Booking codes', function() {
     await DashboardIngredients.get();
     await helpers.waitForSpinner();
     await DashboardIngredients.searchbar.click();
-    el = await helpers.getFromDropdown('Booking code', DashboardIngredients.searchbarDropdownResults);
+    el = await helpers.getFromDropdownValue('Booking code', DashboardIngredients.searchbarDropdownResults);
     await el[0].click();
   });
 
