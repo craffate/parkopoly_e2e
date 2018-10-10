@@ -25,8 +25,8 @@ module.exports = function() {
   this.optionsDropdownIs = element(by.repeater('opt in documentFormCtrl.all.optionLabels.INTER_SITE'));
   this.optionsDropdownIsAll = element.all(by.repeater('opt in documentFormCtrl.all.optionLabels.INTER_SITE'));
   this.bookingcodes = element(by.id('docBookingCodes'));
-  this.bookingcodesInput = element(by.model('sm.searchQuery'));
   this.bookingcodesDropdown = element(by.repeater('item in (sm.filteredSource = (sm.source | filter: (sm.fieldName ? {[sm.fieldName]: sm.searchQuery} : sm.searchQuery)))'));
   this.bookingcodesDropdownAll = element.all(by.repeater('item in (sm.filteredSource = (sm.source | filter: (sm.fieldName ? {[sm.fieldName]: sm.searchQuery} : sm.searchQuery)))'));
   this.selectAllCheckbox = $$('md-checkbox[ng-click="sm.handleCheckboxClick()"]');
+  this.searchQuery = element.all(by.model('sm.searchQuery'));
 };

@@ -74,7 +74,7 @@ describe('Documents', function() {
         */
 
       await documentsPage.bookingcodes.click();
-      el = await helpers.getVisible(documentsPage.bookingcodesInput);
+      el = await helpers.getVisible(documentsPage.searchQuery);
       el[0].sendKeys(TIMESTAMP);
       el = await helpers.getVisible(documentsPage.selectAllCheckbox);
       el[0].click();
