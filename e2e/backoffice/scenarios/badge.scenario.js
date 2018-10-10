@@ -21,14 +21,19 @@ describe('Badge', function() {
       await el[0].click();
       await badgePage.nameInput.sendKeys(data.name + TIMESTAMP);
       await badgePage.model.click();
-      await badgePage.modelInput.sendKeys(data.modelFilter);
-      await badgePage.modelSelectAllButton.click();
+      el = await helpers.getVisible(badgePage.searchQuery);
+      await el[0].sendKeys(`data.modelFilter ${TIMESTAMP}`);
+      el = await helpers.getVisible(badgePage.selectAllCheckbox);
+      await el[0].click();
+      el = await helpers.getVisible($$('md-option'));
+      el[0].sendKeys(protractor.Key.ESCAPE);
       if (data.bc !== null) {
         await badgePage.bookingcodes.click();
-        await badgePage.bookingcodesSearchInput.sendKeys(data.bc[0]);
-        data.bc[0] = await badgePage.bookingcodesDropdownAll.first();
-        await data.bc[0].click();
-        await data.bc[0].sendKeys(protractor.Key.ESCAPE);
+        el = await helpers.getVisible(badgePage.searchQuery);
+        await el[0].sendKeys(data.bc[0]);
+        el = await helpers.getVisible(badgePage.selectAllCheckbox);
+        await el[0].click();
+        el = await helpers.getVisible($$('md-option'));
       };
       await DashboardIngredients.submitButton.click();
       await helpers.waitForToast();

@@ -3,8 +3,7 @@ module.exports = function() {
   this.searchbarInput = this.searchbar.element(by.model('$select.search'));
   this.searchbarDropdown = element(by.repeater('object in $select.items'));
   this.nameInput = element(by.model('badgeFormCtrl.newObject.name'));
-  this.model = element(by.model('sm.model'));
-  this.modelInput = this.model.element(by.model('$select.search'));
+  this.model = $('md-select[name="docBrands"]');
   this.modelDropdown = element(by.repeater('item in $select.items'));
   this.modelDropdownAll = element.all(by.repeater('item in $select.items'));
   this.modelSelectAllButton = $('[ng-click="sm.selectAll()"]');
@@ -24,4 +23,6 @@ module.exports = function() {
   this.bookingcodesSearchInput = element(by.model('bcSearch'));
   this.bookingcodesDropdown = element(by.repeater('code in badgeFormCtrl.all.bookingCodes'));
   this.bookingcodesDropdownAll = element.all(by.repeater('code in badgeFormCtrl.all.bookingCodes'));
+  this.selectAllCheckbox = $$('md-checkbox[ng-click="sm.handleCheckboxClick()"]')
+  this.searchQuery = element.all(by.model('sm.searchQuery'));
 };
