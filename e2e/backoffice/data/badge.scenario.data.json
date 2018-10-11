@@ -1,28 +1,28 @@
 [
   {
     "name": "Paris",
-    "modelFilter": "Paris",
+    "modelFilter": null,
     "missionFilter": null,
     "option": null,
     "bc": null
   },
   {
     "name": "Renault",
-    "modelFilter": "Renault",
+    "modelFilter": ["Renault PUD", "Renault VN"],
     "missionFilter": null,
     "option": null,
     "bc": null
   },
   {
     "name": "DS",
-    "modelFilter": "DS",
+    "modelFilter": ["DS PUDE"],
     "missionFilter": null,
     "option": null,
     "bc": null
   },
   {
     "name": "MeM DS",
-    "modelFilter": "ds world_paris_vn",
+    "modelFilter": null,
     "missionFilter": null,
     "option": null,
     "bc": ["DS World_ MeM"]
