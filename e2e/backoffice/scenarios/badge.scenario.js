@@ -22,7 +22,7 @@ describe('Badge', function() {
       await badgePage.nameInput.sendKeys(data.name + TIMESTAMP);
       await badgePage.model.click();
       el = await helpers.getVisible(badgePage.searchQuery);
-      await el[0].sendKeys(`data.modelFilter ${TIMESTAMP}`);
+      await el[0].sendKeys(`${data.modelFilter} ${TIMESTAMP}`);
       el = await helpers.getVisible(badgePage.selectAllCheckbox);
       await el[0].click();
       el = await helpers.getVisible($$('md-option'));
