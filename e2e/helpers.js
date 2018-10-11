@@ -142,9 +142,12 @@ module.exports = {
   ** Closes the currently opened dropdown
   */
   closeDropdown: async function() {
-    const opts = await helpers.getVisible($$('md-options'));
+    const opts = $$('md-option');
+    const arr = await opts.filter(function(el) {
+      return el.isDisplayed();
+    });
 
-    return opts[0].sendKeys(protractor.Key.ESCAPE);
+    return arr[0].sendKeys(protractor.Key.ESCAPE);
   },
 
   /*
