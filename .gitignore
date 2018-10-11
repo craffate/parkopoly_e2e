@@ -1,7 +1,6 @@
 protractor
 package-lock.json
 reports/
-resources/
 node_modules/
 .DS_Store
 tags
