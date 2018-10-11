@@ -139,6 +139,15 @@ module.exports = {
   },
 
   /*
+  ** Closes the currently opened dropdown
+  */
+  closeDropdown: async function() {
+    const opts = await helpers.getVisible($$('md-options'));
+
+    return opts[0].sendKeys(protractor.Key.ESCAPE);
+  },
+
+  /*
   ** Makes the fileInput element visible
   */
   displayUpload: async function(fileInput) {
