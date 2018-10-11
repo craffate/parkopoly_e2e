@@ -20,21 +20,28 @@ describe('Badge', function() {
       el = await helpers.getFromDropdownValue('Badge', DashboardIngredients.searchbarDropdownResults);
       await el[0].click();
       await badgePage.nameInput.sendKeys(data.name + TIMESTAMP);
-      await badgePage.model.click();
-      el = await helpers.getVisible(badgePage.searchQuery);
-      await el[0].sendKeys(`${data.modelFilter} ${TIMESTAMP}`);
-      el = await helpers.getVisible(badgePage.selectAllCheckbox);
-      await el[0].click();
-      el = await helpers.getVisible($$('md-option'));
-      el[0].sendKeys(protractor.Key.ESCAPE);
+      if (data.modelFilter !== null) {
+        await badgePage.model.click();
+        await helpers.asyncForEach(data.modelFilter, async function(model) {
+          const checkbox = await helpers.getVisible(badgePage.selectAllCheckbox);
+          const search = await helpers.getVisible(badgePage.searchQuery);
+
+          await search[0].sendKeys(model + TIMESTAMP);
+          await checkbox[0].click();
+          return search[0].clear();
+        });
+        await helpers.closeDropdown();
+      };
+
       if (data.bc !== null) {
         await badgePage.bookingcodes.click();
         el = await helpers.getVisible(badgePage.searchQuery);
         await el[0].sendKeys(data.bc[0]);
         el = await helpers.getVisible(badgePage.selectAllCheckbox);
         await el[0].click();
-        el = await helpers.getVisible($$('md-option'));
+        await helpers.closeDropdown();
       };
+
       await DashboardIngredients.submitButton.click();
       await helpers.waitForToast();
       await browser.refresh();
