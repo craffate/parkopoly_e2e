@@ -28,18 +28,20 @@ describe('Users', function() {
       } else {
         await usersPage.userRadio.click();
       }
+
       await helpers.asyncForEach(data.brandFilter, async (s) => {
         let elText;
 
         await usersPage.brand.click();
         await usersPage.brandInput.sendKeys(s);
 
-        elText = usersPage.brandDropdownAll.first().$('div > span').getText();
+        elText = usersPage.brandDropdown.first().$('div > span').getText();
 
         await browser.wait(expect(elText).toContain(s),
           5000, `Search for brand ${s} failed`);
         return usersPage.selectAllButton.click();
       });
+
       await helpers.switchCheckbox(usersPage.accountableCheckbox, data.accountable);
       await helpers.switchCheckbox(usersPage.qbookingCheckbox, data.quickbook);
       await helpers.switchCheckbox(usersPage.penaltyCheckbox, data.penalty);

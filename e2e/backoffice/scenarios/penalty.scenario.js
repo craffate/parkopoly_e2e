@@ -32,7 +32,7 @@ describe('Penalties', function() {
 
       await penaltyPage.type.click();
       el = await helpers.getFromDropdownValue(data.type,
-        penaltyPage.typeDropdownResults);
+        penaltyPage.typeDropdown);
       await helpers.scrollIntoView(el[0]);
       await el[0].click();
       await DashboardIngredients.submitButton.click();

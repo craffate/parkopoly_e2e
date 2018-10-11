@@ -1,6 +1,9 @@
 const helpers = require('../../helpers');
 
 module.exports = function() {
+  this.selectAllCheckbox = $$('md-checkbox[ng-click="sm.handleCheckboxClick()"]');
+  this.searchQuery = element.all(by.model('sm.searchQuery'));
+
   this.searchbar = element(by.model('documentFormCtrl.selectedObject'));
   this.searchbarInput = this.searchbar.element(by.model('$select.search'));
   this.searchbarDropdown = this.searchbar.element(by.repeater('object in $select.items'));
@@ -13,8 +16,7 @@ module.exports = function() {
   this.qualitySwitch = element(by.model('documentFormCtrl.newObject.cleaningIsPossible'));
   this.displayWebAppAfterSwitch = element(by.model('documentFormCtrl.newObject.displayOnClientWebAppWhenFinished'));
   this.missionType = element(by.id('docMissionTypes'));
-  this.missionTypeDropdown = element(by.repeater('type in documentFormCtrl.all.types'));
-  this.missionTypeDropdownAll = element.all(by.repeater('type in documentFormCtrl.all.types'));
+  this.missionTypeDropdown = element.all(by.repeater('type in documentFormCtrl.all.types'));
   this.options = element(by.model('documentFormCtrl.newObject.missionFilter.optionLabelEnumSet'));
   this.optionsDropdownPickup = element(by.repeater('opt in documentFormCtrl.all.optionLabels.PICKUP'));
   this.optionsDropdownPickupAll = element.all(by.repeater('opt in documentFormCtrl.all.optionLabels.PICKUP'));
@@ -25,8 +27,4 @@ module.exports = function() {
   this.optionsDropdownIs = element(by.repeater('opt in documentFormCtrl.all.optionLabels.INTER_SITE'));
   this.optionsDropdownIsAll = element.all(by.repeater('opt in documentFormCtrl.all.optionLabels.INTER_SITE'));
   this.bookingcodes = element(by.id('docBookingCodes'));
-  this.bookingcodesDropdown = element(by.repeater('item in (sm.filteredSource = (sm.source | filter: (sm.fieldName ? {[sm.fieldName]: sm.searchQuery} : sm.searchQuery)))'));
-  this.bookingcodesDropdownAll = element.all(by.repeater('item in (sm.filteredSource = (sm.source | filter: (sm.fieldName ? {[sm.fieldName]: sm.searchQuery} : sm.searchQuery)))'));
-  this.selectAllCheckbox = $$('md-checkbox[ng-click="sm.handleCheckboxClick()"]');
-  this.searchQuery = element.all(by.model('sm.searchQuery'));
 };

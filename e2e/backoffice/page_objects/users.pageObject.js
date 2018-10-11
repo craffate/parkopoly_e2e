@@ -14,8 +14,7 @@ module.exports = function() {
   this.roleRadioGroup = element(by.model('createUserCtrl.userModel.role'));
   this.brand = element(by.model('sm.model'));
   this.brandInput = this.brand.element(by.model('$select.search'));
-  this.brandDropdown = this.brand.element(by.repeater('item in $select.items'));
-  this.brandDropdownAll = this.brand.all(by.repeater('item in $select.items'));
+  this.brandDropdown = this.brand.all(by.repeater('item in $select.items'));
   this.selectAllButton = element(by.id('selectAllButton'));
   this.managerRadio = this.roleRadioGroup.$('[value="USER_MANAGER"]');
   this.userRadio = this.roleRadioGroup.$('[value="USER"]');

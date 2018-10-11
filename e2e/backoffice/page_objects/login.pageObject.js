@@ -10,9 +10,4 @@ module.exports = function() {
     await browser.driver.get(browser.baseUrl + this.url);
     return helpers.waitForSpinner();
   };
-
-  this.fillForm = function(usr, pwd) {
-    this.username.sendKeys(usr);
-    this.password.sendKeys(pwd);
-  };
 };

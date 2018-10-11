@@ -37,7 +37,7 @@ describe('Documents', function() {
         await helpers.asyncForEach(data.missionFilter, async (s, idx, arr) => {
           let el;
 
-          el = await helpers.getFromDropdownValue(s, documentsPage.missionTypeDropdownAll);
+          el = await helpers.getFromDropdownValue(s, documentsPage.missionTypeDropdown);
           if (idx + 1 < arr.length) {
             return el[0].click();
           } else {

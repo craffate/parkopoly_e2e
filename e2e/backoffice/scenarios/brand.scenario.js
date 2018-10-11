@@ -27,12 +27,12 @@ describe('Brands', function() {
       await el[0].click();
 
       if (data.missionType !== null) {
-        await brandPage.missiontypeDropdown.click();
+        await brandPage.missiontype.click();
         await helpers.asyncForEach(data.missionType, async (s, idx, arr) => {
           let el;
 
           el = await helpers.getFromDropdownValue(s,
-            brandPage.missiontypeDropdownTypeResults);
+            brandPage.missiontypeDropdown);
           if (idx + 1 < arr.length) {
             return el[0].click();
           } else {
@@ -42,15 +42,16 @@ describe('Brands', function() {
         });
       };
 
-      await brandPage.accountDropdown.click();
-      el = await helpers.getFromDropdownText(`${data.account}${TIMESTAMP}`, brandPage.accountDropdownAccountsResults);
+      await brandPage.account.click();
+      el = await helpers.getFromDropdownText(`${data.account}${TIMESTAMP}`, brandPage.accountDropdown);
       await el[0].click();
 
       await brandPage.penalties.click();
-      await brandPage.penaltiesInput.clear();
-      await brandPage.penaltiesInput.sendKeys(TIMESTAMP);
+      el = await helpers.getVisible(brandPage.searchQuery);
+      await el[0].clear();
+      await el[0].sendKeys(TIMESTAMP);
       el = await helpers.getVisible(brandPage.selectAllCheckbox);
-      el[0].click();
+      await el[0].click();
       await helpers.closeDropdown();
 
       await brandPage.aliasInput.sendKeys(data.alias);

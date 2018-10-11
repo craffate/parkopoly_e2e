@@ -23,13 +23,13 @@ describe('Drivers', function() {
       await driversPage.addressInput.sendKeys(protractor.Key.ENTER);
       await driversPage.telInput.sendKeys(data.phone);
       await driversPage.status.click();
-      el = await helpers.getFromDropdownValue(data.status, driversPage.statusDropdownAll);
+      el = await helpers.getFromDropdownValue(data.status, driversPage.statusDropdown);
       await el[0].click();
       if (data.badges !== null) {
         await helpers.asyncForEach(data.badges, async (s) => {
           let el;
 
-          el = await helpers.getFromDropdownValue(s, driversPage.badgeDropdownAll);
+          el = await helpers.getFromDropdownValue(s, driversPage.badgeDropdown);
           await driversPage.badge.click();
           await helpers.scrollIntoView(el[0]);
           return el[0].click();
@@ -37,7 +37,7 @@ describe('Drivers', function() {
       };
       await driversPage.pointsInput.sendKeys(data.points);
       await driversPage.occupation.click();
-      el = await helpers.getFromDropdownValue(data.occupation, driversPage.occupationDropdownAll);
+      el = await helpers.getFromDropdownValue(data.occupation, driversPage.occupationDropdown);
       await el[0].click();
       await driversPage.equipmentInput.sendKeys(data.uniform);
       await driversPage.commentInput.sendKeys(data.comment);
