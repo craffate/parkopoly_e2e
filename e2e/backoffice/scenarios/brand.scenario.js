@@ -37,7 +37,7 @@ describe('Brands', function() {
             return el[0].click();
           } else {
             await el[0].click();
-            return el[0].sendKeys(protractor.Key.ESCAPE);
+            return helpers.closeDropdown();
           };
         });
       };
@@ -51,8 +51,7 @@ describe('Brands', function() {
       await brandPage.penaltiesInput.sendKeys(TIMESTAMP);
       el = await helpers.getVisible(brandPage.selectAllCheckbox);
       el[0].click();
-      el = await helpers.getVisible($$('md-option'));
-      el[0].sendKeys(protractor.Key.ESCAPE);
+      await helpers.closeDropdown();
 
       await brandPage.aliasInput.sendKeys(data.alias);
       await brandPage.mailOnBookingCheckbox.click();

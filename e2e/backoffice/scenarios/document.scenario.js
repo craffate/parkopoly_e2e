@@ -42,7 +42,7 @@ describe('Documents', function() {
             return el[0].click();
           } else {
             await el[0].click();
-            return el[0].sendKeys(protractor.Key.ESCAPE);
+            return helpers.closeDropdown();
           };
         });
       };
@@ -78,8 +78,7 @@ describe('Documents', function() {
       el[0].sendKeys(TIMESTAMP);
       el = await helpers.getVisible(documentsPage.selectAllCheckbox);
       el[0].click();
-      el = await helpers.getVisible($$('md-option'));
-      el[0].sendKeys(protractor.Key.ESCAPE);
+      await helpers.closeDropdown();
       await DashboardIngredients.submitButton.click();
       await helpers.waitForToast();
       await browser.refresh();

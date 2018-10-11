@@ -26,7 +26,7 @@ describe('Mission links', function() {
           return el[0].click();
         } else {
           await el[0].click();
-          return el[0].sendKeys(protractor.Key.ESCAPE);
+          return helpers.closeDropdown();
         };
       });
 
@@ -40,7 +40,7 @@ describe('Mission links', function() {
           return el[0].click();
         } else {
           await el[0].click();
-          return el[0].sendKeys(protractor.Key.ESCAPE);
+          return helpers.closeDropdown();
         };
       });
 
@@ -48,7 +48,7 @@ describe('Mission links', function() {
       await mlPage.newMissionLinkBookingCode.click();
       el = await helpers.getFromDropdownText(`${data.bookingCode}${TIMESTAMP}`, mlPage.newMissionLinkBookingCodeResults);
       await el[0].click();
-      await el[0].sendKeys(protractor.Key.ESCAPE);
+      return helpers.closeDropdown();
 
       /* Select concession groups */
       await mlPage.newMissionLinkConcessionGroup.click();
@@ -60,7 +60,7 @@ describe('Mission links', function() {
           return el[0].click();
         } else {
           await el[0].click();
-          return el[0].sendKeys(protractor.Key.ESCAPE);
+          return helpers.closeDropdown();
         };
       });
 
@@ -68,7 +68,7 @@ describe('Mission links', function() {
       await mlPage.newMissionLinkCost.click();
       el = await helpers.getFromDropdownText(`${data.costZone}${TIMESTAMP}`, mlPage.newMissionLinkCostResults);
       await el[0].click();
-      await el[0].sendKeys(protractor.Key.ESCAPE);
+      return helpers.closeDropdown();
       await mlPage.newMissionLinkSaveButton.click();
       await helpers.waitForVisibility($('button[ng-click="dialog.hide()"]'));
       await $('button[ng-click="dialog.hide()"]').click();
