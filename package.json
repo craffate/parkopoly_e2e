@@ -25,7 +25,6 @@
   "homepage": "https://github.com/craffate/parkopoly_e2e#readme",
   "dependencies": {
     "jasmine": "^3.1.0",
-    "jasmine-fail-fast": "^2.0.0",
     "jasmine-reporters": "^2.3.2",
     "protractor": "^5.4.0",
     "protractor-beautiful-reporter": "^1.2.3",
@@ -35,6 +34,7 @@
     "ajv": "^6.5.2",
     "eslint": "^5.2.0",
     "eslint-plugin-protractor": "^1.40.0",
+    "jasmine-fail-fast": "^2.0.0",
     "jshint": "^2.9.6"
   }
 }
