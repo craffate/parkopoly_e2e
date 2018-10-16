@@ -40,19 +40,19 @@ exports.config = {
     defaultTimeoutInterval: 120000,
     print: () => {}
   },
-  multiCapabilities: [
-    {browserName: 'chrome',
-      shardTestFiles: false,
-      maxInstances: 3,
-      chromeOptions: {
-        args: ['--disable-extensions', '--show-fps-counter=true',
-          '--disable-infobars', '--incognito', '--disable-gpu',
-          '--start-maximized',
-          '--disable-web-security', '--allow-running-insecure-content',
-          '--allow-insecure-localhost', '--disable-browser-side-navigation',
-          '--reduce-security-for-testing', '--window-size=1800,1600']
-      }
-    }],
+  capabilities: {
+    browserName: 'chrome',
+    shardTestFiles: false,
+    maxInstances: 3,
+    chromeOptions: {
+      args: ['--disable-extensions', '--show-fps-counter=true',
+        '--disable-infobars', '--incognito', '--disable-gpu',
+        '--start-maximized',
+        '--disable-web-security', '--allow-running-insecure-content',
+        '--allow-insecure-localhost', '--disable-browser-side-navigation',
+        '--reduce-security-for-testing', '--window-size=1800,1600']
+    }
+  },
   params: {
     login: {
       usr: process.env.USR_E2E,
