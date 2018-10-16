@@ -12,6 +12,7 @@ exports.config = {
   framework: 'jasmine2',
   seleniumAddress: 'http://localhost:4444/wd/hub',
   directConnect: false,
+  allScriptsTimeout: 120000,
   specs: ['./e2e/backoffice/**/*.spec.js'],
   suites: {
     '1-6': [
