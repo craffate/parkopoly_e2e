@@ -9,7 +9,7 @@ exports.config = {
   SELENIUM_PROMISE_MANAGER: false,
   seleniumAddress: 'http://localhost:4444/wd/hub',
   framework: 'jasmine2',
-  directConnect: true,
+  directConnect: false,
   allScriptsTimeout: 30000,
   useAllAngular2AppRoots: true,
   specs: ['./e2e/client/**/*.spec.js'],
@@ -28,7 +28,7 @@ exports.config = {
     chromeOptions: {
       args: ['--disable-extensions', '--show-fps-counter=true',
         '--disable-infobars', '--incognito', '--disable-gpu',
-        '--headless', '--start-maximized',
+        '--start-maximized',
         '--disable-web-security', '--allow-running-insecure-content',
         '--allow-insecure-localhost', '--disable-browser-side-navigation',
         '--reduce-security-for-testing']
