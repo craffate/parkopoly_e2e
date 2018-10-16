@@ -1,6 +1,6 @@
 module.exports = {
   /*
-   ** Waits for t milliseconds for current URL to equal url
+   * Waits for t milliseconds for current URL to equal url
    */
   testUrl: async function(url, t) {
     return browser.driver.wait(async function() {
@@ -11,7 +11,7 @@ module.exports = {
   },
 
   /*
-   ** Calls callback for each element in arr
+   * Calls callback for each element in arr
    */
   asyncForEach: async function(arr, callback) {
     if (Array.isArray(arr)) {
@@ -26,14 +26,14 @@ module.exports = {
   },
 
   /*
-   ** Returns a random int contained in [0;max]
+   * Returns a random int contained in [0;max]
    */
   getRandomInt: function(max) {
     return Math.floor(Math.random() * Math.floor(max));
   },
 
   /*
-   ** Clicks checkbox if aria-checked element equals false
+   * Clicks checkbox if aria-checked element equals false
    */
   checkCheckbox: async function(checkbox) {
     if (await checkbox.getAttribute('aria-checked') === 'false') {
@@ -42,7 +42,7 @@ module.exports = {
   },
 
   /*
-   ** Clicks checkbox if aria-checked element equals true
+   * Clicks checkbox if aria-checked element equals true
    */
   uncheckCheckbox: async function(checkbox) {
     if (await checkbox.getAttribute('aria-checked') === 'true') {
@@ -51,7 +51,7 @@ module.exports = {
   },
 
   /*
-   ** Clicks checkbox if aria-checked element was different from b
+   * Clicks checkbox if aria-checked element was different from b
    */
   switchCheckbox: async function(checkbox, b) {
     const state = await (/true/).test(await checkbox.getAttribute('aria-checked'));
@@ -61,7 +61,7 @@ module.exports = {
   },
 
   /*
-   ** Returns an array of all the elements in arr containing s as their value
+   * Returns an array of all the elements in arr containing s as their value
    */
   getFromInvoiceGroup: async function(s, arr) {
     s = s.trim();
@@ -73,7 +73,7 @@ module.exports = {
   },
 
   /*
-   ** Returns an array of all the elements in arr containing s as their value
+   * Returns an array of all the elements in arr containing s as their value
    */
   getFromDropdownValue: async function(s, arr) {
     s = s.trim();
@@ -85,8 +85,8 @@ module.exports = {
   },
 
   /* 
-   ** Returns an array of all the elements in arr containing s in a
-   ** child span text
+   * Returns an array of all the elements in arr containing s in a
+   * child span text
    */
   getFromDynamicDropdown: async function(s, arr) {
     s = s.trim();
@@ -98,8 +98,8 @@ module.exports = {
   },
 
   /* 
-   ** Returns an array of all the elements in arr containing s in a
-   ** div text
+   * Returns an array of all the elements in arr containing s in a
+   * div text
    */
   getFromDropdownText: async function(s, arr) {
     s = s.trim();
@@ -111,8 +111,8 @@ module.exports = {
   },
 
   /* 
-   ** Returns an array of all the elements in arr being exact to s in a
-   ** div text
+   * Returns an array of all the elements in arr being exact to s in a
+   * div text
    */
   getFromDropdownTextExact: async function(s, arr) {
     s = s.trim();
@@ -124,8 +124,8 @@ module.exports = {
   },
 
   /* 
-   ** Returns an array of all the elements in arr being exact to s in a
-   ** div text using selection via aria-owns and id attributes
+   * Returns an array of all the elements in arr being exact to s in a
+   * div text using selection via aria-owns and id attributes
    */
   getFromDropdownAriaOwns: async function(s, own) {
     const opts = await $$(`div#${own} > md-select-menu > md-content > md-option`);
@@ -139,7 +139,7 @@ module.exports = {
   },
 
   /*
-   ** Closes the currently opened dropdown
+   * Closes the currently opened dropdown
    */
   closeDropdown: async function() {
     const opts = $$('md-option');
@@ -151,21 +151,21 @@ module.exports = {
   },
 
   /*
-   ** Makes the fileInput element visible
+   * Makes the fileInput element visible
    */
   displayUpload: async function(fileInput) {
     return browser.executeScript('arguments[0].style.visibility = "visible"; arguments[0].style.display = "block";', fileInput);
   },
 
   /*
-   ** Writes path to the fileInput element
+   * Writes path to the fileInput element
    */
   uploadFile: async function(path, fileInput) {
     return fileInput.sendKeys(path);
   },
 
   /*
-   ** Scrolls el into view if focus is on the window it's held in
+   * Scrolls el into view if focus is on the window it's held in
    */
   scrollIntoView: async function(el) {
     const loc = await el.getLocation();
@@ -173,7 +173,7 @@ module.exports = {
   },
 
   /*
-   ** Waits for a spinner element to disappear
+   * Waits for a spinner element to disappear
    */
   waitForSpinner: async function() {
     const EC = protractor.ExpectedConditions;
@@ -182,7 +182,7 @@ module.exports = {
   },
 
   /*
-   ** Waits for a toast element to disappear
+   * Waits for a toast element to disappear
    */
   waitForToast: async function() {
     const EC = protractor.ExpectedConditions;
@@ -191,7 +191,7 @@ module.exports = {
   },
 
   /*
-   ** Displays msg if el wasn't present after t milliseconds
+   * Displays msg if el wasn't present after t milliseconds
    */
   waitFor: async function(el, t = TIMEOUT,
     msg = "Element was still absent after " + TIMEOUT + " milliseconds") {
@@ -200,7 +200,7 @@ module.exports = {
   },
 
   /*
-   ** Displays msg if el was present after t milliseconds
+   * Displays msg if el was present after t milliseconds
    */
   waitForNo: async function(el, t = TIMEOUT,
     msg = "Element was still present after " + TIMEOUT + " milliseconds") {
@@ -209,7 +209,7 @@ module.exports = {
   },
 
   /*
-   ** Displays msg if el wasn't visible after t milliseconds
+   * Displays msg if el wasn't visible after t milliseconds
    */
   waitForVisibility: async function(el, t = TIMEOUT,
     msg = "Element was still invisible after " + TIMEOUT + " milliseconds") {
@@ -218,7 +218,7 @@ module.exports = {
   },
 
   /*
-   ** Displays msg if el was visible after t milliseconds
+   * Displays msg if el was visible after t milliseconds
    */
   waitForNoVisibility: async function(el, t = TIMEOUT,
     msg = "Element was still visible after " + TIMEOUT + " milliseconds") {
@@ -227,7 +227,7 @@ module.exports = {
   },
 
   /*
-   ** Returns an array of all visible elements in arr
+   * Returns an array of all visible elements in arr
    */
   getVisible: async function(arr) {
     return ret = await arr.filter(function(el) {
