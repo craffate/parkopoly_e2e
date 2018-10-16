@@ -18,7 +18,13 @@ describe('Concession groups', function() {
       await concessionPage.pointOfSaleGroupNameInput.sendKeys(`${data.name} ${TIMESTAMP}`);
       await helpers.scrollIntoView(concessionPage.pointOfSaleGroupSubmitButton);
       await concessionPage.pointOfSaleGroupSubmitButton.click();
+
+      /*
+       * https://stackoverflow.com/a/46532400
+       */
+      await browser.waitForAngularEnabled(false);
       await helpers.waitForNoVisibility(concessionPage.createPointOfSaleGroupDialog);
+      await browser.waitForAngularEnabled(true);
     });
   });
 });
