@@ -47,18 +47,10 @@ exports.config = {
       chromeOptions: {
         args: ['--disable-extensions', '--show-fps-counter=true',
           '--disable-infobars', '--incognito', '--disable-gpu',
-          '--headless', '--start-maximized',
+          '--start-maximized',
           '--disable-web-security', '--allow-running-insecure-content',
           '--allow-insecure-localhost', '--disable-browser-side-navigation',
           '--reduce-security-for-testing', '--window-size=1800,1600']
-      }
-    },
-    {browserName: 'firefox',
-      firefoxOptions: {
-        args: ['--headless']
-      },
-      'moz:firefoxOptions': {
-        args: ['--headless']
       }
     }],
   params: {
