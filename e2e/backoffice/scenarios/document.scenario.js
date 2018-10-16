@@ -77,7 +77,7 @@ describe('Documents', function() {
       el = await helpers.getVisible(documentsPage.searchQuery);
       el[0].sendKeys(TIMESTAMP);
       el = await helpers.getVisible(documentsPage.selectAllCheckbox);
-      el[0].click();
+      await el[0].click();
       await helpers.closeDropdown();
       await DashboardIngredients.submitButton.click();
       await helpers.waitForToast();
