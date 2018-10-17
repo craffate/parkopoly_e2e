@@ -26,15 +26,15 @@ describe('Concessions', function() {
       await concessionPage.pointOfSaleBonusInput.sendKeys(data.bonus);
       await concessionPage.pointOfSaleCity.click();
       await helpers.waitForVisibility(concessionPage.pointOfSaleCityResults.first());
-      el = await helpers.getFromDropdownValue(data.city, concessionPage.pointOfSaleCityResults);
+      el = await helpers.getFromDropdownText(data.city, concessionPage.pointOfSaleCityResults);
       await helpers.scrollIntoView(el[0]);
       await el[0].click();
       if (data.active === true) {
         await concessionPage.pointOfSaleActiveSwitch.click();
       };
       await concessionPage.pointOfSaleGroup.click();
-      el = await helpers.getFromDropdownText(`${data.group} ${TIMESTAMP}`,
-        'concessionGroup.name', concessionPage.pointOfSaleGroupResults);
+      await concessionPage.pointOfSaleGroupInput.sendKeys(`${data.group} ${TIMESTAMP}`);
+      el = await concessionPage.pointOfSaleGroupResults;
       await helpers.scrollIntoView(el[0]);
       await el[0].click();
       await helpers.asyncForEach(data.openHours, async (day, idx, days) => {
